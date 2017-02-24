@@ -93,10 +93,6 @@ const config = {
 						}
 					}
 				]
-			},
-			{
-				test: /\.hbs$/,
-				loader: "handlebars-loader"
 			}
 		]
 	},
