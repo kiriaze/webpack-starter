@@ -3,19 +3,22 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Webpack Ish</title>
-		<!-- <link rel="stylesheet" href="dist/app.bundle.css"> -->
-		<!-- <link rel="stylesheet" href="dist/hans.bundle.css"> -->
+		<!-- <link rel="stylesheet" href="app.bundle.css"> -->
 	</head>
 	<body>
 
 		{{> test }}
 		{{> foo }}
+		
+		<!-- testing twig -->
+		{% include 'views/partials/hans.twig' %}
+
+		<h1>{{ title }}</h1>
 	
 		<div id="app"></div>
+
+		<!-- <script src="dist/vendor.js"></script>
+		<script src="dist/app.bundle.js"></script> -->
 		
-		<!--
-		<script src="dist/vendor.js"></script>
-		<script src="dist/app.bundle.js"></script>
-		-->
 	</body>
 </html>

@@ -61,7 +61,7 @@ function fileExists(filePath) {
 	}
 }
 
-gulp.task('pages', function() {
+gulp.task('hb', function() {
 
 	// hb
 	var hbStream = hb()
@@ -101,6 +101,6 @@ gulp.watch([
 	config.srcPaths.html,
 	config.srcPaths.partials,
 	config.srcPaths.modules
-], ['pages', 'webpack']);
+], ['hb', 'webpack']);
 
-gulp.task('default', ['pages', 'webpack-dev-server']);
+gulp.task('default', ['hb', 'webpack-dev-server']);

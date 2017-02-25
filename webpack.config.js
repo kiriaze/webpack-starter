@@ -9,6 +9,7 @@ var FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
 var DashboardPlugin				= require('webpack-dashboard/plugin');
 var HtmlWebpackPlugin			= require('html-webpack-plugin');
 const ExtractTextPlugin			= require('extract-text-webpack-plugin');
+const extractCSS				= new ExtractTextPlugin('[name].bundle.css');
 
 const config = {
 	context: path.resolve(__dirname, 'src'),
@@ -82,13 +83,13 @@ const config = {
 	plugins: [
 		// new DashboardPlugin({ port: 3000 }),
 		// new webpack.optimize.UglifyJsPlugin(),
+		extractCSS,
 		new webpack.NamedModulesPlugin(),
 		// Common code chunking
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
 			filename: 'vendor.js'
 		}),
-		new ExtractTextPlugin('[name].bundle.css'),
 		// each page needs its own instance?
 		new HtmlWebpackPlugin({
 			template: __dirname + '/dist/index.html',
