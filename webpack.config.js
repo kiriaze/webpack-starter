@@ -1,52 +1,34 @@
 'use strict';
 
-// module.exports = require('./config'); // load all from config dir
-
-// Note: Doesnt create /dist/ dir due to webpack-dev-server, which loads everything in memory - for production, run `npm run build` to create dist dir.
-
-const webpack	= require('webpack');
-const path		= require('path');
-// var autoprefixer = require('autoprefixer');
+const webpack					= require('webpack');
+const path						= require('path');
+// var autoprefixer				= require('autoprefixer');
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experienc
-var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-
-// dashboard
-var DashboardPlugin = require('webpack-dashboard/plugin');
-
-// meow
-var NyanProgressPlugin = require('nyan-progress-webpack-plugin');
-
-const extractCommons = new webpack.optimize.CommonsChunkPlugin({
-	name: 'vendor',
-	filename: 'vendor.js'
-});
-
+var FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
+var DashboardPlugin				= require('webpack-dashboard/plugin');
 var HtmlWebpackPlugin			= require('html-webpack-plugin');
-var HTMLWebpackPluginConfig		= new HtmlWebpackPlugin({
-	template: __dirname + '/src/index.html',
-	filename: 'index.html',
-	// alwaysWriteToDisk: true // in conjunction with html-webpack-harddisk-plugin
-});
-
-// var HtmlWebpackHarddiskPlugin	= require('html-webpack-harddisk-plugin');
-// var HtmlWebpackHarddickPluginConfig = new HtmlWebpackHarddiskPlugin({
-// 	outputPath: path.resolve(__dirname, 'dist')
-// });
-
-
-const ExtractTextPlugin	= require('extract-text-webpack-plugin');
-const extractCSS		= new ExtractTextPlugin('[name].bundle.css');
-
+const ExtractTextPlugin			= require('extract-text-webpack-plugin');
 
 const config = {
 	context: path.resolve(__dirname, 'src'),
 	entry: {
-		app: './app.js'
+		// Multiple files, bundled together
+		app: [
+			'webpack-dev-server/client?http://localhost:3000', // gulp
+			'webpack/hot/dev-server', // gulp
+			'./app.js',
+			// './another.js',
+			// './and-another.js'
+		],
+		// // Multiple files, multiple outputs
+		// home: './home.js',
+		// events: './events.js',
+		// contact: './contact.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		// publicPath: '/dist/',
+		// publicPath: './dist/',
 		filename: '[name].bundle.js'
 	},
 	// devtool: 'source-map', // for production - no cache
@@ -63,8 +45,9 @@ const config = {
 				use: [{
 					loader: 'url-loader',
 					options: {
+						// Convert images < 10k to base64 strings
 						limit: 10000
-					} // Convert images < 10k to base64 strings
+					}
 				}]
 			},
 			{
@@ -96,35 +79,28 @@ const config = {
 			}
 		]
 	},
-	devServer: {
-		contentBase: path.join(__dirname, 'src'),
-		compress: true,
-		port: 3000,
-		// stats: 'errors-only',
-		// quiet: true, // turn off errors with FriendlyErrorsWebpackPlugin
-		// // Set this if you want webpack-dev-server to delegate a single path to an arbitrary server.
-		// // Use "*" to proxy all paths to the specified server.
-		// // This is useful if you want to get rid of 'http://localhost:3000/' in script[src],
-		// // and has many other use cases (see https://github.com/webpack/webpack-dev-server/pull/127 ).
-		// proxy: {
-		// 	"*": "http://webpack-demo.dev"
-		// },
-	},
 	plugins: [
-		new webpack.NamedModulesPlugin(),
-		extractCommons,
-		extractCSS,
-		// new webpack.optimize.UglifyJsPlugin(),
-		HTMLWebpackPluginConfig,
-		new FriendlyErrorsWebpackPlugin(),
-		// new NyanProgressPlugin(),
 		// new DashboardPlugin({ port: 3000 }),
+		// new webpack.optimize.UglifyJsPlugin(),
+		new webpack.NamedModulesPlugin(),
+		// Common code chunking
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor',
+			filename: 'vendor.js'
+		}),
+		new ExtractTextPlugin('[name].bundle.css'),
+		// each page needs its own instance?
+		new HtmlWebpackPlugin({
+			template: __dirname + '/dist/index.html',
+			filename: 'index.html'
+		}),
+		new FriendlyErrorsWebpackPlugin(),
+		new webpack.HotModuleReplacementPlugin(), // gulp
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery',
 			'window.jQuery': 'jquery'
-		}),
-		// HtmlWebpackHarddickPluginConfig // write html files to disk (/dist) when using webpack-dev-server
+		})
 	]
 };
 
