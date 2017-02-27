@@ -16,8 +16,6 @@ const config = {
 	entry: {
 		// Multiple files, bundled together
 		app: [
-			'webpack-dev-server/client?http://localhost:3000', // gulp
-			'webpack/hot/dev-server', // gulp
 			'./app.js',
 			// './another.js',
 			// './and-another.js'
@@ -38,6 +36,7 @@ const config = {
 		rules: [
 			{
 				test: /\.(ttf|eot|woff)(\?.*)?$/,
+				include: path.resolve(__dirname, 'src'),
 				loaders: ['url']
 			},
 			{
@@ -80,6 +79,14 @@ const config = {
 			}
 		]
 	},
+	// node: {
+	// 	fs: 'empty' // avoids error messages 
+	// },
+	devServer: {
+		contentBase: path.join(__dirname, 'src'),
+		compress: true,
+		port: 3000,
+	},
 	plugins: [
 		// new DashboardPlugin({ port: 3000 }),
 		// new webpack.optimize.UglifyJsPlugin(),
@@ -96,7 +103,6 @@ const config = {
 			filename: 'index.html'
 		}),
 		new FriendlyErrorsWebpackPlugin(),
-		new webpack.HotModuleReplacementPlugin(), // gulp
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery',

@@ -6,40 +6,11 @@ var gulp          		= require('gulp'),
 	fs					= require('fs'),
 	path				= require('path'),
 	hb					= require('gulp-hb'),
+	gutil				= require('gulp-util'),
+	twig 				= require('gulp-twig'),
 	handlebars			= require('handlebars'),
-	webpack				= require('webpack'),
-	webpackStream		= require('webpack-stream'),
 	webpackConfig		= require('../../webpack.config.js'),
-	WebpackDevServer	= require('webpack-dev-server');
-
-gulp.task('webpack', function() {
-	return gulp.src('./src/app.js')
-		.pipe(webpackStream({
-			config: webpackConfig,
-			watch: true
-		}, webpack))
-		.pipe(gulp.dest('dist/'));
-});
-
-gulp.task('webpack-dev-server', function() {
-
-	// Start a webpack-dev-server
-	new WebpackDevServer(webpack(webpackConfig), {
-		stats: {
-			colors: true
-		},
-		hot: true,
-		inline: true,
-		contentBase: './dist',
-		compress: true,
-		port: 3000,
-		// stats: 'errors-only',
-		// quiet: true, // turn off errors with FriendlyErrorsWebpackPlugin
-	}).listen(3000, 'localhost', function(err) {
-		// if (err) throw new gutil.PluginError('webpack-dev-server', err);
-		// gutil.log('[webpack-dev-server]', 'http://localhost:3000/webpack-dev-server/index.html');
-	});
-});
+	exec				= require('child_process').exec;
 
 // pages
 // check for empty json
@@ -97,10 +68,45 @@ gulp.task('hb', function() {
 
 });
 
+gulp.task('twig', function() {
+	return gulp.src([
+		'./src/**/*.html',
+		'./src/views/partials/**/*.twig'
+	])
+		.pipe(twig({
+			data: {
+				title: 'Gulp and Twig',
+				benefits: [
+					'Fast',
+					'Flexible',
+					'Secure'
+				]
+			}
+		}))
+		.pipe(gulp.dest('./dist')); // output the rendered HTML files to the "dist" directory
+});
+
 gulp.watch([
 	config.srcPaths.html,
 	config.srcPaths.partials,
 	config.srcPaths.modules
-], ['hb', 'webpack']);
+], [
+	'twig',
+	// 'hb'
+]);
 
-gulp.task('default', ['hb', 'webpack-dev-server']);
+gulp.task('build', function(){
+
+});
+
+gulp.task('wb', function(cb) {
+	exec('webpack-dev-server --inline --hot', function (err, stdout, stderr) {
+		cb(err);
+	});
+});
+
+gulp.task('default', [
+	'twig',
+	// 'hb',
+	'wb'
+]);

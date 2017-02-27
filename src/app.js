@@ -9,6 +9,8 @@ import './assets/scss/hans.scss';
 
 import people from './assets/js/people';
 
+import './assets/js/foo';
+
 var args = {
 	foo: 'bar'
 };
@@ -19,3 +21,7 @@ $('#app').css({
 
 const app		= document.querySelector('#app');
 app.innerHTML	= `<pre>${JSON.stringify(people, null, 2)}</pre>`;
+
+
+
+console.log(args, 'test');

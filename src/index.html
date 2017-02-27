@@ -1,3 +1,6 @@
+{% set title		= "Twig.js templating test" %}
+{% set pageTitle	= "Use Twig from the start!" %}
+{% set benefits		= ["Fast!", "Easy!", "Efficient!"] %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,14 +14,20 @@
 		{{> foo }}
 		
 		<!-- testing twig -->
-		{% include 'views/partials/hans.twig' %}
+		{% include './views/partials/hans.twig' %}
 
-		<h1>{{ title }}</h1>
+		<h1>{{ pageTitle }}</h1>
+
+		<ul>
+			{% for value in benefits %}
+				<li>{{ value }}</li>
+			{% endfor %}
+		</ul>
 	
 		<div id="app"></div>
 
-		<!-- <script src="dist/vendor.js"></script>
-		<script src="dist/app.bundle.js"></script> -->
+		<!-- <script src="vendor.js"></script>
+		<script src="app.bundle.js"></script> -->
 		
 	</body>
 </html>
