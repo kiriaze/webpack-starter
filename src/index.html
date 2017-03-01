@@ -1,33 +1,25 @@
-{% set title		= "Twig.js templating test" %}
-{% set pageTitle	= "Use Twig from the start!" %}
-{% set benefits		= ["Fast!", "Easy!", "Efficient!"] %}
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Webpack Ish</title>
-		<!-- <link rel="stylesheet" href="app.bundle.css"> -->
-	</head>
-	<body>
+{% extends 'base.twig' %}
 
-		{{> test }}
-		{{> foo }}
-		
-		<!-- testing twig -->
-		{% include './views/partials/hans.twig' %}
-
-		<h1>{{ pageTitle }}</h1>
-
-		<ul>
-			{% for value in benefits %}
-				<li>{{ value }}</li>
-			{% endfor %}
-		</ul>
+{% block content %}
 	
-		<div id="app"></div>
+	{{> test }}
+	{{> foo }}
+	
+	<!-- testing twig -->
+	{% include './views/partials/hans.twig' %}
 
-		<!-- <script src="vendor.js"></script>
-		<script src="app.bundle.js"></script> -->
-		
-	</body>
-</html>
+	{% include './views/modules/heroes/hero/template.twig' %}
+
+	<h1>{{ pageTitle }}</h1>
+	
+	{{data}}
+
+	<ul>
+		{% for value in benefits %}
+			<li>{{ value }}</li>
+		{% endfor %}
+	</ul>
+	
+	<div id="app"></div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{# base.twig #}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Webpack Ish</title>
+		<!-- <link rel="stylesheet" href="app.bundle.css"> -->
+		
+		{% block head %}
+
+		{% endblock %}
+
+	</head>
+	<body class="" data-template="base.twig">
+
+		<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+		
+		<main id="main">
+
+			{% block content %}{% endblock %}
+
+		</main>
+
+		{% block foot %}
+
+		{% endblock %}
+
+	</body>
+</html>

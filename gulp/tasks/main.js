@@ -71,17 +71,15 @@ gulp.task('hb', function() {
 gulp.task('twig', function() {
 	return gulp.src([
 		'./src/**/*.html',
-		'./src/views/partials/**/*.twig'
+		// './src/views/**/*.twig'
 	])
 		.pipe(twig({
-			data: {
-				title: 'Gulp and Twig',
-				benefits: [
-					'Fast',
-					'Flexible',
-					'Secure'
-				]
-			}
+			data: function(file) {
+				// An object of data to pass to the compiler. If of type function, the Vinyl file object is passed as argument:
+				return file.data;
+			},
+			base: './src/views/templates', // sets the views base folder. extends can be loaded relative to this path
+			errorLogToConsole: true, // console log errors
 		}))
 		.pipe(gulp.dest('./dist')); // output the rendered HTML files to the "dist" directory
 });

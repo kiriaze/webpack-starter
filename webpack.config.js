@@ -1,3 +1,6 @@
+// https://blog.madewithenvy.com/getting-started-with-webpack-2-ed2b86c68783#.7fqdmcf6c
+// https://www.sitepoint.com/beginners-guide-to-webpack-2-and-module-bundling/
+// (future reference if needed)
 'use strict';
 
 const webpack					= require('webpack');
@@ -10,13 +13,14 @@ var DashboardPlugin				= require('webpack-dashboard/plugin');
 var HtmlWebpackPlugin			= require('html-webpack-plugin');
 const ExtractTextPlugin			= require('extract-text-webpack-plugin');
 const extractCSS				= new ExtractTextPlugin('[name].bundle.css');
+var BundleAnalyzerPlugin 		= require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
 	context: path.resolve(__dirname, 'src'),
 	entry: {
 		// Multiple files, bundled together
 		app: [
-			'./app.js',
+			'./assets/js/app.js',
 			// './another.js',
 			// './and-another.js'
 		],
@@ -54,8 +58,15 @@ const config = {
 				test: /\.scss$/,
 				include: path.resolve(__dirname, 'src'),
 				use: [
-					'style-loader',
-					'css-loader',
+					'style-loader', // injects inline into dom
+					// 'css-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[name]__[local]___[hash:base64:5]' // name: .scss file name, local: class name
+						}
+					},
 					'sass-loader'
 				],
 
@@ -79,13 +90,10 @@ const config = {
 			}
 		]
 	},
-	// node: {
-	// 	fs: 'empty' // avoids error messages 
-	// },
 	devServer: {
 		contentBase: path.join(__dirname, 'src'),
 		compress: true,
-		port: 3000,
+		port: 3000
 	},
 	plugins: [
 		// new DashboardPlugin({ port: 3000 }),
@@ -107,7 +115,11 @@ const config = {
 			'$': 'jquery',
 			'jQuery': 'jquery',
 			'window.jQuery': 'jquery'
-		})
+		}),
+		// // fully interactive data visualization of our build
+		// new BundleAnalyzerPlugin({
+		// 	analyzerMode: 'static'
+		// })
 	]
 };
 
