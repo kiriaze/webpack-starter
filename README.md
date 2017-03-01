@@ -1,8 +1,4 @@
-# A Beginners Guide to Webpack 2 and Module Bundling
-
-This article is aimed at those who are new to webpack and will cover initial setup and configuration, modules, loaders, plugins, code splitting and hot module replacement.
-
-Article on SitePoint: https://www.sitepoint.com/beginners-guide-to-webpack-2-and-module-bundling
+# A Quick and sexy webpack boilerplate that handles handlebars, twig and php.
 
 ## Requirements
 
