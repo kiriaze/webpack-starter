@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -r dist",
     "start": "nodemon --watch webpack.config.js --exec \" gulp\"",
     "build": "webpack -p"
   },
@@ -38,5 +39,7 @@
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^2.4.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "twig": "^1.10.4"
+  }
 }

@@ -90,6 +90,9 @@ const config = {
 			}
 		]
 	},
+	node: {
+		fs: 'empty'
+	},
 	devServer: {
 		contentBase: path.join(__dirname, 'src'),
 		compress: true,
