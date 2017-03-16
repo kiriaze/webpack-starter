@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Webpack Ish</title>
-		<!-- <link rel="stylesheet" href="app.bundle.css"> -->
+		<link rel="stylesheet" href="app.bundle.css">
 		
 		{% block head %}
 
@@ -24,6 +24,9 @@
 		{% block foot %}
 
 		{% endblock %}
+	
+		<script src="./vendor.js"></script>
+		<script src="./app.bundle.js"></script>
 
 	</body>
 </html>

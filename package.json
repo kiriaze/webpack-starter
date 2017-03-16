@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -r dist",
-    "start": "nodemon --watch webpack.config.js --exec \" gulp\"",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "start": "node index.js && npm run server",
+    "server": "webpack-dev-server --inline --hot"
   },
   "keywords": [],
   "author": "",
@@ -20,26 +21,18 @@
     "file-loader": "^0.9.0",
     "friendly-errors-webpack-plugin": "^1.4.0",
     "fs": "0.0.1-security",
-    "gulp": "^3.9.1",
-    "gulp-data": "^1.2.1",
-    "gulp-hb": "^6.0.2",
-    "gulp-twig": "^0.7.0",
-    "gulp-util": "^3.0.8",
-    "handlebars": "^4.0.6",
-    "html-webpack-plugin": "^2.28.0",
+    "fs-extra": "^2.0.0",
+    "glob": "^7.1.1",
     "jquery": "^3.1.1",
     "node-sass": "^4.5.0",
-    "nodemon": "^1.11.0",
     "require-dir": "^0.3.1",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
+    "twig": "^1.10.4",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.3.0",
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^2.4.1"
-  },
-  "dependencies": {
-    "twig": "^1.10.4"
   }
 }

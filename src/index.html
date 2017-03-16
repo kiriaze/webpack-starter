@@ -1,9 +1,6 @@
-{% extends 'base.twig' %}
+{% extends 'views/templates/base.twig' %}
 
 {% block content %}
-	
-	{{> test }}
-	{{> foo }}
 	
 	<!-- testing twig -->
 	{% include './views/partials/hans.twig' %}
@@ -11,10 +8,16 @@
 	{% include './views/modules/heroes/hero/template.twig' %}
 
 	<h1>{{ pageTitle }}</h1>
-	
-	{{data}}
 
-	<h4>ppp</h4>
+	<h2>fuck it</h2>
+	
+	<pre>{{items}}</pre>
+
+	<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, pariatur. Autem architecto enim debitis beatae! Rerum, pariatur tempora similique officia repudiandae. Aspernatur soluta, nam modi non eos fugiat? Odio, harum.</h1>
+
+	<h4>yooooo</h4>
+
+	<h2>fuck you</h2>
 
 	<ul>
 		{% for value in benefits %}

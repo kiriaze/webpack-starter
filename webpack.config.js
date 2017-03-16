@@ -3,14 +3,15 @@
 // (future reference if needed)
 'use strict';
 
+const _config                   = require('./config.js'); // node config
+
 const webpack					= require('webpack');
 const path						= require('path');
-// var autoprefixer				= require('autoprefixer');
 
-// recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experienc
+// recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
 var FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
 var DashboardPlugin				= require('webpack-dashboard/plugin');
-var HtmlWebpackPlugin			= require('html-webpack-plugin');
+
 const ExtractTextPlugin			= require('extract-text-webpack-plugin');
 const extractCSS				= new ExtractTextPlugin('[name].bundle.css');
 var BundleAnalyzerPlugin 		= require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -31,7 +32,6 @@ const config = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		// publicPath: './dist/',
 		filename: '[name].bundle.js'
 	},
 	// devtool: 'source-map', // for production - no cache
@@ -59,7 +59,7 @@ const config = {
 				include: path.resolve(__dirname, 'src'),
 				use: [
 					'style-loader', // injects inline into dom
-					// 'css-loader',
+					// uncomment to not use injected style tags but output compiled .css in 'dist'
 					{
 						loader: 'css-loader',
 						options: {
@@ -94,7 +94,7 @@ const config = {
 		fs: 'empty'
 	},
 	devServer: {
-		contentBase: path.join(__dirname, 'src'),
+		contentBase: path.join(__dirname, 'dist'),
 		compress: true,
 		port: 3000
 	},
@@ -108,22 +108,18 @@ const config = {
 			name: 'vendor',
 			filename: 'vendor.js'
 		}),
-		// each page needs its own instance?
-		new HtmlWebpackPlugin({
-			template: __dirname + '/dist/index.html',
-			filename: 'index.html'
-		}),
 		new FriendlyErrorsWebpackPlugin(),
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery',
 			'window.jQuery': 'jquery'
 		}),
+
 		// // fully interactive data visualization of our build
 		// new BundleAnalyzerPlugin({
 		// 	analyzerMode: 'static'
 		// })
-	]
+	],
 };
 
 module.exports = config;
