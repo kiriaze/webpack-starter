@@ -2,45 +2,46 @@ const config = require('./config.js');
 const path   = require('path');
 const fs     = require('fs-extra');
 const twig   = require('twig');
-const watch  = require('chokidar').watch;
 const glob   = require('glob');
+
+// - data
+const data = {};
+const renderData = () => {
+
+	glob(config.srcPaths.data.all, (err, files) => {
+		files.forEach((file) => {
+			data['test'] = JSON.parse(fs.readFileSync( file ));
+		});
+	});
+	return data;
+
+};
 
 // - render
 const renderAll = () => {
+	
 	glob(config.srcPaths.html, (err, files) => {
 
-		console.log(files);
-
 		files.forEach((file) => {
-			console.log(file);
+			// console.log(file);
 			renderSingle(file);
 		});
+
 	});
 
 };
 
 const renderSingle = (file) => {
-	
-	// console.log('Render Single:', file);
-	
-	// TODO
-	// - get JSON from _data.json here
-	// - set base path for twig includes
 
-	let data = {
-		items: [
-			'foo',
-			'bar',
-			'baz'
-		]
+	let options = {
+		settings: {
+			views: config.srcPaths.templates
+		},
+		data: renderData()
 	};
 
-	twig.renderFile(file, data, (err, html) => {
+	twig.renderFile(file, options, (err, html) => {
 
-		// console.log(file);
-
-		let base = config.srcPaths.templates;
-		
 		let parts = file.split('/');
 			parts.shift();
 

@@ -3,8 +3,7 @@
 // (future reference if needed)
 'use strict';
 
-const _config                   = require('./config.js'); // node config
-
+const baseConfig                = require('./config.js'); // node config
 const webpack					= require('webpack');
 const path						= require('path');
 
@@ -17,7 +16,7 @@ const extractCSS				= new ExtractTextPlugin('[name].bundle.css');
 var BundleAnalyzerPlugin 		= require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
-	context: path.resolve(__dirname, 'src'),
+	context: path.resolve(__dirname, baseConfig.srcPaths.root),
 	entry: {
 		// Multiple files, bundled together
 		app: [
@@ -31,7 +30,7 @@ const config = {
 		// contact: './contact.js',
 	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, baseConfig.destPaths.root),
 		filename: '[name].bundle.js'
 	},
 	// devtool: 'source-map', // for production - no cache
@@ -40,12 +39,12 @@ const config = {
 		rules: [
 			{
 				test: /\.(ttf|eot|woff)(\?.*)?$/,
-				include: path.resolve(__dirname, 'src'),
+				include: path.resolve(__dirname, baseConfig.srcPaths.root),
 				loaders: ['url']
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
-				include: path.resolve(__dirname, 'src'),
+				include: path.resolve(__dirname, baseConfig.srcPaths.root),
 				use: [{
 					loader: 'url-loader',
 					options: {
@@ -56,10 +55,10 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				include: path.resolve(__dirname, 'src'),
+				include: path.resolve(__dirname, baseConfig.srcPaths.root),
 				use: [
 					'style-loader', // injects inline into dom
-					// uncomment to not use injected style tags but output compiled .css in 'dist'
+					// uncomment to not use injected style tags but output compiled .css in baseConfig.destPaths.root
 					{
 						loader: 'css-loader',
 						options: {
@@ -70,7 +69,7 @@ const config = {
 					'sass-loader'
 				],
 
-				// // uncomment to not use injected style tags but output compiled .css in 'dist'
+				// // uncomment to not use injected style tags but output compiled .css in baseConfig.destPaths.root
 				// use: extractCSS.extract([
 				// 	'css-loader',
 				// 	'sass-loader'
@@ -78,7 +77,7 @@ const config = {
 			},
 			{
 				test: /\.js$/,
-				include: path.resolve(__dirname, 'src'),
+				include: path.resolve(__dirname, baseConfig.srcPaths.root),
 				use: [
 					{
 						loader: 'babel-loader',
@@ -94,7 +93,7 @@ const config = {
 		fs: 'empty'
 	},
 	devServer: {
-		contentBase: path.join(__dirname, 'dist'),
+		contentBase: path.join(__dirname, baseConfig.destPaths.root),
 		compress: true,
 		port: 3000
 	},

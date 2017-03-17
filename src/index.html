@@ -1,4 +1,4 @@
-{% extends 'views/templates/base.twig' %}
+{% extends 'base.twig' %}
 
 {% block content %}
 	
@@ -8,20 +8,14 @@
 	{% include './views/modules/heroes/hero/template.twig' %}
 
 	<h1>{{ pageTitle }}</h1>
-
-	<h2>fuck it</h2>
 	
-	<pre>{{items}}</pre>
+	<pre>{{data | json_encode}} </pre>
 
-	<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, pariatur. Autem architecto enim debitis beatae! Rerum, pariatur tempora similique officia repudiandae. Aspernatur soluta, nam modi non eos fugiat? Odio, harum.</h1>
-
-	<h4>yooooo</h4>
-
-	<h2>fuck you</h2>
+	<pre>{{data['test']['title']}}</pre>
 
 	<ul>
-		{% for value in benefits %}
-			<li>{{ value }}</li>
+		{% for client in data['test']['clients'] %}
+			<li>{{ client }}</li>
 		{% endfor %}
 	</ul>
 	

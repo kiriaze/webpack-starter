@@ -3,11 +3,11 @@
 var src  = 'src',
 	dist = 'dist';
 
-module.exports = {
+const baseConfig = {
 
 	serverport  : 3000,
 	debugMode   : true,
-	bowerDir    : src + '/assets/vendor' ,
+	bowerDir    : src + '/assets/vendor' , // ToDo: remove and only use npm?
 
 	srcPaths: {
 
@@ -17,15 +17,11 @@ module.exports = {
 		partials 	: src + '/partials/**/*.{js,json,twig}',
 		modules 	: src + '/modules/**/*.twig',
 		templates   : src + '/views/templates/',
-		pages       : src + '/views/pages/**/*.html',
-		// helpers 	: src + '/assets/js/helpers/**/*.js',
 		
 		data    	: {
-			global: '_data.json', // global sg data
-			modules: src + '/modules/**/_data.json', // modules data
-			pages: src + '/pages/**/_data.json' // pages data
+			global  : '_data.json', // global sg data
+			all     : src + '/assets/data/**/*.json', // dir of data
 		},
-
 
 		styles  	: src + '/assets/scss',
 		scripts 	: src + '/assets/js',
@@ -34,7 +30,6 @@ module.exports = {
 		vectors     : src + '/assets/images/vectors',
 		video   	: src + '/assets/video/**/*',
 		audio   	: src + '/assets/audio/**/*',
-		htmlHelpers	: src + '/assets/helpers/**/*',
 		fonts   	: src + '/assets/fonts/**/*'
 	},
 
@@ -96,3 +91,5 @@ module.exports = {
 	// }
 
 }
+
+module.exports = baseConfig;
