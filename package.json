@@ -35,7 +35,8 @@
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.3.0",
     "webpack-dashboard": "^0.3.0",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "wpapi": "^1.0.3"
   },
   "dependencies": {}
 }
