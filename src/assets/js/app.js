@@ -4,10 +4,18 @@ if ( module.hot ) {
 }
 
 import '../scss/style.scss';
+// import '../../views/modules/style.scss';
 
 import jQuery from 'jquery';
 import people from './people';
-import '../../views/modules/heroes/hero/script';
+
+
+// import mods script.js, which imports the associated style.scss
+// then inject to dom
+import {element} from '../../views/modules/heroes/hero/script';
+document.write(element);
+
+// import '../../views/modules/heroes/hero/template.twig'; // requires twig-loader
 
 var args = {
 	foo: 'bar'

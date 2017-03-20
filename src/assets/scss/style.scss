@@ -1,7 +1,5 @@
 $bluegrey: #2B3A42;
 
-@import '../../views/modules/heroes/style';
-
 body {
 	background: beige;
 }
@@ -12,3 +10,5 @@ pre {
 	background: $bluegrey;
 	text-shadow: 0 1px 1px rgba(#000, .5);
 }
+
+// @import '../../views/modules/style';

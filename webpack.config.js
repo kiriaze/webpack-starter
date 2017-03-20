@@ -6,6 +6,7 @@
 const baseConfig                = require('./config.js'); // node config
 const webpack					= require('webpack');
 const path						= require('path');
+const autoprefixer              = require('autoprefixer');
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
 var FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
@@ -56,24 +57,24 @@ const config = {
 			{
 				test: /\.scss$/,
 				include: path.resolve(__dirname, baseConfig.srcPaths.root),
-				use: [
-					'style-loader', // injects inline into dom
-					// uncomment to not use injected style tags but output compiled .css in baseConfig.destPaths.root
+
+				// use: [
+				// 	'style-loader', // injects inline into dom
+				// 	'css-loader',
+				// 	'sass-loader'
+				// ],
+
+				// uncomment to not use injected style tags but output compiled .css in baseConfig.destPaths.root
+				use: extractCSS.extract([
+					'css-loader',
 					{
-						loader: 'css-loader',
+						loader: 'postcss-loader',
 						options: {
-							modules: true,
-							localIdentName: '[name]__[local]___[hash:base64:5]' // name: .scss file name, local: class name
+							plugins: () => [autoprefixer()]
 						}
 					},
 					'sass-loader'
-				],
-
-				// // uncomment to not use injected style tags but output compiled .css in baseConfig.destPaths.root
-				// use: extractCSS.extract([
-				// 	'css-loader',
-				// 	'sass-loader'
-				// ]),
+				]),
 			},
 			{
 				test: /\.js$/,
