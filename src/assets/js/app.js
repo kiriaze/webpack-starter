@@ -4,11 +4,9 @@ if ( module.hot ) {
 }
 
 import '../scss/style.scss';
-import '../scss/hans.scss';
 
 import jQuery from 'jquery';
 import people from './people';
-import './foo';
 import '../../views/modules/heroes/hero/script';
 
 var args = {
