@@ -58,23 +58,23 @@ const config = {
 				test: /\.scss$/,
 				include: path.resolve(__dirname, baseConfig.srcPaths.root),
 
-				// use: [
-				// 	'style-loader', // injects inline into dom
-				// 	'css-loader',
-				// 	'sass-loader'
-				// ],
-
-				// uncomment to not use injected style tags but output compiled .css in baseConfig.destPaths.root
-				use: extractCSS.extract([
+				use: [
+					'style-loader', // injects inline into dom
 					'css-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: () => [autoprefixer()]
-						}
-					},
 					'sass-loader'
-				]),
+				],
+
+				// // uncomment to not use injected style tags but output compiled .css in baseConfig.destPaths.root
+				// use: extractCSS.extract([
+				// 	'css-loader',
+				// 	{
+				// 		loader: 'postcss-loader',
+				// 		options: {
+				// 			plugins: () => [autoprefixer()]
+				// 		}
+				// 	},
+				// 	'sass-loader'
+				// ]),
 			},
 			{
 				test: /\.js$/,
@@ -96,7 +96,9 @@ const config = {
 	devServer: {
 		contentBase: path.join(__dirname, baseConfig.destPaths.root),
 		compress: true,
-		port: 3000
+		port: baseConfig.serverport,
+		hot: true,
+		inline: true
 	},
 	plugins: [
 		// new DashboardPlugin({ port: 3000 }),
