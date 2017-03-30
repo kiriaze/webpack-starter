@@ -111,8 +111,8 @@ const config = {
 
 		new CopyWebpackPlugin([
 			{
-				from: 'php-test.php',
-				// to: '/php-test.php'
+				from: 'php/',
+				to: 'php/'
 			},
 			{
 				from: 'assets/images/',
