@@ -10,10 +10,10 @@ const path						= require('path');
 const autoprefixer              = require('autoprefixer');
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
-var FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
-var DashboardPlugin				= require('webpack-dashboard/plugin');
+const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
+const DashboardPlugin				= require('webpack-dashboard/plugin');
 
-var BundleAnalyzerPlugin 		= require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
 	context: path.resolve(__dirname, baseConfig.srcPaths.root),

@@ -16,6 +16,8 @@ const extractCSS				= new ExtractTextPlugin({
 									// allChunks: true // testing
 								});
 
+const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other files to dist; e.g. php files, images, etc
+
 
 const config = {
 	context: path.resolve(__dirname, baseConfig.srcPaths.root),
@@ -105,6 +107,20 @@ const config = {
 			mangle: {
 				screw_ie8: true
 			}
+		}),
+
+		new CopyWebpackPlugin([
+			{
+				from: 'php-test.php',
+				// to: '/php-test.php'
+			},
+
+			{
+				from: 'assets/images/',
+				to: 'assets/images/'
+			},
+		], {
+			// debug: true
 		}),
 
 		// Common code chunking
