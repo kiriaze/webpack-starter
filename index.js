@@ -45,9 +45,9 @@ const renderSingle = (file) => {
 		let parts = file.split('/');
 			parts.shift();
 
-		// if in views/pages/ remove views from path
+		// if in views/pages/ remove views and pages from path
 		if ( parts.length > 1 ) {
-			parts.splice(0, 2); // flatten path
+			parts.splice(0, 1); // flatten path
 		}
 
 		file = parts.join('/');

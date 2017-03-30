@@ -1,9 +1,21 @@
 {% extends 'base.twig' %}
 
+{% block head %}
+	<link rel="stylesheet" href="../assets/css/main.bundle.css">
+{% endblock %}
+
 {% block content %}
 
 	<h1>About page</h1>
 
+	<a href="/">Home page</a>
+
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, delectus illo recusandae repudiandae reiciendis at. Dicta, eum, necessitatibus. Illo blanditiis ducimus facere voluptates eligendi voluptate, harum architecto voluptatibus quod nam.</p>
 
+{% endblock %}
+
+{% block foot %}
+	<script src="../assets/js/vendor.js"></script>
+	<script src="../assets/js/main.bundle.js"></script>
+	<script src="../assets/js/about.bundle.js"></script>
 {% endblock %}

@@ -1,5 +1,6 @@
 // https://blog.madewithenvy.com/getting-started-with-webpack-2-ed2b86c68783#.7fqdmcf6c
 // https://www.sitepoint.com/beginners-guide-to-webpack-2-and-module-bundling/
+// https://medium.com/@rajaraodv/webpacks-hmr-react-hot-loader-the-missing-manual-232336dc0d96
 // (future reference if needed)
 'use strict';
 
@@ -12,29 +13,28 @@ const autoprefixer              = require('autoprefixer');
 var FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
 var DashboardPlugin				= require('webpack-dashboard/plugin');
 
-const ExtractTextPlugin			= require('extract-text-webpack-plugin');
-const extractCSS				= new ExtractTextPlugin('[name].bundle.css');
 var BundleAnalyzerPlugin 		= require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
 	context: path.resolve(__dirname, baseConfig.srcPaths.root),
 	entry: {
-		// Multiple files, bundled together
-		app: [
-			'./assets/js/app.js',
-			// './another.js',
-			// './and-another.js'
-		],
-		// // Multiple files, multiple outputs
-		// home: './home.js',
-		// events: './events.js',
-		// contact: './contact.js',
+		// // Multiple files, bundled together (spa)
+		// app: [
+		// 	'./assets/js/app.js',
+		// 	// './another.js',
+		// 	// './and-another.js'
+		// ],
+
+		// // Multiple files, multiple outputs (multi page app)
+		main: './assets/js/app.js',
+		about: './views/pages/about.js',
+		
 	},
 	output: {
 		path: path.resolve(__dirname, baseConfig.destPaths.root),
-		filename: '[name].bundle.js'
+		filename: 'assets/js/[name].bundle.js',
+		publicPath: 'http://localhost:3000/' // subdir page hmr to work
 	},
-	// devtool: 'source-map', // for production - no cache
 	devtool: 'eval-source-map', // for dev - with cache
 	module: {
 		rules: [
@@ -60,21 +60,24 @@ const config = {
 
 				use: [
 					'style-loader', // injects inline into dom
-					'css-loader',
-					'sass-loader'
-				],
-
-				// // uncomment to not use injected style tags but output compiled .css in baseConfig.destPaths.root
-				// use: extractCSS.extract([
-				// 	'css-loader',
-				// 	{
-				// 		loader: 'postcss-loader',
-				// 		options: {
-				// 			plugins: () => [autoprefixer()]
-				// 		}
-				// 	},
-				// 	'sass-loader'
-				// ]),
+					'css-loader?sourceMap',
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: () => [autoprefixer({
+								browsers: ['last 2 versions']
+							})]
+						}
+					},
+					{
+						loader: 'sass-loader?sourceMap',
+						options: {
+							includePaths: [
+								'src/modules'
+							]
+						}
+					}
+				]
 			},
 			{
 				test: /\.js$/,
@@ -95,20 +98,20 @@ const config = {
 	},
 	devServer: {
 		contentBase: path.join(__dirname, baseConfig.destPaths.root),
-		compress: true,
+		compress: true, // enable gzip compression
 		port: baseConfig.serverport,
-		hot: true,
-		inline: true
+		historyApiFallback: true // history api
 	},
 	plugins: [
 		// new DashboardPlugin({ port: 3000 }),
 		// new webpack.optimize.UglifyJsPlugin(),
-		extractCSS,
-		new webpack.NamedModulesPlugin(),
+		
+		new webpack.NamedModulesPlugin(), // Now the module names in console and in the source will be by name
+
 		// Common code chunking
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
-			filename: 'vendor.js'
+			filename: './assets/js/vendor.js'
 		}),
 		new FriendlyErrorsWebpackPlugin(),
 		new webpack.ProvidePlugin({

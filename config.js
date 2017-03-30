@@ -14,6 +14,7 @@ const baseConfig = {
 		root    	: src,
 
 		html    	: src + '/**/*.html',
+		pages       : src + '/views/pages/',
 		partials 	: src + '/partials/**/*.{js,json,twig}',
 		modules 	: src + '/modules/**/*.twig',
 		templates   : src + '/views/templates/',
