@@ -50,17 +50,23 @@ const config = {
 					loader: 'url-loader',
 					options: {
 						// Convert images < 10k to base64 strings
-						limit: 10000
+						limit: 10000,
+						name: 'assets/images/[name].[ext]'
 					}
 				}]
 			},
 			{
 				test: /\.scss$/,
 				include: path.resolve(__dirname, baseConfig.srcPaths.root),
-
 				use: [
 					'style-loader', // injects inline into dom
-					'css-loader?sourceMap',
+					{
+						loader: 'css-loader',
+						options: {
+							root: path.resolve(__dirname, baseConfig.srcPaths.root),
+							// sourceMap: true,
+						}
+					},
 					{
 						loader: 'postcss-loader',
 						options: {
@@ -70,8 +76,9 @@ const config = {
 						}
 					},
 					{
-						loader: 'sass-loader?sourceMap',
+						loader: 'sass-loader',
 						options: {
+							// sourceMap: true,
 							includePaths: [
 								'src/modules'
 							]
