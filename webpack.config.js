@@ -9,6 +9,8 @@ const webpack					= require('webpack');
 const path						= require('path');
 const autoprefixer              = require('autoprefixer');
 
+const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other files to dist; e.g. php files, images, etc
+
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
 const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
 const DashboardPlugin				= require('webpack-dashboard/plugin');
@@ -63,8 +65,8 @@ const config = {
 					{
 						loader: 'css-loader',
 						options: {
-							root: path.resolve(__dirname, baseConfig.srcPaths.root),
-							// sourceMap: true,
+							root: path.resolve(__dirname, baseConfig.srcPaths.root), // to work with url-loader images name option of 'assets/images/[name].[ext]' so all references in code can be /assets/images/file.ext regardless of where they reside
+							sourceMap: true,
 						}
 					},
 					{
@@ -112,6 +114,17 @@ const config = {
 	plugins: [
 		// new DashboardPlugin({ port: 3000 }),
 		// new webpack.optimize.UglifyJsPlugin(),
+
+		new CopyWebpackPlugin([
+			// copying images so as to reference them in markup
+			// with no issues
+			{
+				from: 'assets/images/',
+				to: 'assets/images/'
+			},
+		], {
+			// debug: true
+		}),
 		
 		new webpack.NamedModulesPlugin(), // Now the module names in console and in the source will be by name
 
