@@ -1,4 +1,4 @@
-# A Quick and sexy webpack boilerplate that handles handlebars, twig and php.
+# A Quick and sexy webpack boilerplate that handles twig and php. ( no mas handlebars )
 
 ## Requirements
 

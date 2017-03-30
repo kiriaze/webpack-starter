@@ -114,7 +114,6 @@ const config = {
 				from: 'php-test.php',
 				// to: '/php-test.php'
 			},
-
 			{
 				from: 'assets/images/',
 				to: 'assets/images/'

@@ -1,0 +1,12 @@
+{
+    "name": "constantinekiriaze/webpack-demo",
+    "authors": [
+        {
+            "name": "Constantine",
+            "email": "ckiriaze@basicagency.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}
