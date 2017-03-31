@@ -1,4 +1,4 @@
-{% extends 'base.twig' %}
+{% extends 'templates/base.twig' %}
 
 {% block head %}
 	<link rel="stylesheet" href="../assets/css/main.bundle.css">
@@ -8,9 +8,11 @@
 
 	<h1>About page</h1>
 
-	<a href="/">Home page</a>
+	{% include 'partials/header.twig' %}
 
-	<img src="/assets/images/slack-imgs.jpg">
+	<pre>{{data['a'] | json_encode}}</pre>
+
+	<img src="./assets/images/slack-imgs.jpg">
 
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, delectus illo recusandae repudiandae reiciendis at. Dicta, eum, necessitatibus. Illo blanditiis ducimus facere voluptates eligendi voluptate, harum architecto voluptatibus quod nam.</p>
 

@@ -1,0 +1,19 @@
+{% extends 'templates/base.twig' %}
+
+{% block content %}
+	
+	{% include 'partials/header.twig' %}
+
+	{# <pre>{{data['wp'] | json_encode}}</pre> #}
+	
+	<h1>Posts</h1>
+	<ul>
+		{% for post in data['wp'] %}
+			<li>
+				<h2>{{ post['title']['rendered'] }}</h2>
+				{{ post['content']['rendered'] | raw }}
+			</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}
