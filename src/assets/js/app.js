@@ -9,6 +9,10 @@ import '../scss/style.scss';
 import jQuery from 'jquery';
 
 
+$('html').css({
+	opacity: 1
+})
+
 // import mods script.js, which imports the associated style.scss
 // then inject to dom
 import {element} from '../../views/modules/heroes/hero/script';

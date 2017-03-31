@@ -1,8 +1,8 @@
 {% extends 'templates/base.twig' %}
 
-{% block head %}
+{# {% block head %}
 	<link rel="stylesheet" href="../assets/css/main.bundle.css">
-{% endblock %}
+{% endblock %} #}
 
 {% block content %}
 
@@ -12,14 +12,12 @@
 
 	<pre>{{data['a'] | json_encode}}</pre>
 
-	<img src="./assets/images/slack-imgs.jpg">
+	{# <img src="./assets/images/slack-imgs.jpg"> #}
 
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, delectus illo recusandae repudiandae reiciendis at. Dicta, eum, necessitatibus. Illo blanditiis ducimus facere voluptates eligendi voluptate, harum architecto voluptatibus quod nam.</p>
 
 {% endblock %}
 
-{% block foot %}
-	<script src="../assets/js/vendor.js"></script>
-	<script src="../assets/js/main.bundle.js"></script>
-	<script src="../assets/js/about.bundle.js"></script>
+{% block afterFoot %}
+	<script src="http://localhost:3000/assets/js/about.bundle.js"></script>
 {% endblock %}

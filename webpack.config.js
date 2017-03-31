@@ -33,9 +33,9 @@ const config = {
 		
 	},
 	output: {
-		path: path.resolve(__dirname, baseConfig.destPaths.root),
+		path: path.resolve(__dirname, baseConfig.srcPaths.root),
 		filename: 'assets/js/[name].bundle.js',
-		publicPath: 'http://localhost:3000/' // subdir page hmr to work
+		publicPath: 'http://localhost:3000/',
 	},
 	devtool: 'eval-source-map', // for dev - with cache
 	module: {
@@ -106,9 +106,10 @@ const config = {
 		fs: 'empty'
 	},
 	devServer: {
-		contentBase: path.join(__dirname, baseConfig.destPaths.root),
+		contentBase: path.join(__dirname, baseConfig.srcPaths.root),
 		compress: true, // enable gzip compression
 		port: baseConfig.serverport,
+		publicPath: 'http://localhost:3000/',
 		historyApiFallback: true // history api
 	},
 	plugins: [

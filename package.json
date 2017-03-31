@@ -6,9 +6,8 @@
   "scripts": {
     "clean": "rm -r dist",
     "build": "NODE_ENV=production node index.js && webpack -p --config webpack.config.prod.js",
-    "start": "NODE_ENV=development node index.js && npm run server",
-    "server": "webpack-dev-server --inline --hot & npm run watch:html",
-    "watch:html": "chokidar './src/**/*.html' './src/**/*.twig' -c 'node index.js'"
+    "start": "NODE_ENV=development npm run server",
+    "server": "webpack-dev-server --inline --hot"
   },
   "keywords": [],
   "author": "",
