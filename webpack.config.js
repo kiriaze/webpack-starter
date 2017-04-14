@@ -131,8 +131,8 @@ const config = {
 
 		// Common code chunking
 		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor',
-			filename: './assets/js/vendor.js'
+			name: 'common', // needs to match an entry name; e.g. entry: { common: ["jquery"] }
+			filename: './assets/js/common.js'
 		}),
 		new FriendlyErrorsWebpackPlugin(),
 		new webpack.ProvidePlugin({

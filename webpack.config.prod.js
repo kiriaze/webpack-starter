@@ -111,8 +111,14 @@ const config = {
 
 		new CopyWebpackPlugin([
 			{
-				from: 'php/',
-				to: 'php/'
+				from: 'index.php'
+			},
+			{
+				from: {
+					glob: 'views/pages/**/*.html'
+				},
+				to: './pages/',
+				flatten: true
 			},
 			{
 				from: 'assets/images/',
@@ -124,8 +130,8 @@ const config = {
 
 		// Common code chunking
 		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor',
-			filename: './assets/js/vendor.js'
+			name: 'common',
+			filename: './assets/js/common.js'
 		}),
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
