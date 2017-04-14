@@ -9,8 +9,11 @@ const data = {};
 const renderData = () => {
 
 	glob(config.srcPaths.data.all, (err, files) => {
-		files.forEach((file) => {
-			data['test'] = JSON.parse(fs.readFileSync( file ));
+		files.forEach((filePath) => {
+			let file     = filePath.split('/').pop(),
+				fileName = file.slice(0, -5);
+			// console.log(fileName);
+			data[fileName] = JSON.parse(fs.readFileSync( filePath ));
 		});
 	});
 	return data;
@@ -35,7 +38,7 @@ const renderSingle = (file) => {
 
 	let options = {
 		settings: {
-			views: config.srcPaths.root + '/views'
+			views: config.srcPaths.root + '/views/'
 		},
 		data: renderData()
 	};

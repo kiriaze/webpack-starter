@@ -30,7 +30,7 @@ const config = {
 
 		// multi page app - separate files
 		'main': './assets/js/app.js',
-		'about': './views/pages/about.js',
+		'about': './views/pages/about/about.js',
 	},
 	output: {
 		path: path.resolve(__dirname, baseConfig.destPaths.root),
@@ -112,13 +112,6 @@ const config = {
 		new CopyWebpackPlugin([
 			{
 				from: 'index.php'
-			},
-			{
-				from: {
-					glob: 'views/pages/**/*.html'
-				},
-				to: './pages/',
-				flatten: true
 			},
 			{
 				from: 'assets/images/',

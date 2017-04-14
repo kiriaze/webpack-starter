@@ -65,7 +65,7 @@ $app->get('/{name}', function($request, $response, $args) {
 	$name = $args['name'];
 	$name = htmlspecialchars($name);
 	$data = getData();
-	return $this->view->render($response, 'pages/'. $name .'.html', $data);
+	return $this->view->render($response, 'pages/'. $name .'/index.html', $data);
 });
 
 $app->run();
