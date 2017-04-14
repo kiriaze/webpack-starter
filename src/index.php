@@ -33,6 +33,11 @@ $container['view'] = function ($container) {
 function getData() {
 
 	$data = [];
+	
+	$data['globals'] = [
+		// 'src' => './'
+	];
+
 	$files = scandir(__DIR__ . '/assets/data');
 
 	foreach( $files as $file ) {
