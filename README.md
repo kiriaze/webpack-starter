@@ -10,6 +10,7 @@
 2. Run `npm install`
 3. Run `npm start` to start webpack
 4. Run `npm run build` to compile the bundle in production mode
+5. Run `php -S localhost:8000 -t src/` in a separate terminal window for php.
 
 ## License
 
