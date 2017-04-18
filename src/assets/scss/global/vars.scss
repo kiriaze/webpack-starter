@@ -1,0 +1,48 @@
+////////////////////////////////////////////////////////
+// Colors
+// - asses/scss/colors.scss
+// - 00_settings/script.js - SS.colors
+//
+// - Cool
+// - Warm
+// - Gray Scale
+//
+////////////////////////////////////////////////////////
+
+// // Cool
+$green:                         #2ECC40;
+
+// Warm
+$yellow:                        #fff200;
+$red:							#d42a2a;
+
+// Gray Scale
+$white:                         #fff;
+$offwhite: 						#e2e5e4;
+$line-color:					#d8d8d8;
+$light-grey:                    #b9b9b9;
+$med-grey:                      #797979;
+$dark-grey:                     #4f4f4f;
+$black:                         #373737;
+
+// Social Colors
+$fb-blue:						#3c599b;
+$twitter-blue:					#3d99fb;
+
+// Project Colors
+$primary-color:                 $green;
+$accent-color:                  orange;
+
+// Selection Colors
+$selection-bg-color:            $yellow;
+$selection-text-color:          $black;
+
+// .Highlight/.text-highlight Colors
+$highlight-bg-color:            transparent;
+$highlight-text-color:          $primary-color;
+
+// UI Colors
+$success-color:                 #31aa51;
+$error-color:                   #d42a2a;
+
+@import 'colors';

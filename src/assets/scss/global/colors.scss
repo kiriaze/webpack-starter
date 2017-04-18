@@ -1,0 +1,52 @@
+/*
+   Global Colors
+   - Backgrounds
+   - Colors
+   - Border colors
+   - SVG fills
+   - SVG Strokes
+
+*/
+
+// $vars set in _settings.scss
+$colors: (
+	'primary'		$primary-color,
+	'accent'		$accent-color,
+	'white'			$white,
+	'offwhite'		$offwhite,
+	'light-grey'	$light-grey,
+	'med-grey'		$med-grey,
+	'dark-grey'		$dark-grey,
+	'black'			$black,
+	'line'			$line-color,
+	'fb-blue'       $fb-blue,
+	'twitter-blue'  $twitter-blue,
+	'success'	    $success-color,
+	'error'   	    $error-color,
+	'yellow'        $yellow,
+	'red'           $red
+);
+
+@each $newColor, $color in $colors {
+	.bg--#{$newColor} {
+		background-color: $color !important;
+	}
+	.text--#{$newColor} {
+		color: $color !important;
+	}
+	.link--#{$newColor} {
+		color: $color !important;
+		&:hover {
+			color: $dark-grey !important;
+		}
+	}
+	.stroke--#{$newColor} {
+		stroke: $color !important;
+	}
+	.fill--#{$newColor} {
+		fill: $color !important;
+	}
+	.border--#{$newColor} {
+		border-color: $color !important;
+	}
+}

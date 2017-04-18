@@ -1,13 +1,36 @@
-$bluegrey: #2B3A42;
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: inherit;
+}
+
+html {
+	font-family: sans-serif;
+	text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	font-size: 10px;
+	box-sizing: border-box;
+}
 
 body {
-	background: beige;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.3rem;
+	line-height: 1.5rem;
+}
+
+body {
+	background: white;
 	// background: beige url('/assets/images/slack-imgs.jpg');
 }
 
 pre {
 	padding: 20px;
 	color: #dedede;
-	background: $bluegrey;
+	background: #222;
 	text-shadow: 0 1px 1px rgba(#000, .5);
 }
