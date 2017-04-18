@@ -35,7 +35,8 @@ function getData() {
 	$data = [];
 	
 	$data['globals'] = [
-		// 'src' => './'
+		// 'src' => './',
+		'timestamp' => time()
 	];
 
 	$files = scandir(__DIR__ . '/assets/data');
