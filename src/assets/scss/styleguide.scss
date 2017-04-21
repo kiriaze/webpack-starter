@@ -2,32 +2,29 @@
 
 .styleguide {
 
-	header {
-		margin-top: 10rem;
-		border-top: 0.1rem solid #dfdfdf;
-
-		padding-top: 6rem;
-		padding-bottom: 25rem;
+	&__section {
+		margin-bottom: 10rem;
+		border-bottom: 0.1rem solid $line-color;
 	}
 
 	&__heading {
-		padding-top: 2rem;
 		max-width: none;
 		font-size: 2.4rem;
+		line-height: 3.2rem;
 		font-weight: 900;
-		border-top: 0.1rem solid color(black);
-		margin-bottom: 5rem;
+		padding-top: 2rem;
+		margin-bottom: 2rem;
+		border-top: 0.1rem solid $line-color;
 	}
 
 	&__colors {
-		margin-bottom: 22rem;
 
 		li {
+			width: 16rem;
+			height: 16rem;
 			display: inline-block;
 			vertical-align: top;
 			margin: 0 2rem 2rem 0;
-			width: 16rem;
-			height: 16rem;
 		}
 
 		.bg--white {
