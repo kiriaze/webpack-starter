@@ -12,19 +12,24 @@
 4. Run `npm run build` to compile the bundle in production mode
 5. Run `php -S localhost:8000 -t src/` in a separate terminal window for php.
 
-The difference between the branches is this:
-	Master
-		- js for twig templates, compiles to html, copies over php files but primarily is for spa/mpa's that are simple.
-	PHP
-		- uses composer for slim/twig templating, custom dynamic php routing off of index.php for other pages, but output(dist) is non compiled twig templates that require composer/vendor to be on server for rendering templates.
-	PHP-HTML
-		- Takes the best of both Master and PHP branches, and compiles templates to html, with output(dist) also in html - so no need for server to house composer/vendor.
-		Also, it houses pages differently, with each having their own directory for pretty permalinks.
-	WP
-		- Branched of the PHP branch, it uses the node-wp-api for tinkering with wp json api.
-		Also, it houses a custom media manager.
-	Travel-App
-		- Branched of PHP-HTML, without pages being housed seperately - sans pretty permalinks. Also, connected to firebase, and uses `ensure/require` for dynamic script loading on handlers.
+---
+
+#### The difference between the branches is this:
+
+- Master
+	- js for twig templates, compiles to html, copies over php files but primarily is for spa/mpa's that are simple.
+- PHP
+	- uses composer for slim/twig templating, custom dynamic php routing off of index.php for other pages, but output(dist) is non compiled twig templates that require composer/vendor to be on server for rendering templates.
+- PHP-HTML
+	- Takes the best of both Master and PHP branches, and compiles templates to html, with output(dist) also in html - so no need for server to house composer/vendor.
+	- Also, it houses pages differently, with each having their own directory for pretty permalinks.
+- WP
+	- Branched of the PHP branch, it uses the node-wp-api for tinkering with wp json api.
+	- Also, it houses a custom media manager.
+- Travel-App
+	- Branched of PHP-HTML, without pages being housed seperately - sans pretty permalinks. Also, connected to firebase, and uses `ensure/require` for dynamic script loading on handlers.
+
+---
 
 ## License
 
