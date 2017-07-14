@@ -1,0 +1,190 @@
+@import '../mixins/breakpoints';
+@import '../global/vars';
+
+/* Helper Placeholders
+----------------------------------------- */
+
+@mixin ir() {
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	*text-indent: -9999px;
+
+	&:before {
+		content: "";
+		display: block;
+		width: 0;
+		height: 150%;
+	}
+}
+
+// visibility
+
+@mixin display-none() {
+	display: none !important;
+}
+
+@mixin is-invisible() {
+	visibility: hidden !important;
+	opacity: 0;
+}
+
+// floats
+
+@mixin float-left() {
+	float: left !important;
+}
+
+@mixin float-right() {
+	float: right !important;
+}
+
+@mixin float-none() {
+	float: none !important;
+}
+
+@mixin pull-left-abs() {
+	position: absolute !important;
+	right: auto !important;
+	left: 0 !important;
+}
+
+@mixin pull-right-abs() {
+	position: absolute !important;
+	left: auto !important;
+	right: 0 !important;
+}
+
+// display modes
+
+@mixin is-block() {
+	display: block !important;
+	position: relative;
+}
+
+@mixin is-inline() {
+	display: inline !important;
+	position: relative;
+}
+
+@mixin is-inline-block() {
+	display: inline-block !important;
+	position: relative;
+	vertical-align: top;
+}
+
+// positioning modes
+
+@mixin is-relative() {
+	position: relative !important;
+}
+
+@mixin is-fixed() {
+	display: block !important;
+	position: fixed !important;
+}
+
+@mixin is-absolute() {
+	display: block !important;
+	position: absolute !important;
+}
+
+@mixin is-absolute-fs() {
+	display: block !important;
+	position: absolute !important;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+// disabled
+
+@mixin is-disabled() {
+	pointer-events: none !important;
+	cursor: default !important;
+}
+
+// overflow / scrolling
+
+@mixin scroll() {
+	overflow: auto !important;
+}
+
+@mixin scroll-x() {
+	overflow-x: auto !important;
+	overflow-y: hidden !important;
+}
+
+@mixin scroll-y() {
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+}
+
+@mixin no-scroll() {
+	overflow: hidden !important;
+}
+
+@mixin overflow() {
+	overflow: visible !important;
+}
+
+@mixin overflow-hidden() {
+	overflow: hidden !important;
+}
+
+@mixin overflow-visible() {
+	overflow: visible !important;
+}
+
+// simple desktop / tablet / mobile content display toggles
+
+@mixin desktop-content() {
+
+	display: none !important;
+
+	@include mq($screen-medium) {
+		display: block !important;
+	}
+}
+
+@mixin desktop-inline-content() {
+
+	display: none !important;
+
+	@include mq($screen-medium) {
+		display: inline-block !important;
+	}
+}
+
+@mixin desktop-hidden() {
+
+	@include mq($screen-medium) {
+		display: none !important;
+	}
+}
+
+@mixin tablet-content() {
+
+	display: block !important;
+
+	@include mq($screen-medium) {
+		display: none !important;
+	}
+}
+
+@mixin tablet-inline-content() {
+
+	display: inline-block !important;
+
+	@include mq($screen-medium) {
+		display: none !important;
+	}
+}
+
+@mixin tablet-hidden() {
+
+	@media (max-width: $screen-medium) {
+		display: none !important;
+	}
+}

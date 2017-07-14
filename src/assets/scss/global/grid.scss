@@ -1,0 +1,75 @@
+/*
+Source:
+@mixin grid-row($gutter: $grid-gutter)
+@mixin grid-col($width: false)
+@mixin grid-shift($width: 0)
+*/
+
+$container-class:	"container" !default; // optional
+$row-class:			"row" !default;
+$column-class:		"columns" !default;
+$shift-class:		"shift" !default;
+$grid-columns:      12 !default;
+$grid-gutter:       1rem !default;
+
+@mixin grid-row($gutter: $grid-gutter) {
+	display: flex;
+	flex-wrap: wrap;
+	
+	> * {
+		flex-grow: 1;
+		flex-basis: percentage(1 / $grid-columns);
+		box-sizing: border-box;
+		padding-left: $gutter / 2;
+		padding-right: $gutter / 2;
+	}
+}
+
+@mixin grid-col($width: false) {
+	@if $width {
+		flex-grow: 0;
+		flex-basis: percentage($width);
+	}
+}
+
+@mixin grid-shift($width: 0) {
+	margin-left: percentage($width);
+}
+
+
+//-------------------------------------------------------
+// CLASS AND DATA DELEGATIONS
+//-------------------------------------------------------
+
+[class~='#{$container-class}'] {
+	// @include container-fixed();
+}
+
+[class~='#{$row-class}'] {
+	@include grid-row($grid-gutter);
+}
+
+@for $i from 1 through $grid-columns {
+
+	[class*='#{$column-class}-#{$i}'] {
+		@include grid-col($i / $grid-columns);
+	}
+	
+	.#{$shift-class}-#{$i} {
+		@include grid-shift($i / $grid-columns);
+	}
+
+}
+
+// // Simple example
+// .row {
+// 	@include grid-row();
+ 
+// 	.col-6 {
+// 		@include grid-col(6 / 12);
+// 	}
+ 
+// 	.shift-1 {
+// 		@include grid-shift(1 / 12);
+// 	}
+// }

@@ -1,0 +1,56 @@
+@import '../mixins/helpers';
+
+////////////////////////////////////////////////////////
+// helper classes - core/_fonts.scss
+////////////////////////////////////////////////////////
+
+.ir { @include ir(); }
+
+// visibility
+
+.display-none { @include display-none(); }
+.is-invisible { @include is-invisible(); }
+
+// float
+
+.float-left { @include float-left(); }
+.float-right { @include float-right(); }
+.float-none { @include float-none(); }
+.pull-left-abs { @include pull-left-abs(); }
+.pull-right-abs { @include pull-right-abs(); }
+
+// display types
+
+.is-block { @include is-block(); }
+.is-inline { @include is-inline(); }
+.is-inline-block { @include is-inline-block(); }
+.is-relative { @include is-relative(); }
+.is-fixed { @include is-fixed(); }
+.is-absolute { @include is-absolute(); }
+.is-absolute-fs { @include is-absolute-fs(); }
+
+// disabled
+
+.is-disabled { @include is-disabled(); }
+
+// scroll vs no-scroll
+
+.scroll { @include scroll(); }
+.scroll-x { @include scroll-x(); }
+.scroll-y { @include scroll-y(); }
+.no-scroll { @include no-scroll(); }
+
+// overflow
+
+.overflow { @include overflow(); }
+.overflow-hidden { @include overflow-hidden(); }
+.overflow-visible { @include overflow-visible(); }
+
+//
+
+.desktop-content { @include desktop-content(); }
+.desktop-inline-content { @include desktop-inline-content(); }
+.desktop-hidden { @include desktop-hidden(); }
+.tablet-content { @include tablet-content(); }
+.tablet-inline-content { @include tablet-inline-content(); }
+.tablet-hidden { @include tablet-hidden(); }

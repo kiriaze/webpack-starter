@@ -1,0 +1,26 @@
+@function grayscale($value) {
+	@return #{ "grayscale(" + $value + ")" };
+}
+
+@function saturate($value) {
+	@return #{ "saturate(" + $value + ")" };
+}
+
+.image-filters {
+	&.grayscale {
+		filter: grayscale(0.5);
+	}
+	&.sepia {
+		filter: sepia(0.5);
+	}
+	// 1 being normal
+	&.brightness {
+		filter: brightness(1.5);
+	}
+	&.contrast {
+		filter: contrast(1.5);
+	}
+	&.saturate {
+		filter: grayscale(1.5);
+	}
+}

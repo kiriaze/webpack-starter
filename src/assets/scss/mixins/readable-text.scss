@@ -1,0 +1,12 @@
+// // Example
+// div {
+// 	@include readable-text;
+// }
+
+@mixin readable-text {
+	font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}

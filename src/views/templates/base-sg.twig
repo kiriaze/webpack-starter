@@ -4,31 +4,28 @@
 	<head>
 		<meta charset="utf-8">
 		<title>{{data.global.siteTitle}}</title>
-
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		
 		{% block head %}
 			{% if data.env == 'production' %}
-				<link rel="stylesheet" href="{{ data.portPath }}/css/main.bundle.css?{{ data.timestamp }}">
+				{# <link rel="stylesheet" href="{{ data.portPath }}/css/main.bundle.css?{{ data.timestamp }}"> #}
+				<link rel="stylesheet" href="{{ data.portPath }}/css/styleguide.bundle.css?{{ data.timestamp }}">
 			{% endif %}
 		{% endblock %}
-		
+
 	</head>
-	<body class="" data-template="base.twig">
+	<body class="page-styleguide" data-template="base.twig">
 
 		<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
 
-		{% include 'views/globals/header/template.twig' %}
+		{# {% include 'views/globals/header/template.twig' %} #}
 
 		<main id="main">
-
+			
 			{% block content %}{% endblock %}
 
 		</main>
 
-		{% include 'views/globals/footer/template.twig' %}
+		{# {% include 'views/globals/footer/template.twig' %} #}
 
 		{% block foot %}
 
@@ -36,6 +33,7 @@
 
 			<script src="{{ data.portPath }}/js/common.js?{{ data.timestamp }}"></script>
 			<script src="{{ data.portPath }}/js/main.bundle.js?{{ data.timestamp }}"></script>
+			<script src="{{ data.portPath }}/js/styleguide.bundle.js?{{ data.timestamp }}"></script>
 			
 			{% block afterFoot %}{% endblock %}
 

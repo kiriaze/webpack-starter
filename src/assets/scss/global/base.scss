@@ -1,0 +1,275 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: inherit;
+}
+
+html {
+	@include readable-text;
+	box-sizing: border-box;
+	font-family: sans-serif;
+	font-size: $base-font-size;
+}
+
+body {
+	font-family: $body-font;
+	font-size: 1.3rem;
+	line-height: 1.5rem;
+}
+
+html, body, input, button, textarea {
+	@include readable-text;
+}
+
+::-moz-selection {
+	background: $selection-bg-color;
+	color: $selection-text-color;
+	text-shadow: none;
+}
+
+::selection {
+	background: $selection-bg-color;
+	color: $selection-text-color;
+	text-shadow: none;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+abbr, acronym {
+	text-transform: uppercase;
+	font-size: 90%;
+	color: #222;
+	border-bottom: 1px solid #cccccc;
+	cursor: help;
+}
+
+abbr {
+	text-transform: none;
+}
+
+img {
+	vertical-align: middle;
+	interpolation-mode: bicubic;
+}
+
+/*
+* Flexible Media
+*/
+img, video, canvas, object, embed  {
+	max-width: 100%;
+	height: auto;
+}
+
+/*
+* Flexible Video iFrame Embed
+* use like :
+<figure class="aspect">
+	<iframe src="https://www.youtube.com/embed/4Fqg43ozz7A"></iframe>
+</figure>
+*/
+figure.aspect {
+	height: 0;
+	padding-bottom: 56.25%; /* 16:9 */
+	position: relative;
+	overflow: hidden;
+	iframe,
+	video,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+textarea {
+	resize: vertical;
+}
+
+.chromeframe {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+
+pre {
+	font-family: Monaco;
+	padding: 0.5em 1em;
+	margin: 0 0 1rem;
+	border-radius: 2px;
+	overflow-x: scroll;
+	code {
+		overflow-x: scroll;
+		border: none;
+		word-wrap: initial;
+		background-color: transparent;
+	}
+}
+
+code {
+	font-size: 1.2rem;
+	line-height: 1.5;
+	margin: 0 2px;
+	padding: 0 5px;
+	border: 1px solid lighten($black, 85);
+	background-color: lighten($black, 90);
+}
+
+small,
+.small:not(a) {
+	font-size: 1rem;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/////////////////////////
+// Emphasis and Styling
+/////////////////////////
+
+.text-regular,
+.text-normal {
+	// font-weight: $fw-regular;
+}
+.text-medium {
+	// font-weight: $fw-medium;
+}
+.text-bold {
+	// font-weight: $fw-bold;
+}
+.text-uppercase {
+	text-transform: uppercase;
+}
+.text-italic {
+	font-style: italic;
+}
+.text-nowrap {
+	white-space: nowrap;
+}
+.text-truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.text-highlight,
+.highlight {
+	// background-color: $highlight-bg-color;
+	// color: $highlight-text-color;
+}
+
+.text-align-left {
+	text-align: left !important;
+}
+.text-align-right {
+	text-align: right !important;
+}
+.text-align-center {
+	text-align: center !important;
+}
+
+.decoration-none {
+	text-decoration: none;
+}
+.decoration-underline {
+	text-decoration: underline;
+}
+.decoration-line-through {
+	text-decoration: line-through;
+}
+
+
+/////////////////////////
+// Lists
+/////////////////////////
+ul,
+ol {
+	li {
+		// line-height: $list-line-height;
+		// margin-bottom: $list-bottom-margin;
+	}
+}
+
+ul {
+	list-style: none inside;
+	&.square,
+	&.circle,
+	&.disc {
+
+	}
+	&.square {
+		list-style: square inside;
+	}
+	&.circle {
+		list-style: circle inside;
+	}
+	&.disc {
+		list-style: disc inside;
+	}
+	ul {
+
+	}
+}
+
+ol {
+	list-style: decimal inside;
+	li {
+		// margin-left: $list-disc-left-margin;
+	}
+	ol {
+
+	}
+}
+
+dl dt {
+	font-weight: bold;
+}
+
+blockquote,
+q {
+	// font-family: $body-font;
+	p {
+		// font-size: $blockquotes-font-size;
+	}
+	cite {
+		font-size: initial;
+		display: block;
+	}
+}

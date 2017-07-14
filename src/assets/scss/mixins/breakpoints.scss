@@ -1,0 +1,52 @@
+$breakpoints: () !default;
+
+@mixin mq($size, $type: min, $orientation: width) {
+	@if map_has_key($breakpoints, $size) {
+		$size: map_get($breakpoints, $size);
+	}
+	@if $type == max {
+		$size: $size - 1px;
+	}
+	@if $orientation == width {
+		@media only screen and (#{$type}-width: $size) {
+			@content;
+		}
+	}
+	@if $orientation == height {
+		@media only screen and (#{$type}-height: $size) {
+			@content;
+		}
+	}
+}
+
+// // Example
+// $breakpoints: (
+// 	'small'     : 480px,
+// 	'medium'    : 768px,
+// 	'large'     : 1024px,
+// 	'xlarge'    : 1280px,
+// 	'xxlarge'   : 1440px,
+// 	'xxxlarge'  : 1720px
+// );
+
+// @include mq('phone') {
+// 	font-size: 16px;
+// }
+// @include mq('tablet', min) {
+// 	font-size: 20px;
+// }
+// @include mq(1000px, max, height) {
+// 	font-size: 24px;
+// }
+
+
+// h1 {
+// 	font-size: 24px;
+	
+// 	@include mq('phone') {
+// 		font-size: 16px;
+// 	}
+// 	@include mq(800px, min) {
+// 		font-size: 20px;
+// 	}
+// }

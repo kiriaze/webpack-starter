@@ -29,7 +29,7 @@ const config = {
 
 		// // Multiple files, multiple outputs (multi page app)
 		main: './assets/js/app.js',
-		about: './views/pages/about/about.js',
+		styleguide: './assets/js/styleguide.js'
 		
 	},
 	output: {
@@ -37,13 +37,18 @@ const config = {
 		filename: 'assets/js/[name].bundle.js',
 		publicPath: 'http://localhost:3000/',
 	},
-	devtool: 'eval-source-map', // for dev - with cache
+	devtool: 'inline-eval-cheap-source-map', // for dev - with cache
 	module: {
 		rules: [
 			{
-				test: /\.(ttf|eot|woff)(\?.*)?$/,
+				test: /\.(ttf|eot|woff)$/,
 				include: path.resolve(__dirname, baseConfig.srcPaths.root),
-				loaders: ['url']
+				use: [{
+					loader: 'url-loader',
+					options: {
+						name: 'asses/fonts/[name].[ext]'
+					}
+				}]
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
@@ -110,11 +115,18 @@ const config = {
 		compress: true, // enable gzip compression
 		port: baseConfig.serverport,
 		publicPath: 'http://localhost:3000/',
-		historyApiFallback: true // history api
+		historyApiFallback: true, // history api
+		headers: { "Access-Control-Allow-Origin": "*" }
 	},
 	plugins: [
-		// new DashboardPlugin({ port: 3000 }),
+		new DashboardPlugin(),
 		// new webpack.optimize.UglifyJsPlugin(),
+
+		new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': '"development"'
+			}
+		}),
 
 		new CopyWebpackPlugin([
 			// copying images so as to reference them in markup

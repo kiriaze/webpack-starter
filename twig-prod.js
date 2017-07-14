@@ -6,6 +6,7 @@ const glob   = require('glob');
 
 // - data
 const data = {};
+
 const renderData = () => {
 
 	glob(config.srcPaths.data.all, (err, files) => {
@@ -16,6 +17,12 @@ const renderData = () => {
 			data[fileName] = JSON.parse(fs.readFileSync( filePath ));
 		});
 	});
+
+	data.env       = process.env.NODE_ENV;
+	data.assetPath = config.assetPath;
+	data.portPath  = data.assetPath; // local/prod dual ports, can be set to assetPath for prod
+	data.timestamp = Date.now();
+
 	return data;
 
 };
@@ -38,7 +45,9 @@ const renderSingle = (file) => {
 
 	let options = {
 		settings: {
-			views: config.srcPaths.root + '/views/'
+			// views: config.srcPaths.root + '/views/'
+			views: config.srcPaths.root
+			// root relative for everything, since issues keeping in sync between twig.js and twig.php for includes of files not located in views dir; e.g. asssets/vectors
 		},
 		data: renderData()
 	};
@@ -50,7 +59,7 @@ const renderSingle = (file) => {
 
 		// if in views/pages/ remove views and pages from path
 		if ( parts.length > 1 ) {
-			parts.splice(0, 1); // flatten path
+			parts.splice(0, 3); // flatten path for dist
 		}
 
 		file = parts.join('/');

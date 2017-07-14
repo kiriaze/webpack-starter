@@ -1,7 +1,5 @@
 <?php
 
-// https://akrabat.com/wp-content/uploads/2015-05-20-phpberks-getting-started-with-slim-3.pdf
-
 require '../vendor/autoload.php';
 
 $config = [
@@ -16,7 +14,10 @@ $container = $app->getContainer();
 
 $container['view'] = function ($container) {
 	
-	$templates  = __DIR__ . '/views/';
+	$templates  = [
+		// __DIR__ . '/views/',
+		__DIR__ . '/' // root relative for everything, since issues keeping in sync between twig.js and twig.php for includes of files not located in views dir; e.g. asssets/vectors
+	];
 
 	$args 		= [
 		'debug' => true, // This line should enable debug mode
@@ -34,11 +35,13 @@ function getData() {
 
 	$data = [];
 	
-	$data['globals'] = [
-		// 'src' => './',
-		'timestamp' => time()
+	$data['data'] = [
+		'env'       => $_SERVER['SERVER_NAME'] == 'localhost' ? 'local' : 'production',
+		'assetPath' => '/assets', // cdn handled via config.js for prod
+		// to work with double ports; e.g. localhost:8000
+		'portPath'  => $_SERVER['SERVER_NAME'] == 'localhost' ? 'http://localhost:3000/assets' : '/assets'
 	];
-
+	
 	$files = scandir(__DIR__ . '/assets/data');
 
 	foreach( $files as $file ) {
@@ -62,7 +65,7 @@ $app->get('/', function($request, $response) {
 
 	$data = getData();
 
-	return $this->view->render($response, 'pages/index.html', $data);
+	return $this->view->render($response, 'views/pages/index.html', $data);
 
 });
 
@@ -71,7 +74,7 @@ $app->get('/{name}', function($request, $response, $args) {
 	$name = $args['name'];
 	$name = htmlspecialchars($name);
 	$data = getData();
-	return $this->view->render($response, 'pages/'. $name .'/index.html', $data);
+	return $this->view->render($response, 'views/pages/'. $name .'/index.html', $data);
 });
 
 $app->run();

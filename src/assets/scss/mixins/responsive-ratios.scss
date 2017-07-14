@@ -1,0 +1,45 @@
+// Responsive ratio
+// div {
+//  @include responsive-ratio(16,9);
+// }
+//
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+	$padding: unquote( ( $y / $x ) * 100 + '%' );
+	@if $pseudo {
+		&:before {
+			@include pseudo($pos: relative);
+			width: 100%;
+			padding-top: $padding;
+		}
+	} @else {
+		padding-top: $padding;
+	}
+}
+
+// CK's gonna get mad...
+// im pretty sure we can merge the two, and it creates a selector with the 2 values passed to it..but 361? why not 360?
+
+%scaler-1x1,
+.scaler-1x1 {
+	@include responsive-ratio(1, 1);
+}
+
+%scaler-320x240,
+.scaler-320x240 {
+	@include responsive-ratio(320, 240);
+}
+
+%scaler-361x480,
+.scaler-361x480 {
+	@include responsive-ratio(361, 480);
+}
+
+%scaler-508x900,
+.scaler-508x900 {
+	@include responsive-ratio(508, 900);
+}
+
+%scaler-1430x720,
+.scaler-1430x720 {
+	@include responsive-ratio(1430, 720);
+}

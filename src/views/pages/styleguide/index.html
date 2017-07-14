@@ -1,28 +1,74 @@
-{% extends 'templates/base.twig' %}
+{% extends 'views/templates/base-sg.twig' %}
 
 {% block content %}
 	
-	{% include 'partials/header.twig' %}
-	
-	<div class="styleguide__section">
-		<h2 class="styleguide__heading">Brand Colors</h2>
-		<ul class="styleguide__colors">
-			<li class="bg--primary"></li>
-			<li class="bg--accent"></li>
-			<li class="bg--yellow"></li>
-			<li class="bg--light-grey"></li>
-			<li class="bg--med-grey"></li>
-			<li class="bg--dark-grey"></li>
-			<li class="bg--white"></li>
-			<li class="bg--black"></li>
-			<li class="bg--error"></li>
-			<li class="bg--success"></li>
-		</ul>
-	</div>
+	<section class="styleguide__section">
+		<div class="container">
+			<h2 class="styleguide__heading">Brand Colors</h2>
+			<ul class="styleguide__colors">
+				<li class="bg--primary"></li>
+				<li class="bg--accent"></li>
+				<li class="bg--yellow"></li>
+				<li class="bg--light-grey"></li>
+				<li class="bg--med-grey"></li>
+				<li class="bg--dark-grey"></li>
+				<li class="bg--white"></li>
+				<li class="bg--black"></li>
+				<li class="bg--error"></li>
+				<li class="bg--success"></li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="styleguide__section">
+		<div class="container">
+
+			<h2 class="styleguide__heading">Brand Typography</h2>
+
+			<div class="styleguide-module__subgroup">
+
+				{% for i in data.styleguide.fonts %}
+					<h{{i.heading}} class="{{i.className}}" contenteditable="true">{{i.title|raw}}</h{{i.heading}}>
+					<span class="styleguide-module__title--light">{{i.fontName}} - {{i.fontSize}}</span>
+				{% endfor %}
+
+			</div>
+
+			<h5 class="styleguide-module__title--small">{{data.styleguide.paragraphsName}}</h5>
+
+			<div class="styleguide-module__subgroup">
+
+				{% for i in data.styleguide.paragraphs %}
+					<p class="{{i.className}}" contenteditable="true">{{i.text}}</p>
+					<span class="styleguide-module__title--light">{{i.fontName}} - {{i.fontSize}}</span>
+				{% endfor %}
+
+			</div>
+
+			<h5 class="styleguide-module__title--small">Other</h5>
+
+			<div class="styleguide-module__subgroup">
+
+				{% for i in data.styleguide.other %}
+					<span class="{{i.className}}" contenteditable="true">{{i.text}}</span>
+					<span class="styleguide-module__title--light">{{i.fontName}} - {{i.fontSize}}</span>
+				{% endfor %}
+
+			</div>
+
+		</div>
+	</section>
 
 	<div class="styleguide__section">
-		<h2 class="styleguide__heading">Brand Typography</h2>
-		
+		<div class="container">
+			
+			<h2 class="styleguide__heading">UI</h2>
+			
+			<div class="styleguide-module__subgroup">
+				<h5 class="styleguide-module__title--small">Forms</h5>
+			</div>
+
+		</div>
 	</div>
 
 {% endblock %}

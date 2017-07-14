@@ -54,3 +54,20 @@ q:after {
 	content: '';
 	content: none;
 }
+
+button {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	&:focus {
+		outline:0;
+	}
+}
+
+input,
+button,
+textarea {
+	&:focus {
+		outline: none;
+	}
+}

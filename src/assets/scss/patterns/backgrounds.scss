@@ -1,0 +1,85 @@
+/*
+	Background Properties
+*/
+
+.bg-contain {
+	background-size: contain;
+}
+
+.bg-cover {
+	display: block;
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	.container {
+		z-index: 1;
+	}
+}
+
+.bg-abs {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	width: auto;
+	height: auto;
+	z-index: 0;
+}
+
+.bg-no-repeat {
+	background-repeat: no-repeat;
+}
+
+.bg-repeat {
+	background-repeat: repeat;
+}
+
+.bg-repeat-x {
+	background-repeat: repeat-x;
+}
+
+.bg-repeat-y {
+	background-repeat: repeat-y;
+}
+
+.bg-top-left {
+	background-position: top left;
+}
+
+.bg-top-center {
+	background-position: top center;
+}
+
+.bg-top-right {
+	background-position: top right;
+}
+
+.bg-bottom-left {
+	background-position: bottom left;
+}
+
+.bg-bottom-center {
+	background-position: bottom center;
+}
+
+.bg-bottom-right {
+	background-position: bottom right;
+}
+
+.bg-left-center {
+	background-position: left center;
+}
+
+.bg-right-center {
+	background-position: right center;
+}
+
+.bg-center,
+.bg-center-center {
+	background-position: center center;
+}
+
+.bg-100-auto {
+	background-size: 100% auto;
+}

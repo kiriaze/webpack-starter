@@ -1,0 +1,182 @@
+// @import '../mixins/breakpoints';
+// @import '../global/vars';
+
+////////////////////////////////////////////////////////
+// Spacing
+////////////////////////////////////////////////////////
+
+// A 10 step powers of two scale ranging from 0 to $spacing-scale.
+// Namespaces are composable and thus highly grockable - check the legend below
+
+// Legend:
+
+// p = padding
+// m = margin
+
+// a = all
+// h = horizontal
+// v = vertical
+// t = top
+// r = right
+// b = bottom
+// l = left
+
+// 0 = none
+// 1-10 = Steps in spacing scale
+
+// CAUSES 1.5-2 SECONDS OF ADDITIONAL COMPILE TIME
+
+@for $size from 0 through $spacing-count {
+
+	$newSize: $size * $spacing-scale;
+
+	// padding
+	// .pa-#{$size} {
+	// 	padding: $newSize !important;
+	// }
+	// .pl-#{$size} {
+	// 	padding-left: $newSize !important;
+	// }
+	// .pr-#{$size} {
+	// 	padding-right: $newSize !important;
+	// }
+	.pt-#{$size} {
+		padding-top: $newSize !important;
+	}
+	.pb-#{$size} {
+		padding-bottom: $newSize !important;
+	}
+	.pv-#{$size} {
+		padding-top: $newSize !important;
+		padding-bottom: $newSize !important;
+	}
+	// .ph-#{$size} {
+	// 	padding-left: $newSize !important;
+	// 	padding-right: $newSize !important;
+	// }
+
+	// margin
+	// .ma-#{$size} {
+	// 	margin: $newSize !important;
+	// }
+	// .ml-#{$size} {
+	// 	margin-left: $newSize !important;
+	// }
+	// .mr-#{$size} {
+	// 	margin-right: $newSize !important;
+	// }
+	// .mt-#{$size} {
+	// 	margin-top: $newSize !important;
+	// }
+	// .mb-#{$size} {
+	// 	margin-bottom: $newSize !important;
+	// }
+	// .mv-#{$size} {
+	// 	margin-top: $newSize !important;
+	// 	margin-bottom: $newSize !important;
+	// }
+	// .mh-#{$size} {
+	// 	margin-left: $newSize !important;
+	// 	margin-right: $newSize !important;
+	// }
+}
+
+// split in two so breakpoints get priority
+
+$prefixes: (
+	'$screen-tiny': 'tn',
+	'$screen-small': 'sm',
+	'$screen-medium': 'md',
+	'$screen-large': 'lg',
+	'$screen-xlarge': 'xl',
+	'$screen-xxlarge': 'xxl'
+);
+
+@each $breakpoints, $bp in ($prefixes) {
+
+	@for $size from 0 through $spacing-count {
+
+		$newSize: $size * $spacing-scale;
+
+		@include mq($breakpoints) {
+
+			// padding
+			// .pa-#{$bp}-#{$size} {
+			// 	padding: $newSize !important;
+			// }
+			// .pl-#{$bp}-#{$size} {
+			// 	padding-left: $newSize !important;
+			// }
+			// .pr-#{$bp}-#{$size} {
+			// 	padding-right: $newSize !important;
+			// }
+			.pt-#{$bp}-#{$size} {
+				padding-top: $newSize !important;
+			}
+			.pb-#{$bp}-#{$size} {
+				padding-bottom: $newSize !important;
+			}
+			.pv-#{$bp}-#{$size} {
+				padding-top: $newSize !important;
+				padding-bottom: $newSize !important;
+			}
+			// .ph-#{$bp}-#{$size} {
+			// 	padding-left: $newSize !important;
+			// 	padding-right: $newSize !important;
+			// }
+
+			// margin
+			// .ma-#{$bp}-#{$size} {
+			// 	margin: $newSize !important;
+			// }
+			// .ml-#{$bp}-#{$size} {
+			// 	margin-left: $newSize !important;
+			// }
+			// .mr-#{$bp}-#{$size} {
+			// 	margin-right: $newSize !important;
+			// }
+			// .mt-#{$bp}-#{$size} {
+			// 	margin-top: $newSize !important;
+			// }
+			// .mb-#{$bp}-#{$size} {
+			// 	margin-bottom: $newSize !important;
+			// }
+			// .mv-#{$bp}-#{$size} {
+			// 	margin-top: $newSize !important;
+			// 	margin-bottom: $newSize !important;
+			// }
+			// .mh-#{$bp}-#{$size} {
+			// 	margin-left: $newSize !important;
+			// 	margin-right: $newSize !important;
+			// }
+
+		}
+	}
+}
+
+// .pt-7 {
+// 	padding-top: 7rem;
+// }
+
+// .pt-8 {
+// 	padding-top: 8rem;
+// }
+
+// .pt-12 {
+// 	padding-top: 12rem;
+// }
+
+// .pt-14 {
+// 	padding-top: 14rem;
+// }
+
+// to be used as an empty div spacer; e.g. <div class="spacer mv-md-8 mv-lg-12"></div>
+.spacer {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	vertical-align: top;
+	background: transparent;
+	border: none;
+}

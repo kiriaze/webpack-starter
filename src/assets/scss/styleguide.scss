@@ -1,35 +1,119 @@
-@import './global/vars';
+@import './style';
+
+body.page-styleguide {
+	background: white;
+	#main {
+		display: flex;
+		overflow: hidden;
+		.sidebar {
+			min-width: 25rem;
+			background: #fff;
+			border-right: .1rem solid #eee;
+			.logo {
+				width: 10rem;
+				display: block;
+				margin: 4rem auto;
+			}
+			nav {
+				position: fixed;
+				width: 25rem;
+				ul {
+					padding-top: 2rem;
+					border-top: .1rem solid #eee;
+				}
+				a {
+					color: lighten($text-grey,10);
+					display: block;
+					font-size: 1.5rem;
+					padding: 1.5rem 3rem;
+					text-decoration: none;
+					letter-spacing: .1rem;
+					font-family: 'Open Sans', $body-font;
+				}
+			}
+		}
+
+		.content {
+			width: calc(100% - 25rem);
+		}
+	}
+}
 
 .styleguide {
 
 	&__section {
-		margin-bottom: 10rem;
-		border-bottom: 0.1rem solid $line-color;
+		padding: 10rem 0rem;
+		border-bottom: 0.1rem solid #eee;
+		&:nth-child(odd) {
+			background: #faf9f9;
+		}
+		.container {
+			padding: 0 5rem;
+		}
 	}
 
 	&__heading {
 		max-width: none;
-		font-size: 2.4rem;
+		font-size: 2.8rem;
 		line-height: 3.2rem;
 		font-weight: 900;
 		padding-top: 2rem;
 		margin-bottom: 2rem;
-		border-top: 0.1rem solid $line-color;
+		padding-bottom: 1rem;
+		border-bottom: .1rem solid #ddd;
 	}
 
 	&__colors {
 
 		li {
-			width: 16rem;
-			height: 16rem;
-			display: inline-block;
+			width: 10rem;
+			height: 20rem;
 			vertical-align: top;
+			display: inline-block;
 			margin: 0 2rem 2rem 0;
+			position: relative;
+			span {
+				position: absolute;
+				bottom: 1rem;
+				width: 100%;
+				color: white;
+				font-size: 1.5rem;
+				text-align: center;
+				letter-spacing: .1rem;
+				font-family: $header-font;
+			}
 		}
 
 		.bg--white {
 			border: 0.1rem solid #e6e6e8;
+			span {
+				color: $black;
+			}
 		}
 
+	}
+	
+}
+
+.styleguide-module {
+	&__subgroup {
+		margin-bottom: 2rem;
+		.sg-heading {
+			margin-top: 2rem;
+		}
+		.sg-copy {
+			display: block;
+			margin-top: 2rem;
+		}
+	}
+	&__title--small {
+		font-size: 2rem;
+	}
+	&__title--light {
+		display: block;
+		font-size: 1.1rem;
+		letter-spacing: .1rem;
+		font-family: $header-font;
+		text-transform: uppercase;
 	}
 }

@@ -1,23 +1,11 @@
-{% extends 'templates/base.twig' %}
+{% extends 'views/templates/base.twig' %}
 
 {% block content %}
 	
-	<!-- testing twig -->
-	{% include 'partials/header.twig' %}
+	{% include 'views/globals/header/template.twig' %}
 
-	{% include 'modules/heroes/hero/template.twig' %}
+	{% include 'views/modules/heroes/hero/template.twig' %}
 
-	{# <img src="./assets/images/slack-imgs.jpg"> #}
-
-	<pre>{{data['a'] | json_encode}}</pre>
-	<pre>{{data['b'] | json_encode}}</pre>
-
-	<pre>{{data['a']['title']}}</pre>
-	
-	<ul>
-		{% for client in data['a']['clients'] %}
-			<li>{{ client }}</li>
-		{% endfor %}
-	</ul>
+	{% include 'views/globals/footer/template.twig' %}
 
 {% endblock %}
