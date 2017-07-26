@@ -2,7 +2,8 @@
 
 var src  	= './src',
 	dist 	= './dist',
-	project = 'CHANGE-ME';
+	stage   = 'CHANGE-ME',
+	prod    = 'CHANGE-ME';
 
 var cdn;
 // var cdn  = '//cdn.com';
@@ -38,7 +39,7 @@ const baseConfig = {
 			hostname    : '165.227.15.124',
 			username    : 'basicagency',
 			password    : '',
-			destination : '/srv/users/basicagency/apps/'+ project +'/public',
+			destination : '/srv/users/basicagency/apps/'+ stage +'/public',
 			exclude     : []
 		},
 		production: {
@@ -46,7 +47,7 @@ const baseConfig = {
 			hostname    : '165.227.15.124',
 			username    : 'basicagency',
 			password    : '',
-			destination : '/srv/users/basicagency/apps/'+ project +'/public',
+			destination : '/srv/users/basicagency/apps/'+ prod +'/public',
 			exclude     : []
 		}
 	}

@@ -9,7 +9,7 @@ const env  = JSON.parse(args).original[2] !== undefined ? JSON.parse(args).origi
 
 if ( env == 'staging' || !env ) {
 	path = `rsync -azP ${config.deploy.staging.source} ${config.deploy.staging.username}@${config.deploy.staging.hostname}:${config.deploy.staging.destination}`;
-} {
+} else {
 	path = `rsync -azP ${config.deploy.production.source} ${config.deploy.production.username}@${config.deploy.production.hostname}:${config.deploy.production.destination}`;
 }
 
