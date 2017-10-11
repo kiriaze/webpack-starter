@@ -46,7 +46,7 @@ const config = {
 				use: [{
 					loader: 'url-loader',
 					options: {
-						name: 'asses/fonts/[name].[ext]'
+						name: 'assets/fonts/[name].[ext]'
 					}
 				}]
 			},
@@ -94,7 +94,7 @@ const config = {
 	plugins: [
 
 		// Minification and size optimization
-	
+
 		extractCSS,
 
 		// This makes it possible for us to safely use env vars on our code
@@ -104,7 +104,7 @@ const config = {
 			},
 		}),
 		// The DefinePlugin allows you to create global constants which can be configured at compile time. This can be very useful for allowing different behaviour between development builds and release builds. For example, you might use a global constant to determine whether logging takes place; perhaps you perform logging in your development build but not in the release build. That’s the sort of scenario the DefinePlugin facilitates.
-		
+
 		new webpack.optimize.UglifyJsPlugin({
 			sourcemap: true,
 			compress: {
