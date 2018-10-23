@@ -13,12 +13,14 @@ const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other 
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
 const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
-const DashboardPlugin				= require('webpack-dashboard/plugin');
+// const DashboardPlugin				= require('webpack-dashboard/plugin');
 
 const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
+
 	context: path.resolve(__dirname, baseConfig.srcPaths.root),
+	
 	entry: {
 		// // Multiple files, bundled together (spa)
 		// app: [
@@ -32,12 +34,20 @@ const config = {
 		styleguide: './assets/js/styleguide.js'
 		
 	},
+	
 	output: {
 		path: path.resolve(__dirname, baseConfig.srcPaths.root),
 		filename: 'assets/js/[name].bundle.js',
 		publicPath: 'http://localhost:3000/',
+		chunkFilename: './assets/js/common.js'
 	},
+	
 	devtool: 'inline-eval-cheap-source-map', // for dev - with cache
+	
+	performance: {
+	  hints: process.env.NODE_ENV === 'production' ? "warning" : false
+	},
+	
 	module: {
 		rules: [
 			{
@@ -96,20 +106,24 @@ const config = {
 			{
 				test: /\.js$/,
 				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'babel-loader',
 						options: {
-							presets: ['es2015']
+							// presets: ['es2015']
+							presets: ['@babel/preset-env']
 						}
 					}
 				]
 			}
 		]
 	},
+	
 	node: {
 		fs: 'empty'
 	},
+
 	devServer: {
 		contentBase: path.join(__dirname, baseConfig.srcPaths.root),
 		compress: true, // enable gzip compression
@@ -118,8 +132,9 @@ const config = {
 		historyApiFallback: true, // history api
 		headers: { "Access-Control-Allow-Origin": "*" }
 	},
+
 	plugins: [
-		new DashboardPlugin(),
+		// new DashboardPlugin(),
 		// new webpack.optimize.UglifyJsPlugin(),
 
 		new webpack.DefinePlugin({
@@ -141,11 +156,6 @@ const config = {
 		
 		new webpack.NamedModulesPlugin(), // Now the module names in console and in the source will be by name
 
-		// Common code chunking
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'common', // needs to match an entry name; e.g. entry: { common: ["jquery"] }
-			filename: './assets/js/common.js'
-		}),
 		new FriendlyErrorsWebpackPlugin(),
 		new webpack.ProvidePlugin({
 			'$': 'jquery',

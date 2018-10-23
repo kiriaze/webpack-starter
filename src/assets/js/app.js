@@ -9,6 +9,7 @@ import '../scss/styleguide.scss';
 
 import jQuery from 'jquery';
 
+// console.log('lorem');
 
 // // import mods script.js, which imports the associated style.scss
 // // then inject to dom
