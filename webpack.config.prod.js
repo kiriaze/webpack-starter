@@ -8,10 +8,10 @@ const webpack					= require('webpack');
 const path						= require('path');
 const autoprefixer              = require('autoprefixer');
 
-const ExtractTextPlugin			= require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin		= require('mini-css-extract-plugin');
 
 // Extract all css into one file
-const extractCSS				= new ExtractTextPlugin({
+const extractCSS				= new MiniCssExtractPlugin({
 									filename: 'assets/css/[name].bundle.css',
 									// allChunks: true // testing
 								});
@@ -20,6 +20,8 @@ const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other 
 
 
 const config = {
+
+	mode: 'production',
 	
 	context: path.resolve(__dirname, baseConfig.srcPaths.root),
 	
@@ -39,13 +41,13 @@ const config = {
 		// output dir
 		path: path.resolve(__dirname, baseConfig.destPaths.root),
 		filename: 'assets/js/[name].bundle.js',
-		chunkFilename: './assets/js/common.js'
+		chunkFilename: 'assets/js/common.js'
 	},
 	
 	// devtool: 'source-map', // for production - no cache (errors out when using uglifyjsplugin)
 	
 	optimization: {
-		// minimize: false
+		minimize: true
 	},
 
 	module: {
@@ -75,17 +77,24 @@ const config = {
 				test: /\.scss$/,
 				include: path.resolve(__dirname, baseConfig.srcPaths.root),
 
-				// dont use injected style tags but output compiled .css in baseConfig.destPaths.root
-				use: extractCSS.extract([
+				use: [
+					MiniCssExtractPlugin.loader,
 					'css-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: () => [autoprefixer()]
-						}
-					},
-					'sass-loader'
-				]),
+					// 'postcss-loader',
+					'sass-loader',
+				],
+
+				// // dont use injected style tags but output compiled .css in baseConfig.destPaths.root
+				// use: extractCSS([
+				// 	'css-loader',
+				// 	{
+				// 		loader: 'postcss-loader',
+				// 		options: {
+				// 			plugins: () => [autoprefixer()]
+				// 		}
+				// 	},
+				// 	'sass-loader'
+				// ]),
 			},
 			{
 				test: /\.js$/,

@@ -12,12 +12,14 @@ const autoprefixer              = require('autoprefixer');
 const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other files to dist; e.g. php files, images, etc
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
-const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
+// const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
 // const DashboardPlugin				= require('webpack-dashboard/plugin');
 
-const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
+
+	mode: 'development',
 
 	context: path.resolve(__dirname, baseConfig.srcPaths.root),
 	
@@ -39,10 +41,15 @@ const config = {
 		path: path.resolve(__dirname, baseConfig.srcPaths.root),
 		filename: 'assets/js/[name].bundle.js',
 		publicPath: 'http://localhost:3000/',
-		chunkFilename: './assets/js/common.js'
+		chunkFilename: 'assets/js/common.js'
 	},
 	
 	devtool: 'inline-eval-cheap-source-map', // for dev - with cache
+	// devtool: 'inline-source-map',
+
+	optimization: {
+		minimize: true
+	},
 	
 	performance: {
 	  hints: process.env.NODE_ENV === 'production' ? "warning" : false
@@ -156,7 +163,7 @@ const config = {
 		
 		new webpack.NamedModulesPlugin(), // Now the module names in console and in the source will be by name
 
-		new FriendlyErrorsWebpackPlugin(),
+		// new FriendlyErrorsWebpackPlugin(),
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery',
