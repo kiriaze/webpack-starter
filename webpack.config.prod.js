@@ -23,7 +23,7 @@ const config = {
 
 	mode: 'production',
 	
-	context: path.resolve(__dirname, baseConfig.srcPaths.root),
+	context: path.resolve(__dirname, baseConfig.src),
 	
 	entry: {
 
@@ -39,7 +39,7 @@ const config = {
 
 	output: {
 		// output dir
-		path: path.resolve(__dirname, baseConfig.destPaths.root),
+		path: path.resolve(__dirname, baseConfig.dist),
 		filename: 'assets/js/[name].bundle.js',
 		chunkFilename: 'assets/js/common.js'
 	},
@@ -54,7 +54,7 @@ const config = {
 		rules: [
 			{
 				test: /\.(ttf|eot|woff)$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [{
 					loader: 'url-loader',
 					options: {
@@ -64,7 +64,7 @@ const config = {
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [{
 					loader: 'url-loader',
 					options: {
@@ -75,7 +75,7 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 
 				use: [
 					MiniCssExtractPlugin.loader,
@@ -84,7 +84,7 @@ const config = {
 					'sass-loader',
 				],
 
-				// // dont use injected style tags but output compiled .css in baseConfig.destPaths.root
+				// // dont use injected style tags but output compiled .css in baseConfig.dist
 				// use: extractCSS([
 				// 	'css-loader',
 				// 	{
@@ -98,7 +98,7 @@ const config = {
 			},
 			{
 				test: /\.js$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [
 					{
 						loader: 'babel-loader',

@@ -1,7 +1,8 @@
 'use strict';
 
-var src  	= './src',
-	dist 	= './dist',
+var src  	= './src/',
+	dist 	= './dist/',
+	assets  = 'assets/',
 	stage   = 'CHANGE-ME',
 	prod    = 'CHANGE-ME';
 
@@ -10,26 +11,32 @@ var cdn;
 
 const baseConfig = {
 
-	serverport  : 3000,
+	root: '/',
+
+	src,
+
+	dist,
+
+	assets,
 
 	assetPath   : process.env.NODE_ENV == 'production' && cdn ? cdn : '/assets', // twig-prod.js
 
-	srcPaths: {
-		root    	: src,
-		html    	: src + '/**/*.html',
-		data    	: {
-			config  : 'config.js', // global sg data
-			all     : src + '/assets/data/**/*.json', // dir of data
-		}
-	},
-
-	destPaths: {
-		root    	: dist,
-	},
+	data: `${src}${assets}data/**/*.json`,
+	html: `${src}/**/*.html`,
 
 	// // Google pagespeed
 	// URL         : 'http://domain.com',
 	// strategy    : 'mobile',
+
+	// 'localhost' || '0.0.0.0'
+	localhost: 'localhost',
+
+	proxy: true,
+
+	port: {
+		server: 8000,
+		webpack: 3000
+	},
 
 	// deployment
 	// set options here

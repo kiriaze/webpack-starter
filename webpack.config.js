@@ -21,7 +21,7 @@ const config = {
 
 	mode: 'development',
 
-	context: path.resolve(__dirname, baseConfig.srcPaths.root),
+	context: path.resolve(__dirname, baseConfig.src),
 	
 	entry: {
 		// // Multiple files, bundled together (spa)
@@ -38,7 +38,7 @@ const config = {
 	},
 	
 	output: {
-		path: path.resolve(__dirname, baseConfig.srcPaths.root),
+		path: path.resolve(__dirname, baseConfig.src),
 		filename: 'assets/js/[name].bundle.js',
 		publicPath: 'http://localhost:3000/',
 		chunkFilename: 'assets/js/common.js'
@@ -59,7 +59,7 @@ const config = {
 		rules: [
 			{
 				test: /\.(ttf|eot|woff)$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [{
 					loader: 'url-loader',
 					options: {
@@ -69,7 +69,7 @@ const config = {
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [{
 					loader: 'url-loader',
 					options: {
@@ -81,13 +81,13 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [
 					'style-loader', // injects inline into dom
 					{
 						loader: 'css-loader',
 						options: {
-							root: path.resolve(__dirname, baseConfig.srcPaths.root), // to work with url-loader images name option of 'assets/images/[name].[ext]' so all references in code can be /assets/images/file.ext regardless of where they reside
+							root: path.resolve(__dirname, baseConfig.src), // to work with url-loader images name option of 'assets/images/[name].[ext]' so all references in code can be /assets/images/file.ext regardless of where they reside
 							sourceMap: true,
 						}
 					},
@@ -112,7 +112,7 @@ const config = {
 			},
 			{
 				test: /\.js$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				exclude: /node_modules/,
 				use: [
 					{
@@ -132,10 +132,10 @@ const config = {
 	},
 
 	devServer: {
-		contentBase: path.join(__dirname, baseConfig.srcPaths.root),
+		contentBase: path.join(__dirname, baseConfig.src),
 		compress: true, // enable gzip compression
-		port: baseConfig.serverport,
-		publicPath: 'http://localhost:3000/',
+		port: baseConfig.port.webpack,
+		publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
 		historyApiFallback: true, // history api
 		headers: { "Access-Control-Allow-Origin": "*" }
 	},
