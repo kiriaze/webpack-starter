@@ -18,4 +18,3 @@ Webpack & PHP
 exec(`php -S ${config.localhost}:${config.port.server} -t src/`, (e) => {
 	if (e !== null) console.log(e);
 });
-

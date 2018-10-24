@@ -9,6 +9,7 @@ const webpack					= require('webpack');
 const path						= require('path');
 const autoprefixer              = require('autoprefixer');
 
+const ip                        = require('ip').address();
 const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other files to dist; e.g. php files, images, etc
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
@@ -52,7 +53,7 @@ const config = {
 	},
 	
 	performance: {
-	  hints: process.env.NODE_ENV === 'production' ? "warning" : false
+		hints: process.env.NODE_ENV === 'production' ? "warning" : false
 	},
 	
 	module: {
@@ -134,6 +135,7 @@ const config = {
 	devServer: {
 		contentBase: path.join(__dirname, baseConfig.src),
 		compress: true, // enable gzip compression
+		host: '0.0.0.0',
 		port: baseConfig.port.webpack,
 		publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
 		historyApiFallback: true, // history api

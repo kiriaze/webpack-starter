@@ -5,7 +5,11 @@ const twig   = require('twig');
 const glob   = require('glob');
 
 // - data
-const data = {};
+const data = {
+	env: process.env.NODE_ENV,
+	assets: `/${config.assets}/`,
+	timestamp: Date.now()
+};
 
 const renderData = () => {
 
@@ -17,11 +21,6 @@ const renderData = () => {
 			data[fileName] = JSON.parse(fs.readFileSync( filePath ));
 		});
 	});
-
-	data.env       = process.env.NODE_ENV;
-	data.assetPath = config.assetPath;
-	data.portPath  = data.assetPath; // local/prod dual ports, can be set to assetPath for prod
-	data.timestamp = Date.now();
 
 	return data;
 

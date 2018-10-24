@@ -2,7 +2,7 @@
 
 var src  	= './src/',
 	dist 	= './dist/',
-	assets  = 'assets/',
+	assets  = 'assets',
 	stage   = 'CHANGE-ME',
 	prod    = 'CHANGE-ME';
 
@@ -19,9 +19,7 @@ const baseConfig = {
 
 	assets,
 
-	assetPath   : process.env.NODE_ENV == 'production' && cdn ? cdn : '/assets', // twig-prod.js
-
-	data: `${src}${assets}data/**/*.json`,
+	data: `${src}${assets}/data/**/*.json`,
 	html: `${src}/**/*.html`,
 
 	// // Google pagespeed
@@ -31,7 +29,7 @@ const baseConfig = {
 	// 'localhost' || '0.0.0.0'
 	localhost: 'localhost',
 
-	proxy: true,
+	proxy: false,
 
 	port: {
 		server: 8000,

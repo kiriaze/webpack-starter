@@ -29,6 +29,7 @@
     "fs": "0.0.1-security",
     "fs-extra": "^2.0.0",
     "glob": "^7.1.1",
+    "ip": "^1.1.5",
     "jquery": "^3.1.1",
     "jquery.easing": "^1.4.1",
     "mini-css-extract-plugin": "^0.4.4",
