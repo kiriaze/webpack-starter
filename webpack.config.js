@@ -40,7 +40,7 @@ const config = {
 	output: {
 		path: path.resolve(__dirname, baseConfig.src),
 		filename: 'assets/js/[name].bundle.js',
-		publicPath: `http://${config.proxy ? ip : config.localhost}:${config.port.webpack}/`,
+		publicPath: `http://${baseConfig.proxy ? ip : baseConfig.localhost}:${baseConfig.port.webpack}/`,
 		chunkFilename: 'assets/js/common.js'
 	},
 	
