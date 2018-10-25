@@ -135,7 +135,7 @@ const config = {
 	devServer: {
 		contentBase: path.join(__dirname, baseConfig.src),
 		compress: true, // enable gzip compression
-		host: '0.0.0.0',
+		host: baseConfig.localhost,
 		port: baseConfig.port.webpack,
 		publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
 		historyApiFallback: true, // history api
