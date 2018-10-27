@@ -35,7 +35,7 @@ const config = {
 		// // Multiple files, multiple outputs (multi page app)
 		main: './assets/js/app.js',
 		styleguide: './assets/js/styleguide.js'
-		
+
 	},
 	
 	output: {
@@ -64,7 +64,7 @@ const config = {
 				use: [{
 					loader: 'url-loader',
 					options: {
-						name: 'asses/fonts/[name].[ext]'
+						name: 'assets/fonts/[name].[ext]'
 					}
 				}]
 			},
@@ -162,7 +162,7 @@ const config = {
 		], {
 			// debug: true
 		}),
-		
+
 		new webpack.NamedModulesPlugin(), // Now the module names in console and in the source will be by name
 
 		// new FriendlyErrorsWebpackPlugin(),
