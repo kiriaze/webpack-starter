@@ -2,8 +2,9 @@ const config	= require('./config.js');
 let exec		= require('child_process').exec;
 
 const args = process.env.npm_config_argv;
+
 // if no arg passed, allow deployment to staging be default
-const env  = JSON.parse(args).original[2] !== undefined ? JSON.parse(args).original[2].replace('--','') : null;
+let env    = JSON.parse(args).original[2] !== undefined ? JSON.parse(args).original[2].replace('--','') : null;
 
 if (env != 'production') env = 'staging';
 
