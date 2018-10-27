@@ -64,7 +64,7 @@ const config = {
 				use: [{
 					loader: 'url-loader',
 					options: {
-						name: 'asses/fonts/[name].[ext]'
+						name: 'assets/fonts/[name].[ext]'
 					}
 				}]
 			},
