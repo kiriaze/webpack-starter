@@ -37,7 +37,7 @@ function getData() {
 	
 	$data['data'] = [
 		'env'       => $_SERVER['SERVER_NAME'] == 'localhost' ? 'local' : 'production',
-		'assetPath' => '/assets', // cdn handled via config.js for prod
+		'assets'    => '/assets', // cdn handled via config.js for prod
 		// to work with double ports; e.g. localhost:8000
 		'portPath'  => $_SERVER['SERVER_NAME'] == 'localhost' ? 'http://localhost:3000/assets' : '/assets'
 	];

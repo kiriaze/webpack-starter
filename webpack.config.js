@@ -9,16 +9,21 @@ const webpack					= require('webpack');
 const path						= require('path');
 const autoprefixer              = require('autoprefixer');
 
+const ip                        = require('ip').address();
 const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other files to dist; e.g. php files, images, etc
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
-const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
-const DashboardPlugin				= require('webpack-dashboard/plugin');
+// const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
+// const DashboardPlugin				= require('webpack-dashboard/plugin');
 
-const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
-	context: path.resolve(__dirname, baseConfig.srcPaths.root),
+
+	mode: 'development',
+
+	context: path.resolve(__dirname, baseConfig.src),
+	
 	entry: {
 		// // Multiple files, bundled together (spa)
 		// app: [
@@ -32,17 +37,30 @@ const config = {
 		styleguide: './assets/js/styleguide.js'
 
 	},
+	
 	output: {
-		path: path.resolve(__dirname, baseConfig.srcPaths.root),
+		path: path.resolve(__dirname, baseConfig.src),
 		filename: 'assets/js/[name].bundle.js',
-		publicPath: 'http://localhost:3000/',
+		publicPath: `http://${baseConfig.proxy ? ip : baseConfig.localhost}:${baseConfig.port.webpack}/`,
+		chunkFilename: 'assets/js/common.js'
 	},
+	
 	devtool: 'inline-eval-cheap-source-map', // for dev - with cache
+	// devtool: 'inline-source-map',
+
+	optimization: {
+		minimize: true
+	},
+	
+	performance: {
+		hints: process.env.NODE_ENV === 'production' ? "warning" : false
+	},
+	
 	module: {
 		rules: [
 			{
 				test: /\.(ttf|eot|woff)$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [{
 					loader: 'url-loader',
 					options: {
@@ -52,7 +70,7 @@ const config = {
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [{
 					loader: 'url-loader',
 					options: {
@@ -64,13 +82,13 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [
 					'style-loader', // injects inline into dom
 					{
 						loader: 'css-loader',
 						options: {
-							root: path.resolve(__dirname, baseConfig.srcPaths.root), // to work with url-loader images name option of 'assets/images/[name].[ext]' so all references in code can be /assets/images/file.ext regardless of where they reside
+							root: path.resolve(__dirname, baseConfig.src), // to work with url-loader images name option of 'assets/images/[name].[ext]' so all references in code can be /assets/images/file.ext regardless of where they reside
 							sourceMap: true,
 						}
 					},
@@ -95,31 +113,37 @@ const config = {
 			},
 			{
 				test: /\.js$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
+				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'babel-loader',
 						options: {
-							presets: ['es2015']
+							// presets: ['es2015']
+							presets: ['@babel/preset-env']
 						}
 					}
 				]
 			}
 		]
 	},
+	
 	node: {
 		fs: 'empty'
 	},
+
 	devServer: {
-		contentBase: path.join(__dirname, baseConfig.srcPaths.root),
+		contentBase: path.join(__dirname, baseConfig.src),
 		compress: true, // enable gzip compression
-		port: baseConfig.serverport,
-		publicPath: 'http://localhost:3000/',
+		host: baseConfig.localhost,
+		port: baseConfig.port.webpack,
+		publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
 		historyApiFallback: true, // history api
 		headers: { "Access-Control-Allow-Origin": "*" }
 	},
+
 	plugins: [
-		new DashboardPlugin(),
+		// new DashboardPlugin(),
 		// new webpack.optimize.UglifyJsPlugin(),
 
 		new webpack.DefinePlugin({
@@ -141,12 +165,7 @@ const config = {
 
 		new webpack.NamedModulesPlugin(), // Now the module names in console and in the source will be by name
 
-		// Common code chunking
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'common', // needs to match an entry name; e.g. entry: { common: ["jquery"] }
-			filename: './assets/js/common.js'
-		}),
-		new FriendlyErrorsWebpackPlugin(),
+		// new FriendlyErrorsWebpackPlugin(),
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery',

@@ -8,10 +8,10 @@ const webpack					= require('webpack');
 const path						= require('path');
 const autoprefixer              = require('autoprefixer');
 
-const ExtractTextPlugin			= require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin		= require('mini-css-extract-plugin');
 
 // Extract all css into one file
-const extractCSS				= new ExtractTextPlugin({
+const extractCSS				= new MiniCssExtractPlugin({
 									filename: 'assets/css/[name].bundle.css',
 									// allChunks: true // testing
 								});
@@ -20,7 +20,11 @@ const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other 
 
 
 const config = {
-	context: path.resolve(__dirname, baseConfig.srcPaths.root),
+
+	mode: 'production',
+	
+	context: path.resolve(__dirname, baseConfig.src),
+	
 	entry: {
 
 		// // Multiple files, bundled together
@@ -32,27 +36,35 @@ const config = {
 		main: './assets/js/app.js',
 		styleguide: './assets/js/styleguide.js'
 	},
+
 	output: {
 		// output dir
-		path: path.resolve(__dirname, baseConfig.destPaths.root),
-		filename: 'assets/js/[name].bundle.js'
+		path: path.resolve(__dirname, baseConfig.dist),
+		filename: 'assets/js/[name].bundle.js',
+		chunkFilename: 'assets/js/common.js'
 	},
+	
 	// devtool: 'source-map', // for production - no cache (errors out when using uglifyjsplugin)
+	
+	optimization: {
+		minimize: true
+	},
+
 	module: {
 		rules: [
 			{
 				test: /\.(ttf|eot|woff)$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [{
 					loader: 'url-loader',
 					options: {
-						name: 'assets/fonts/[name].[ext]'
+						name: 'asses/fonts/[name].[ext]'
 					}
 				}]
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [{
 					loader: 'url-loader',
 					options: {
@@ -63,28 +75,36 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 
-				// dont use injected style tags but output compiled .css in baseConfig.destPaths.root
-				use: extractCSS.extract([
+				use: [
+					MiniCssExtractPlugin.loader,
 					'css-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: () => [autoprefixer()]
-						}
-					},
-					'sass-loader'
-				]),
+					// 'postcss-loader',
+					'sass-loader',
+				],
+
+				// // dont use injected style tags but output compiled .css in baseConfig.dist
+				// use: extractCSS([
+				// 	'css-loader',
+				// 	{
+				// 		loader: 'postcss-loader',
+				// 		options: {
+				// 			plugins: () => [autoprefixer()]
+				// 		}
+				// 	},
+				// 	'sass-loader'
+				// ]),
 			},
 			{
 				test: /\.js$/,
-				include: path.resolve(__dirname, baseConfig.srcPaths.root),
+				include: path.resolve(__dirname, baseConfig.src),
 				use: [
 					{
 						loader: 'babel-loader',
 						options: {
-							presets: ['es2015']
+							// presets: ['es2015']
+							presets: ['@babel/preset-env']
 						}
 					}
 				]
@@ -94,7 +114,7 @@ const config = {
 	plugins: [
 
 		// Minification and size optimization
-
+	
 		extractCSS,
 
 		// This makes it possible for us to safely use env vars on our code
@@ -104,21 +124,6 @@ const config = {
 			},
 		}),
 		// The DefinePlugin allows you to create global constants which can be configured at compile time. This can be very useful for allowing different behaviour between development builds and release builds. For example, you might use a global constant to determine whether logging takes place; perhaps you perform logging in your development build but not in the release build. That’s the sort of scenario the DefinePlugin facilitates.
-
-		new webpack.optimize.UglifyJsPlugin({
-			sourcemap: true,
-			compress: {
-				warnings: true,
-				screw_ie8: true,
-				// drop_console: true
-			},
-			output: {
-				comments: false
-			},
-			mangle: {
-				screw_ie8: true
-			}
-		}),
 
 		new CopyWebpackPlugin([
 			{
@@ -147,11 +152,6 @@ const config = {
 			// debug: true
 		}),
 
-		// Common code chunking
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'common',
-			filename: './assets/js/common.js'
-		}),
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery',

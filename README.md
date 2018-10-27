@@ -7,10 +7,14 @@
 ## Installation Steps
 
 1. Clone repo
-2. Run `npm install`
-3. Run `npm start` to start webpack
-4. Run `npm run build` to compile the bundle in production mode
-5. Run `php -S localhost:8000 -t src/` in a separate terminal window for php.
+2. The first time you will need to run `npm run setup`, after which you will only need to run `npm start`.
+3. Make dope shit.
+
+### Builds
+Run `npm run build` to compile the bundle in production mode
+
+### Deployment
+Run `npm run deploy` to deploy the production ready bundle to location defined within your config, by passing the optional env argument `--staging`.
 
 ---
 

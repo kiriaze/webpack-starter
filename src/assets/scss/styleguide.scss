@@ -4,6 +4,7 @@ body.page-styleguide {
 	background: white;
 	#main {
 		display: flex;
+		flex-flow: column;
 		overflow: hidden;
 		.sidebar {
 			min-width: 25rem;
