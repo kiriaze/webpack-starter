@@ -3,11 +3,14 @@ const path   = require('path');
 const fs     = require('fs-extra');
 const twig   = require('twig');
 const glob   = require('glob');
+const minify = require('html-minifier').minify;
+
 
 // - data
 const data = {
 	env: process.env.NODE_ENV,
-	assets: `/${config.assets}/`,
+	// assets: `/${config.assets}/`,
+	portPath: `${config.assets}`,
 	timestamp: Date.now()
 };
 
@@ -44,7 +47,6 @@ const renderSingle = (file) => {
 
 	let options = {
 		settings: {
-			// views: config.src + '/views/'
 			views: config.src
 			// root relative for everything, since issues keeping in sync between twig.js and twig.php for includes of files not located in views dir; e.g. asssets/vectors
 		},
@@ -66,6 +68,10 @@ const renderSingle = (file) => {
 		let dest = config.dist + file;
 
 		if ( !err && html ) {
+			html = minify(html, {
+				removeComments: true,
+				collapseWhitespace: true
+			});
 			fs.outputFile(dest, html);
 		} else {
 			return;

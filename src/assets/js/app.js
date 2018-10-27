@@ -5,7 +5,6 @@ if ( module.hot ) {
 
 // 
 import '../scss/style.scss';
-import '../scss/styleguide.scss';
 
 // 
 import '../../views/globals/style.scss';
