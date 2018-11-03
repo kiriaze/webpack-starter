@@ -2,16 +2,35 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title>{{data.global.siteTitle}}</title>
+		<title>_</title>
 
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		{# <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> #}
 		
+		<meta name="description" content="">
+
+		<link rel="icon" href="{{ data.portPath }}/images/favicon.ico">
+
+		<meta name="robots" content="noindex, nofollow">
+
+		<meta property="og:image" content="">
+		<meta property="og:site_name" content="">
+		<meta property="og:type" content="article">
+		<meta property="og:url" content="">
+		<meta property="og:title" content="">
+
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:creator" content="">
+		<meta name="twitter:url" content="">
+		<meta name="twitter:title" content="">
+		<meta name="twitter:description" content="">
+		<meta name="twitter:image:src" content="">
+
 		{% block head %}
 			{% if data.env == 'production' %}
-				<link rel="stylesheet" href="{{ data.portPath }}/css/main.bundle.css?{{ data.timestamp }}">
+				<link rel="stylesheet" href="/{{ data.portPath }}/css/main.bundle.css?{{ data.timestamp }}">
 			{% endif %}
 		{% endblock %}
 		
@@ -34,7 +53,6 @@
 
 			{% block beforeFoot %}{% endblock %}
 
-			<script src="{{ data.portPath }}/js/common.js?{{ data.timestamp }}"></script>
 			<script src="{{ data.portPath }}/js/main.bundle.js?{{ data.timestamp }}"></script>
 			
 			{% block afterFoot %}{% endblock %}

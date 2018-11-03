@@ -1,9 +1,17 @@
-{# base.twig #}
+{# base-sg.twig #}
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Styleguide</title>
+
 		<meta charset="utf-8">
-		<title>{{data.global.siteTitle}}</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		{# <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> #}
+		
+		<meta name="robots" content="noindex, nofollow">
+		
+		<link rel="icon" href="{{ data.portPath }}/images/favicon.ico">
 		
 		{% block head %}
 			{% if data.env == 'production' %}

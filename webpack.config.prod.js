@@ -50,6 +50,10 @@ const config = {
 		minimize: true
 	},
 
+	performance: {
+		hints: process.env.NODE_ENV === 'production' ? "warning" : false
+	},
+
 	module: {
 		rules: [
 			{
@@ -111,6 +115,7 @@ const config = {
 			}
 		]
 	},
+
 	plugins: [
 
 		// Minification and size optimization

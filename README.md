@@ -18,7 +18,12 @@ Run `npm run deploy` to deploy the production ready bundle to location defined w
 
 ---
 
-Uses composer for slim/twig templating, custom dynamic php routing off of index.php for other pages, and compiles templates to html, with output(dist) also in html - so no need for server to house composer/vendor.
+### Notes
+
+- If node is acting up, i.e. EADDRINUSE issues:`killall node`
+- If local apache server port isn't being released, `lsof -t -i :8000`, then kill the process using that port, e.g; `kill -9 12345`
+
+- Uses composer for slim/twig templating, custom dynamic php routing off of index.php for other pages, and compiles templates to html, with output(dist) also in html - so no need for server to house composer/vendor.
 	- Also, pages have their own directory for pretty permalinks.
 
 ---

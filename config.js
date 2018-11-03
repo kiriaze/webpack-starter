@@ -41,18 +41,18 @@ const baseConfig = {
 	deploy: {
 		staging: {
 			source      : './dist/',
-			hostname    : '165.227.15.124',
-			username    : 'basicagency',
+			hostname    : '127.0.0.1',
+			username    : 'username',
 			password    : '',
-			destination : '/srv/users/basicagency/apps/'+ stage +'/public',
+			destination : '/srv/users/username/apps/'+ stage +'/public',
 			exclude     : []
 		},
 		production: {
 			source      : './dist/',
-			hostname    : '165.227.15.124',
-			username    : 'basicagency',
+			hostname    : '127.0.0.1',
+			username    : 'username',
 			password    : '',
-			destination : '/srv/users/basicagency/apps/'+ prod +'/public',
+			destination : '/srv/users/username/apps/'+ prod +'/public',
 			exclude     : []
 		}
 	}
