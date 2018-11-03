@@ -22,7 +22,7 @@ Run `npm run deploy` to deploy the production ready bundle to location defined w
 
 - If node is acting up, i.e. EADDRINUSE issues:`killall node`
 - If local apache server port isn't being released, `lsof -t -i :8000`, then kill the process using that port, e.g; `kill -9 12345`
-
+- For local development on multiple devices, swap out commented out proxy/localhost section with the uncommented section, and point devices to the ip address provided in terminal after running `npm start`.
 - Uses composer for slim/twig templating, custom dynamic php routing off of index.php for other pages, and compiles templates to html, with output(dist) also in html - so no need for server to house composer/vendor.
 	- Also, pages have their own directory for pretty permalinks.
 
