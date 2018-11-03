@@ -3,8 +3,8 @@
 var src  	= './src/',
 	dist 	= './dist/',
 	assets  = 'assets',
-	stage   = 'kiriaze-stage',
-	prod    = 'kiriaze';
+	stage   = 'stage',
+	prod    = 'prod';
 
 var cdn;
 // var cdn  = '//cdn.com';
@@ -39,18 +39,18 @@ const baseConfig = {
 	deploy: {
 		staging: {
 			source      : './dist/',
-			hostname    : '107.170.228.76',
-			username    : 'serverpilot',
+			hostname    : '127.0.0.1',
+			username    : 'username',
 			password    : '',
-			destination : '/srv/users/serverpilot/apps/'+ stage +'/public',
+			destination : '/srv/users/username/apps/'+ stage +'/public',
 			exclude     : []
 		},
 		production: {
 			source      : './dist/',
-			hostname    : '107.170.228.76',
-			username    : 'serverpilot',
+			hostname    : '127.0.0.1',
+			username    : 'username',
 			password    : '',
-			destination : '/srv/users/serverpilot/apps/'+ prod +'/public',
+			destination : '/srv/users/username/apps/'+ prod +'/public',
 			exclude     : []
 		}
 	}
