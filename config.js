@@ -3,8 +3,8 @@
 var src  	= './src/',
 	dist 	= './dist/',
 	assets  = 'assets',
-	stage   = 'CHANGE-ME',
-	prod    = 'CHANGE-ME';
+	stage   = 'kiriaze-stage',
+	prod    = 'kiriaze';
 
 var cdn;
 // var cdn  = '//cdn.com';
@@ -22,14 +22,12 @@ const baseConfig = {
 	data: `${src}${assets}/data/**/*.json`,
 	html: `${src}/**/*.html`,
 
-	// // Google pagespeed
-	// URL         : 'http://domain.com',
-	// strategy    : 'mobile',
-
 	// 'localhost' || '0.0.0.0'
-	localhost: 'localhost',
-
+	// swap commented out proxy/localhost if needing to access on other devices via ip address
 	proxy: false,
+	localhost: 'localhost',
+	// proxy: true,
+	// localhost: '0.0.0.0',
 
 	port: {
 		server: 8000,
@@ -41,18 +39,18 @@ const baseConfig = {
 	deploy: {
 		staging: {
 			source      : './dist/',
-			hostname    : '127.0.0.1',
-			username    : 'username',
+			hostname    : '107.170.228.76',
+			username    : 'serverpilot',
 			password    : '',
-			destination : '/srv/users/username/apps/'+ stage +'/public',
+			destination : '/srv/users/serverpilot/apps/'+ stage +'/public',
 			exclude     : []
 		},
 		production: {
 			source      : './dist/',
-			hostname    : '127.0.0.1',
-			username    : 'username',
+			hostname    : '107.170.228.76',
+			username    : 'serverpilot',
 			password    : '',
-			destination : '/srv/users/username/apps/'+ prod +'/public',
+			destination : '/srv/users/serverpilot/apps/'+ prod +'/public',
 			exclude     : []
 		}
 	}

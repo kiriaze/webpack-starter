@@ -34,12 +34,14 @@ $container['view'] = function ($container) {
 function getData() {
 
 	$data = [];
-	
+
+	$date = new DateTime();
+
 	$data['data'] = [
-		'env'       => $_SERVER['SERVER_NAME'] == 'localhost' ? 'local' : 'production',
-		'assets'    => '/assets', // cdn handled via config.js for prod
-		// to work with double ports; e.g. localhost:8000
-		'portPath'  => $_SERVER['SERVER_NAME'] == 'localhost' ? 'http://localhost:3000/assets' : '/assets'
+		'timestamp' => $date->getTimestamp(),
+		'env'       => 'local',
+		// explode http_host to accomodate both localhost and proxy ip
+		'portPath'  => 'http://'. explode(':', $_SERVER['HTTP_HOST'])[0] .':3000/assets'
 	];
 	
 	$files = scandir(__DIR__ . '/assets/data');

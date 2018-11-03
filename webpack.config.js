@@ -1,7 +1,4 @@
-// https://blog.madewithenvy.com/getting-started-with-webpack-2-ed2b86c68783#.7fqdmcf6c
-// https://www.sitepoint.com/beginners-guide-to-webpack-2-and-module-bundling/
-// https://medium.com/@rajaraodv/webpacks-hmr-react-hot-loader-the-missing-manual-232336dc0d96
-// (future reference if needed)
+//
 'use strict';
 
 const baseConfig                = require('./config.js'); // node config
@@ -14,7 +11,6 @@ const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other 
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
 // const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
-// const DashboardPlugin				= require('webpack-dashboard/plugin');
 
 // const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -35,18 +31,16 @@ const config = {
 		// // Multiple files, multiple outputs (multi page app)
 		main: './assets/js/app.js',
 		styleguide: './assets/js/styleguide.js'
-
+		
 	},
 	
 	output: {
 		path: path.resolve(__dirname, baseConfig.src),
-		filename: 'assets/js/[name].bundle.js',
-		publicPath: `http://${baseConfig.proxy ? ip : baseConfig.localhost}:${baseConfig.port.webpack}/`,
-		chunkFilename: 'assets/js/common.js'
+		filename: `${baseConfig.assets}/js/[name].bundle.js`,
+		publicPath: `http://${baseConfig.proxy ? ip : baseConfig.localhost}:${baseConfig.port.webpack}/`
 	},
 	
-	devtool: 'inline-eval-cheap-source-map', // for dev - with cache
-	// devtool: 'inline-source-map',
+	devtool: 'cheap-module-eval-source-map', // fastest
 
 	optimization: {
 		minimize: true
@@ -134,17 +128,17 @@ const config = {
 
 	devServer: {
 		contentBase: path.join(__dirname, baseConfig.src),
-		compress: true, // enable gzip compression
+		publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
 		host: baseConfig.localhost,
 		port: baseConfig.port.webpack,
-		publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
 		historyApiFallback: true, // history api
-		headers: { "Access-Control-Allow-Origin": "*" }
+		compress: true, // enable gzip compression
+		headers: {
+			"Access-Control-Allow-Origin": "*"
+		}
 	},
 
 	plugins: [
-		// new DashboardPlugin(),
-		// new webpack.optimize.UglifyJsPlugin(),
 
 		new webpack.DefinePlugin({
 			'process.env': {
@@ -162,20 +156,21 @@ const config = {
 		], {
 			// debug: true
 		}),
-
+		
 		new webpack.NamedModulesPlugin(), // Now the module names in console and in the source will be by name
 
 		// new FriendlyErrorsWebpackPlugin(),
+		// // fully interactive data visualization of our build
+		// new BundleAnalyzerPlugin({
+		// 	analyzerMode: 'static'
+		// }),
+		
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery',
 			'window.jQuery': 'jquery'
 		}),
 
-		// // fully interactive data visualization of our build
-		// new BundleAnalyzerPlugin({
-		// 	analyzerMode: 'static'
-		// })
 	],
 };
 
