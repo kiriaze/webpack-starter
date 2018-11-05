@@ -7,5 +7,5 @@ RewriteRule ^ index.php [QSA,L]
 # Password Protected
 #AuthType Basic
 #AuthName "Password Protected Area"
-#AuthUserFile /srv/users/basicagency/apps/heath-ceramics/public/.htpasswd
+#AuthUserFile /srv/users/username/apps/projectname/public/.htpasswd
 #Require valid-user
