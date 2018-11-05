@@ -25,7 +25,7 @@ Run `npm run deploy` to deploy the production ready bundle to location defined w
 - For local development on multiple devices, swap out commented out proxy/localhost section with the uncommented section, and point devices to the ip address provided in terminal after running `npm start`.
 - Uses composer for slim/twig templating, custom dynamic php routing off of index.php for other pages, and compiles templates to html, with output(dist) also in html - so no need for server to house composer/vendor.
 	- Also, pages have their own directory for pretty permalinks.
-
+- Update .htaccess and .htpasswd respectively if needed, remember to hash the htpasswd and update username if needed.
 ---
 
 ## License
