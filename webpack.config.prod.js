@@ -84,21 +84,9 @@ const config = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader',
-					// 'postcss-loader',
-					'sass-loader',
+					'postcss-loader',
+					'sass-loader'
 				],
-
-				// // dont use injected style tags but output compiled .css in baseConfig.dist
-				// use: extractCSS([
-				// 	'css-loader',
-				// 	{
-				// 		loader: 'postcss-loader',
-				// 		options: {
-				// 			plugins: () => [autoprefixer()]
-				// 		}
-				// 	},
-				// 	'sass-loader'
-				// ]),
 			},
 			{
 				test: /\.js$/,

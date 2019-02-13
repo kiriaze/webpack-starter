@@ -86,14 +86,7 @@ const config = {
 							sourceMap: true,
 						}
 					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: () => [autoprefixer({
-								browsers: ['last 2 versions']
-							})]
-						}
-					},
+					'postcss-loader',
 					{
 						loader: 'sass-loader',
 						options: {
@@ -127,6 +120,7 @@ const config = {
 	},
 
 	devServer: {
+		disableHostCheck: true, // 3.1.14 hmr issues; quick fix
 		contentBase: path.join(__dirname, baseConfig.src),
 		publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
 		host: baseConfig.localhost,
