@@ -78,7 +78,14 @@ const config = {
 				test: /\.scss$/,
 				include: path.resolve(__dirname, baseConfig.src),
 				use: [
-					'style-loader', // injects inline into dom
+					{
+						loader: 'style-loader',
+						options: {
+							// to allow css before js
+							// this fixes things like lazyload, animations..
+							singleton: true
+						}
+					},
 					{
 						loader: 'css-loader',
 						options: {
