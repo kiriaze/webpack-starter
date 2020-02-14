@@ -11,13 +11,16 @@ const preloader = () => {
 	if ( !$pageLoader ) return;
 
 	// 
+	let defaultTime = 500; // defaults to .5s
 	let width = 100,
 		perfData = window.performance.timing, // The PerformanceTiming interface represents timing-related performance information for the given page.
 		EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
 		time = parseInt((EstimatedTime/1000)%60)*100;
-		time = time < 2500 ? 2500 : time; // defaults to 2.5s
+		time = time < defaultTime ? defaultTime : time;
 
 	$loadbar.style.animationDuration = (time / 1000) + 's';
+
+	console.log(time);
 
 	// Percentage Increment Animation
 	let PercentageID = document.querySelector('#percent'),
