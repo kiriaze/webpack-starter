@@ -1,8 +1,29 @@
 /*
-Source:
+Simple flex grid system, mobile up.
+Optionally pass $fallbackBP if no $breakpoint map
+is set in your project. If nothing is passed, defaults to 768px.
 @mixin grid-row($gutter: $grid-gutter)
 @mixin grid-col($width: false)
 @mixin grid-shift($width: 0)
+
+// Simple example
+.row-selector {
+	@include grid-row();
+ 
+	.column-selector {
+		@include grid-col(6 / 12);
+		@include mq('small') {
+			@include grid-col(3 / 12);
+		}
+	}
+ 
+	.shift-selector {
+		@include grid-shift(1 / 12);
+	}
+}
+
+// Markup Example
+.row > .col-4 > el <-- style the el, not the col class parent
 */
 
 $container-class:	"container" !default; // optional
@@ -11,29 +32,66 @@ $column-class:		"columns" !default;
 $shift-class:		"shift" !default;
 $grid-columns:      12 !default;
 $grid-gutter:       1rem !default;
+$debug:             false !default;
+$fallbackBP:        768px !default; // incase no map, 
 
-@mixin grid-row($gutter: $grid-gutter) {
-	display: flex;
-	flex-wrap: wrap;
-	
-	> * {
-		flex-grow: 1;
-		flex-basis: percentage(1 / $grid-columns);
-		box-sizing: border-box;
-		padding-left: $gutter / 2;
-		padding-right: $gutter / 2;
+@function bp($key) {
+	@if map-has-key($breakpoints, $key) {
+		@return map-get($breakpoints, $key);
+	} @else {
+		@return $fallbackBP; // return our own small size definition
 	}
 }
 
+@mixin grid-row($gutter: $grid-gutter) {
+
+	@media only screen and (min-width: bp(small) ) {
+		
+		display: flex;
+		margin-left: -$gutter;
+		margin-right: -$gutter;
+		
+		@if $debug {
+			background: red;
+		}
+	}
+
+}
+
 @mixin grid-col($width: false) {
-	@if $width {
-		flex-grow: 0;
-		flex-basis: percentage($width);
+	@media only screen and (min-width: bp(small) ) {
+		
+		@if $width {
+			flex-grow: 0;
+			flex-basis: percentage($width);
+			max-width: percentage($width);
+
+			padding-left: $gutter / 2;
+			padding-right: $gutter / 2;
+			
+		} @else {
+			display: block;
+			flex-basis: 0;
+			flex-grow: 1;
+			flex-shrink: 1;
+			
+			padding-left: calc(#{$gutter} / 2);
+			padding-right: calc(#{$gutter} / 2);
+		}
+	}
+	> * {
+		@if $debug {
+			color: black;
+			background: yellow;
+			border: 2px solid black;
+		}
 	}
 }
 
 @mixin grid-shift($width: 0) {
-	margin-left: percentage($width);
+	@media only screen and (min-width: bp(small) ) {
+		margin-left: percentage($width);
+	}
 }
 
 
@@ -41,12 +99,22 @@ $grid-gutter:       1rem !default;
 // CLASS AND DATA DELEGATIONS
 //-------------------------------------------------------
 
-[class~='#{$container-class}'] {
-	// @include container-fixed();
-}
-
 [class~='#{$row-class}'] {
 	@include grid-row($grid-gutter);
+}
+
+[class='#{$column-class}'] {
+	@include grid-col();
+}
+
+.#{$shift-class} {
+	@include grid-shift();
+}
+
+// .row.col-; nested rows/cols remove margins
+[class~='#{$row-class}'][class*='#{$column-class}'] {
+	margin-left: 0;
+	margin-right: 0;
 }
 
 @for $i from 1 through $grid-columns {
@@ -60,16 +128,3 @@ $grid-gutter:       1rem !default;
 	}
 
 }
-
-// // Simple example
-// .row {
-// 	@include grid-row();
- 
-// 	.col-6 {
-// 		@include grid-col(6 / 12);
-// 	}
- 
-// 	.shift-1 {
-// 		@include grid-shift(1 / 12);
-// 	}
-// }

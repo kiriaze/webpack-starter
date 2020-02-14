@@ -1,5 +1,5 @@
 @import '../mixins/breakpoints';
-@import '../global/vars';
+@import '../configs/vars';
 
 /* Helper Placeholders
 ----------------------------------------- */
@@ -143,7 +143,7 @@
 
 	display: none !important;
 
-	@include mq($screen-medium) {
+	@include mq(medium) {
 		display: block !important;
 	}
 }
@@ -152,14 +152,14 @@
 
 	display: none !important;
 
-	@include mq($screen-medium) {
+	@include mq(medium) {
 		display: inline-block !important;
 	}
 }
 
 @mixin desktop-hidden() {
 
-	@include mq($screen-medium) {
+	@include mq(medium) {
 		display: none !important;
 	}
 }
@@ -168,7 +168,7 @@
 
 	display: block !important;
 
-	@include mq($screen-medium) {
+	@include mq(medium) {
 		display: none !important;
 	}
 }
@@ -177,14 +177,14 @@
 
 	display: inline-block !important;
 
-	@include mq($screen-medium) {
+	@include mq(medium) {
 		display: none !important;
 	}
 }
 
 @mixin tablet-hidden() {
 
-	@media (max-width: $screen-medium) {
+	@include mq(medium, max) {
 		display: none !important;
 	}
 }

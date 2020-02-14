@@ -1,0 +1,98 @@
+////////////////////////////////////////////
+// General Layout
+////////////////////////////////////////////
+
+html,
+body {
+	// // smoothScrolling
+	// height: auto;
+}
+
+html {
+	// @include mq('xxxlarge') {
+	// 	font-size: 11px;
+	// }
+
+	&.is-loading {
+		cursor: progress;
+	}
+	&.has-loaded {
+		
+	}
+}
+
+body {
+	background-color: yellow;
+	// // smoothScrolling
+	// overflow-x: hidden;
+	// overflow-y: scroll;
+	// // 
+
+	// // // prevent vertical scroll up refresh behavior
+	// // overscroll-behavior: none;
+	// // //
+}
+
+// [data-scroll-container] {
+
+// 	@include mq('medium') {
+// 		// smoothscrolling
+		
+// 		overflow: hidden;
+// 		position: fixed;
+// 		width: 100%;
+// 		top: 0;
+// 		left: 0;
+		
+// 		perspective: 1000;
+// 		will-change: transform;
+// 		backface-visibility: hidden;
+// 		transform-style: preserve-3d;
+
+// 		// smoothscrolling
+// 	}
+
+// }
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 2rem;
+	max-width: map-get($breakpoints, xlarge);
+	position: relative;
+	&--small {
+
+	}
+}
+
+// mostly used for zoom reveal on lazyloaded images
+.image-wrapper {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 100%;
+	figure {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		background-color: map-get($colors, brand-tertiary);
+	}
+}
+
+////////////////////////////////////////////
+// Link styles
+////////////////////////////////////////////
+
+a {
+	color: map-get($colors, brand-offwhite);
+}
+
+// 
+.link {
+	
+}
+

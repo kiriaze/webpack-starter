@@ -1,0 +1,103 @@
+////////////////////////////////////////////////////////
+// Breakpoint Mapping
+////////////////////////////////////////////////////////
+
+// Example
+$breakpoints: (
+	'tiny'     : 320px,
+	'small'    : 480px,
+	'medium'   : 768px,
+	'large'    : 1024px,
+	'xlarge'   : 1280px,
+	'xxlarge'  : 1440px,
+	'xxxlarge' : 1920px
+);
+
+////////////////////////////////////////////////////////
+// Spacer Settings
+////////////////////////////////////////////////////////
+
+$spacing-scale : 1rem;
+$spacing-count : 14;
+
+////////////////////////////////////////////////////////
+// z-index Mapping
+////////////////////////////////////////////////////////
+
+// Example
+// e.g. fullscreen = 7, background = 1
+$z-indexes: (
+	'fullscreen',
+	'modals',
+	'alerts',
+	'nav',
+	'stickies',
+	'content',
+	'background'
+);
+
+////////////////////////////////////////////////////////
+// Grid
+// - core/_grid.scss
+// Container and Column classes for simplegrid
+////////////////////////////////////////////////////////
+
+$container-class:				'container'; // defaults to [data-layout = "container"]
+$row-class:						'row'; // defaults to [data-layout = "grid"]
+$column-class:					'col'; // defaults to [data-columns = "$"]
+$grid-columns:					12; // max number of columns
+$gutter:						2rem;
+// $debug:                         true;
+
+////////////////////////////////////////////////////////
+// font stacks - core/_fonts.scss
+////////////////////////////////////////////////////////
+
+$body-font:						'Lato', helvetica, sans-serif;
+$header-font:					'Lato', $body-font;
+
+////////////////////////////////////////////////////////
+// Base Typography Values
+////////////////////////////////////////////////////////
+
+$base-font-size:				10px;
+$base-line-height:				1.5;
+$body-font-size:                1.6rem;
+
+////////////////////////////////////////////////////////
+// Colors
+////////////////////////////////////////////////////////
+// using rgba with .99 alpha to bypass 
+// browser transparent on :selection
+// rgba(240, 100, 89, .99)
+// rgba(255, 235, 59, .99)
+// rgba(0, 0, 0, .99)
+// rgba(255, 255, 255, .99)
+// rgba(210, 180, 140, .99)
+$colors: (
+	selection-bg-color: rgba(210, 180, 140, .99),
+	selection-text-color: rgba(255, 255, 255, .99),
+	
+	base-white: #fff,
+	base-light: #CEDDE2,
+	base-medium: #8C9FA5,
+	base-dark: #131316,
+	base-black: #000000,
+
+	brand-offwhite: #f8f5f0,
+	brand-primary: #f06459,
+	brand-secondary: #d2b48c,
+	brand-charcoal: #1a2322,
+	
+	brand-text: #1f1f1f,
+	brand-divider: #1f1f1f,
+
+	state-success: #31aa51,
+	state-error: #F06459,
+
+	social-facebook: #3b5998,
+	social-instagram: #405de6,
+	social-linkedin: #0077b5,
+	social-pinterest: #bd081c,
+	social-twitter: #1da1f2
+);

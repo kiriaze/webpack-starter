@@ -1,0 +1,101 @@
+// Skrolly
+
+[data-skrolly] {
+	// dont assign css classes on this,
+	// rather on specific anim classes
+	// or elem
+}
+
+// js triggered revealed class when in view
+[data-skrolly].revealed {
+	// keep this empty and animate specific
+	// classes or elem like above/below
+}
+
+// set per anim type instead of all like above
+[data-skrolly^="fade-in"].revealed,
+[data-skrolly-group^="fade-in"] > *.revealed,
+[data-skrolly^="fade-up"].revealed,
+[data-skrolly-group^="fade-up"] > *.revealed,
+[data-skrolly^="fade-dowm"].revealed,
+[data-skrolly-group^="fade-down"] > *.revealed {
+	opacity: 1;
+}
+
+[data-skrolly^="fade-up"].revealed,
+[data-skrolly-group^="fade-up"] > *.revealed,
+[data-skrolly^="fade-dowm"].revealed,
+[data-skrolly-group^="fade-down"] > *.revealed {
+	transform: translate3d(0, 0, 0);
+}
+
+[data-skrolly^="zoom-out"].revealed,
+[data-skrolly-group^="zoom-out"] > *.revealed {
+	opacity: 1;
+	transform: scale(1);
+}
+
+// 
+[data-skrolly^="fade-in"],
+[data-skrolly-group^="fade-in"] > *,
+[data-skrolly^="fade-up"],
+[data-skrolly-group^="fade-up"] > *,
+[data-skrolly^="fade-dowm"],
+[data-skrolly-group^="fade-down"] > *,
+[data-skrolly^="zoom-out"],
+[data-skrolly-group^="zoom-out"] > * {
+	opacity: 0;
+	backface-visibility: hidden;
+}
+
+[data-skrolly^="fade-in"],
+[data-skrolly-group^="fade-in"] > *,
+[data-skrolly^="fade-up"],
+[data-skrolly-group^="fade-up"] > *,
+[data-skrolly^="fade-dowm"],
+[data-skrolly-group^="fade-down"] > * {
+
+	// orig
+	transition: opacity .45s ease-in-out, 
+				// transform .45s cubic-bezier(.52,0,.43,.99); // jenky
+				transform .45s cubic-bezier(.215,.61,.355,1); // nice
+				// transform .6s cubic-bezier(.19,1,.22,1); // nice
+	
+	// // this transition + 1.2y needs .1 stagger rather than the .2
+	// transition: opacity .3s cubic-bezier(.38,.41,.27,1),
+	// 			transform .3s cubic-bezier(.395,0,.135,1);
+
+
+	transition: transform 1.1s cubic-bezier(.23,1,.32,1),
+				opacity 1.1s cubic-bezier(.23,1,.32,1),
+				visibility 1.1s cubic-bezier(.23,1,.32,1);
+}
+
+[data-skrolly^="fade-in"],
+[data-skrolly-group^="fade-in"] > * {
+	transition: opacity .45s ease-in-out;
+}
+
+[data-skrolly^="fade-up"],
+[data-skrolly-group^="fade-up"] > * {
+	transform: translate3d(0, 1.5rem, 0);
+}
+
+[data-skrolly^="fade-down"],
+[data-skrolly-group^="fade-down"] > * {
+	transform: translate3d(0, -1.5rem, 0);
+}
+
+[data-skrolly^="zoom-out"],
+[data-skrolly-group^="zoom-out"] > * {
+	transform: scale(1.08);
+	transition: opacity .45s ease-in-out, 
+				// transform 1.2s cubic-bezier(0.1, 0.01, 0, 0.83);
+				// transform 1.2s cubic-bezier(0.1, 0.01, 0, 0.65);
+				transform .45s cubic-bezier(.215,.61,.355,1); // nice
+
+
+	transition: transform 1.1s cubic-bezier(.23,1,.32,1),
+				opacity 1.1s cubic-bezier(.23,1,.32,1),
+				visibility 1.1s cubic-bezier(.23,1,.32,1);
+}

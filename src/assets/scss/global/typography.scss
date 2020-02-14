@@ -1,11 +1,20 @@
-// @import './vars';
-// @import '../mixins/font-face';
-
 /////////////////////////
 // Fonts
 /////////////////////////
 
-// @include font-face('Trade Gothic', '/assets/fonts/trade-gothic/trade-gothic', 600);
+// 100	Thin (Hairline)
+// 200	Extra Light (Ultra Light)
+// 300	Light
+// 400	Normal
+// 500	Medium
+// 600	Semi Bold (Demi Bold)
+// 700	Bold
+// 800	Extra Bold (Ultra Bold)
+// 900	Black (Heavy)
+
+// @include font-face('Moderat', '../fonts/moderat-regular-italic/Moderat-Regular-Italic', 400, italic);
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
 
 /////////////////////////
 // Heading styles
@@ -17,539 +26,122 @@
 	.h#{$i} {
 		font-family: $header-font;
 		font-style: normal;
-		font-weight: normal;
+		font-weight: 400;
 		font-stretch: normal;
 
 		word-wrap: break-word;
 		word-break: break-word;
 
+		line-height: 1;
+
 		text-transform: uppercase;
-
-		small {
-			line-height: 0;
-		}
 	}
 }
 
-// h1
+// base typos
+body {
+	font-weight: 400;
+}
 
-$h1-desktop: (
-	'font-size' : '6rem',
-	'line-height' : '6rem',
-	'letter-spacing' : '0.6rem'
-);
+.h1,
+h1 {
+	@include fluid-scale(font-size, 320px, 1720px, 65px, 395px);
 
-$h1-tablet: (
-	'font-size' : '3rem',
-	'line-height' : '3rem',
-	'letter-spacing' : '0.3rem'
-);
-
-$h1-mobile: (
-	'font-size' : '2.8rem',
-	'line-height' : '2.8rem',
-	'letter-spacing' : '0.3rem'
-);
-
-h1,
-.h1 {
-	@each $setting, $value in ($h1-mobile) {
-		#{$setting} : #{$value};
+	@include mq('medium') {
 	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($h1-tablet) {
-			#{$setting} : #{$value};
-		}
+	@include mq('large') {
 	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($h1-desktop) {
-			#{$setting} : #{$value};
-		}
+	@include mq('xlarge') {
 	}
 }
 
-// h2
-
-$h2-desktop: (
-	'font-size' : '5rem',
-	'line-height' : '5rem',
-	'letter-spacing' : '0.6rem'
-);
-
-$h2-tablet: (
-	'font-size' : '2.8rem',
-	'line-height' : '2.8rem',
-	'letter-spacing' : '0.3rem'
-);
-
-$h2-mobile: (
-	'font-size' : '2.4rem',
-	'line-height' : '2.6rem',
-	'letter-spacing' : '0.3rem'
-);
-
-h2,
-.h2 {
-
-	@each $setting, $value in ($h2-mobile) {
-		#{$setting} : #{$value};
-	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($h2-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($h2-desktop) {
-			#{$setting} : #{$value};
-		}
-	}
-}
-
-// h3
-
-$h3-desktop: (
-	'font-size' : '4rem',
-	'line-height' : '4rem',
-	'letter-spacing' : '0.3rem'
-);
-
-$h3-tablet: (
-	'font-size' : '2.4rem',
-	'line-height' : '2.4rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$h3-mobile: (
-	'font-size' : '2.0rem',
-	'line-height' : '2.2rem',
-	'letter-spacing' : '0.16rem'
-);
-
-h3,
-.h3 {
-
-	@each $setting, $value in ($h3-mobile) {
-		#{$setting} : #{$value};
-	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($h3-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($h3-desktop) {
-			#{$setting} : #{$value};
-		}
-	}
-}
-
-// h4
-
-$h4-desktop: (
-	'font-size' : '3rem',
-	'line-height' : '3.2rem',
-	'letter-spacing' : '0.3rem'
-);
-
-$h4-tablet: (
-	'font-size' : '2.2rem',
-	'line-height' : '2.2rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$h4-mobile: (
-	'font-size' : '2.0rem',
-	'line-height' : '2.2rem',
-	'letter-spacing' : '0.16rem'
-);
-
-h4,
-.h4 {
-
-	@each $setting, $value in ($h4-mobile) {
-		#{$setting} : #{$value};
-	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($h4-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($h4-desktop) {
-			#{$setting} : #{$value};
-		}
-	}
-}
-
-// h5
-
-$h5-desktop: (
-	'font-size' : '2.4rem',
-	'line-height' : '2.8rem',
-	'letter-spacing' : '0.3rem'
-);
-
-$h5-tablet: (
-	'font-size' : '1.8rem',
-	'line-height' : '2.0rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$h5-mobile: (
-	'font-size' : '1.8rem',
-	'line-height' : '2.0rem',
-	'letter-spacing' : '0.16rem'
-);
-
-h5,
-.h5 {
-
-	@each $setting, $value in ($h5-mobile) {
-		#{$setting} : #{$value};
-	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($h5-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($h5-desktop) {
-			#{$setting} : #{$value};
-		}
-	}
-}
-
-// h6
-
-$h6-desktop: (
-	'font-size' : '1.8rem',
-	'line-height' : '2.0rem',
-	'letter-spacing' : '0.2rem'
-);
-
-$h6-tablet: (
-	'font-size' : '1.6rem',
-	'line-height' : '1.6rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$h6-mobile: (
-	'font-size' : '1.6rem',
-	'line-height' : '1.8rem',
-	'letter-spacing' : '0.12rem'
-);
-
-h6,
-.h6 {
-
-	@each $setting, $value in ($h6-mobile) {
-		#{$setting} : #{$value};
-	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($h6-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($h6-desktop) {
-			#{$setting} : #{$value};
-		}
-	}
-}
-
-/////////////////////////
-// Paragraph styles
-/////////////////////////
-
-$p-desktop: (
-	'font-size' : '1.6rem',
-	'line-height' : '3.0rem',
-	'letter-spacing' : '0.1rem'
-);
-
-$p-tablet: (
-	'font-size' : '1.4rem',
-	'line-height' : '2.4rem',
-	'letter-spacing' : '0.1rem'
-);
-
-$p-mobile: (
-	'font-size' : '1.3rem',
-	'line-height' : '2.4rem',
-	'letter-spacing' : '0.1rem'
-);
-
-p,
-.p {	
-	font-family: $body-font;
-	word-wrap: break-word;
-
-	@each $setting, $value in ($p-mobile) {
-		#{$setting} : #{$value};
-	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($p-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($p-desktop) {
-			#{$setting} : #{$value};
-		}
-	}
-}
-
-// post intro
-
-$p-intro-desktop: (
-	'font-size' : '2.0rem',
-	'line-height' : '3.5rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$p-intro-tablet: (
-	'font-size' : '2.0rem',
-	'line-height' : '3.5rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$p-intro-mobile: (
-	'font-size' : '1.6rem',
-	'line-height' : '2.4rem',
-	'letter-spacing' : '0.12rem'
-);
-
-.p-intro {
-	font-family: $body-font;
+.h2,
+h2 {
+	@include fluid-scale(font-size, 320px, 1440px, 25px, 50px);
+	line-height: 1.5;
 	text-transform: none;
-
-	@each $setting, $value in ($p-intro-mobile) {
-		#{$setting} : #{$value};
-	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($p-intro-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($p-intro-desktop) {
-			#{$setting} : #{$value};
-		}
-	}
-}
-
-/////////////////////////
-// Captions and meta styles
-/////////////////////////
-
-$mini-header-desktop: (
-	'font-size' : '1.4rem',
-	'line-height' : '2.5rem',
-	'letter-spacing' : '0.1rem'
-);
-
-$mini-header-tablet: (
-	'font-size' : '1.3rem',
-	'line-height' : '2.2rem',
-	'letter-spacing' : '0.1rem'
-);
-
-$mini-header-mobile: (
-	'font-size' : '1.2rem',
-	'line-height' : '2.0rem',
-	'letter-spacing' : '0.1rem'
-);
-
-.mini-header {
-
-	font-family: $header-font;
-	text-transform: uppercase;
-
-	@each $setting, $value in ($mini-header-mobile) {
-		#{$setting} : #{$value};
-	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($mini-header-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($mini-header-desktop) {
-			#{$setting} : #{$value};
-		}
-	}
-}
-
-// caption copy
-
-$caption-copy-desktop: (
-	'font-size' : '1.4rem',
-	'line-height' : '2.5rem',
-	'letter-spacing' : '0.1rem'
-);
-
-$caption-copy-tablet: (
-	'font-size' : '1.3rem',
-	'line-height' : '2.2rem',
-	'letter-spacing' : '0.1rem'
-);
-
-$caption-copy-mobile: (
-	'font-size' : '1.2rem',
-	'line-height' : '2.0rem',
-	'letter-spacing' : '0.1rem'
-);
-
-.caption-copy {
-
 	font-family: $body-font;
-
-	@each $setting, $value in ($caption-copy-mobile) {
-		#{$setting} : #{$value};
+	@include mq('medium') {
 	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($caption-copy-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($caption-copy-desktop) {
-			#{$setting} : #{$value};
-		}
+	@include mq('large') {
 	}
 }
 
-// meta
-
-.metadata-detail {
-	font-size: 1.0rem;
-	line-height: 1.6rem;
-	letter-spacing: .16rem;
-	text-transform: uppercase;
-}
-
-.metadata-header {
-	font-size: 1.2rem;
-	line-height: 1.6rem;
-	letter-spacing: .2rem;
-	text-transform: uppercase;
-}
-
-.metadata-button {
-	font-size: 1.1rem;
-	line-height: 1.6rem;
-	letter-spacing: .16rem;
-	text-transform: uppercase;
-}
-
-.metadata-copy {
-	font-size: 1.1rem;
-	line-height: 2.0rem;
-	letter-spacing: .06rem;
+.h3,
+h3 {
+	@include fluid-scale(font-size, 320px, 1440px, 20px, 30px);
+	line-height: 1.5;
 	text-transform: none;
-}
-
-/////////////////////////
-// Script styles
-/////////////////////////
-
-$script-quote-desktop: (
-	'font-size' : '2.0rem',
-	'line-height' : '3.5rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$script-quote-tablet: (
-	'font-size' : '2.0rem',
-	'line-height' : '3.5rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$script-quote-mobile: (
-	'font-size' : '1.6rem',
-	'line-height' : '2.4rem',
-	'letter-spacing' : '0.12rem'
-);
-
-.script-quote {
-	font-family: $script-font;
-	text-transform: uppercase;
-
-	@each $setting, $value in ($script-quote-mobile) {
-		#{$setting} : #{$value};
+	font-family: $body-font;
+	@include mq('medium') {
 	}
-
-	@include mq($screen-small) {
-		@each $setting, $value in ($script-quote-tablet) {
-			#{$setting} : #{$value};
-		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($script-quote-desktop) {
-			#{$setting} : #{$value};
-		}
+	@include mq('large') {
 	}
 }
 
-// script copy
+.h4,
+h4 {
+	@include mq('medium') {
 
-$script-copy-desktop: (
-	'font-size' : '1.4rem',
-	'line-height' : '1.8rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$script-copy-tablet: (
-	'font-size' : '1.4rem',
-	'line-height' : '1.8rem',
-	'letter-spacing' : '0.16rem'
-);
-
-$script-copy-mobile: (
-	'font-size' : '1.4rem',
-	'line-height' : '1.8rem',
-	'letter-spacing' : '0.12rem'
-);
-
-.script-copy {
-	font-family: $script-font;
-	text-transform: uppercase;
-
-	@each $setting, $value in ($script-copy-mobile) {
-		#{$setting} : #{$value};
 	}
+	@include mq('large') {
 
-	@include mq($screen-small) {
-		@each $setting, $value in ($script-copy-tablet) {
-			#{$setting} : #{$value};
+	}
+}
+
+.h5,
+h5 {
+	@include mq('medium') {
+	}
+	@include mq('large') {
+	}
+}
+
+.h6,
+h6 {
+	@include mq('medium') {
+
+	}
+	@include mq('large') {
+
+	}
+}
+
+p {
+
+}
+
+.lead {
+	font-size: 2rem;
+	margin-bottom: 5rem;
+	@include mq('small') {
+
+	}
+}
+
+.eyebrow {
+
+}
+
+.byline {
+	@include mq('small') {
+
+	}
+}
+
+.text-align {
+	@include mq('medium') {
+		&--left {
+			text-align: left;
 		}
-	}
-
-	@include mq($screen-medium) {
-		@each $setting, $value in ($script-copy-desktop) {
-			#{$setting} : #{$value};
+		&--right {
+			text-align: right;
+		}
+		&--center {
+			text-align: center;
+		}
+		&--justify {
+			text-align: justify;
 		}
 	}
 }

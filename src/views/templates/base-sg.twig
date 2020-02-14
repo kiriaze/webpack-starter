@@ -6,8 +6,7 @@
 
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, user-scalable=no" />
-		{# <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> #}
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<meta name="robots" content="noindex, nofollow">
 		
@@ -15,7 +14,7 @@
 		
 		{% block head %}
 			{% if data.env == 'production' %}
-				<link rel="stylesheet" href="{{ data.portPath }}/css/main.bundle.css?{{ data.timestamp }}">
+				<link rel="stylesheet" href="{{ data.portPath }}/css/app.bundle.css?{{ data.timestamp }}">
 				<link rel="stylesheet" href="{{ data.portPath }}/css/styleguide.bundle.css?{{ data.timestamp }}">
 			{% endif %}
 		{% endblock %}
@@ -40,7 +39,7 @@
 			{% block beforeFoot %}{% endblock %}
 
 			<script src="{{ data.portPath }}/js/common.js?{{ data.timestamp }}"></script>
-			<script src="{{ data.portPath }}/js/main.bundle.js?{{ data.timestamp }}"></script>
+			<script src="{{ data.portPath }}/js/app.bundle.js?{{ data.timestamp }}"></script>
 			<script src="{{ data.portPath }}/js/styleguide.bundle.js?{{ data.timestamp }}"></script>
 			
 			{% block afterFoot %}{% endblock %}

@@ -1,14 +1,14 @@
 {% extends 'views/templates/base.twig' %}
 
 {# {% block head %}
-	<link rel="stylesheet" href="../assets/css/main.bundle.css">
+	<link rel="stylesheet" href="../assets/css/app.bundle.css">
 {% endblock %} #}
 
 {% block content %}
 
 	<h1>About page</h1>
 
-	{% include 'partials/header.twig' %}
+	{% include 'views/globals/header/template.twig' %}
 
 	<pre>{{data['a'] | json_encode}}</pre>
 

@@ -29,24 +29,12 @@ $breakpoints: () !default;
 // 	'xxxlarge'  : 1720px
 // );
 
-// @include mq('phone') {
+// @include mq('small') {
 // 	font-size: 16px;
 // }
-// @include mq('tablet', min) {
+// @include mq('medium', min) {
 // 	font-size: 20px;
 // }
 // @include mq(1000px, max, height) {
 // 	font-size: 24px;
-// }
-
-
-// h1 {
-// 	font-size: 24px;
-	
-// 	@include mq('phone') {
-// 		font-size: 16px;
-// 	}
-// 	@include mq(800px, min) {
-// 		font-size: 20px;
-// 	}
 // }

@@ -11,36 +11,23 @@ const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other 
 
 // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
 // const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
-
 // const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+let entry = {};
+for (const e of baseConfig.entry) entry[e] = `./${baseConfig.assets}/js/${e}.js`;
 
 const config = {
 
+	node: {
+		fs: 'empty'
+	},
+
 	mode: 'development',
 
-	context: path.resolve(__dirname, baseConfig.src),
-	
-	entry: {
-		// // Multiple files, bundled together (spa)
-		// app: [
-		// 	'./assets/js/app.js',
-		// 	// './another.js',
-		// 	// './and-another.js'
-		// ],
-
-		// // Multiple files, multiple outputs (multi page app)
-		main: './assets/js/app.js',
-		styleguide: './assets/js/styleguide.js'
-		
-	},
-	
-	output: {
-		path: path.resolve(__dirname, baseConfig.src),
-		filename: `${baseConfig.assets}/js/[name].bundle.js`,
-		publicPath: `http://${baseConfig.proxy ? ip : baseConfig.localhost}:${baseConfig.port.webpack}/`
-	},
-	
-	devtool: 'cheap-module-eval-source-map', // fastest
+	// devtool: 'cheap-module-eval-source-map', // fastest, otherwise 'inline-source-map'
+	// devtool: 'inline-cheap-module-source-map',
+	// devtool: 'inline-module-source-map',
+	devtool: 'cheap-module-source-map',
 
 	optimization: {
 		minimize: true
@@ -49,62 +36,94 @@ const config = {
 	performance: {
 		hints: process.env.NODE_ENV === 'production' ? "warning" : false
 	},
+
+	context: path.resolve(__dirname, baseConfig.src),
+
+	entry: entry,
+	
+	output: {
+		path: path.resolve(__dirname, baseConfig.src),
+		filename: `${baseConfig.assets}/js/[name].bundle.js`,
+		// publicPath: `http://${baseConfig.proxy ? ip : baseConfig.localhost}:${baseConfig.port.webpack}/`
+		publicPath: `//${baseConfig.proxy ? ip : baseConfig.localhost}:${baseConfig.port.webpack}/`
+	},
+
+	devServer: {
+		// https: true,
+		disableHostCheck: true, // 3.1.14 hmr issues; quick fix
+		
+		// contentBase: path.join(__dirname, baseConfig.src),
+		// publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
+
+		host: baseConfig.localhost,
+		port: baseConfig.port.webpack,
+		historyApiFallback: true, // history api
+		compress: true, // enable gzip compression
+		headers: {
+			"Access-Control-Allow-Origin": "*"
+		}
+	},
+
+	plugins: [
+
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('development')
+		}),
+		new webpack.NamedModulesPlugin(),
+		new webpack.ProvidePlugin(baseConfig.dependencies),
+
+		new CopyWebpackPlugin([
+			// copying images so as to reference them in markup
+			// with no issues
+			{
+				from: 'assets/images/',
+				to: 'assets/images/'
+			},
+		], {
+			// debug: true
+		}),
+		
+
+		// new FriendlyErrorsWebpackPlugin(),
+		// // fully interactive data visualization of our build
+		// new BundleAnalyzerPlugin({
+		// 	analyzerMode: 'static'
+		// }),
+
+	],
 	
 	module: {
 		rules: [
-			{
-				test: /\.(ttf|eot|woff)$/,
-				include: path.resolve(__dirname, baseConfig.src),
-				use: [{
-					loader: 'url-loader',
-					options: {
-						name: 'assets/fonts/[name].[ext]'
-					}
-				}]
-			},
-			{
-				test: /\.(png|jpg|svg)$/,
-				include: path.resolve(__dirname, baseConfig.src),
-				use: [{
-					loader: 'url-loader',
-					options: {
-						// Convert images < 10k to base64 strings
-						limit: 10000,
-						name: 'assets/images/[name].[ext]'
-					}
-				}]
-			},
 			// {
-			// 	test: /\.scss$/,
+			// 	test: /\.(ttf|eot|woff)$/,
 			// 	include: path.resolve(__dirname, baseConfig.src),
-			// 	use: [
-			// 		{
-			// 			loader: 'style-loader',
-			// 			options: {
-			// 				// to allow css before js
-			// 				// this fixes things like lazyload, animations..
-			// 				singleton: true
-			// 			}
-			// 		},
-			// 		{
-			// 			loader: 'css-loader',
-			// 			options: {
-			// 				root: path.resolve(__dirname, baseConfig.src), // to work with url-loader images name option of 'assets/images/[name].[ext]' so all references in code can be /assets/images/file.ext regardless of where they reside
-			// 				sourceMap: true,
-			// 			}
-			// 		},
-			// 		'postcss-loader',
-			// 		{
-			// 			loader: 'sass-loader',
-			// 			options: {
-			// 				// sourceMap: true,
-			// 				includePaths: [
-			// 					'src/modules'
-			// 				]
-			// 			}
+			// 	use: [{
+			// 		loader: 'url-loader',
+			// 		options: {
+			// 			name: 'assets/fonts/[name].[ext]'
 			// 		}
-			// 	]
+			// 	}]
 			// },
+			// {
+			// 	test: /\.(png|jpg|svg)$/,
+			// 	include: path.resolve(__dirname, baseConfig.src),
+			// 	use: [{
+			// 		loader: 'url-loader',
+			// 		options: {
+			// 			// Convert images < 10k to base64 strings
+			// 			limit: 10000,
+			// 			name: 'assets/images/[name].[ext]'
+			// 		}
+			// 	}]
+			// },
+			{
+				test: /\.(jpg|png|gif|svg|mp4|mp3|ttf|eot|woff|woff2)$/,
+				loader: 'url-loader',
+				options: {
+					limit: 8192, // 10000
+					name: '[path][name].[ext]'
+				}
+			},
 			{
 				test: /\.scss$/,
 				// to include other dir; e.g. ./modules/banners/banner-cta/style
@@ -137,13 +156,12 @@ const config = {
 			},
 			{
 				test: /\.js$/,
-				include: path.resolve(__dirname, baseConfig.src),
+				// include: path.resolve(__dirname, baseConfig.src),
 				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'babel-loader',
 						options: {
-							// presets: ['es2015']
 							presets: ['@babel/preset-env']
 						}
 					}
@@ -152,57 +170,6 @@ const config = {
 		]
 	},
 	
-	node: {
-		fs: 'empty'
-	},
-
-	devServer: {
-		disableHostCheck: true, // 3.1.14 hmr issues; quick fix
-		contentBase: path.join(__dirname, baseConfig.src),
-		publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
-		host: baseConfig.localhost,
-		port: baseConfig.port.webpack,
-		historyApiFallback: true, // history api
-		compress: true, // enable gzip compression
-		headers: {
-			"Access-Control-Allow-Origin": "*"
-		}
-	},
-
-	plugins: [
-
-		new webpack.DefinePlugin({
-			'process.env': {
-				'NODE_ENV': '"development"'
-			}
-		}),
-
-		new CopyWebpackPlugin([
-			// copying images so as to reference them in markup
-			// with no issues
-			{
-				from: 'assets/images/',
-				to: 'assets/images/'
-			},
-		], {
-			// debug: true
-		}),
-		
-		new webpack.NamedModulesPlugin(), // Now the module names in console and in the source will be by name
-
-		// new FriendlyErrorsWebpackPlugin(),
-		// // fully interactive data visualization of our build
-		// new BundleAnalyzerPlugin({
-		// 	analyzerMode: 'static'
-		// }),
-		
-		new webpack.ProvidePlugin({
-			'$': 'jquery',
-			'jQuery': 'jquery',
-			'window.jQuery': 'jquery'
-		}),
-
-	],
 };
 
 module.exports = config;

@@ -1,7 +1,9 @@
-export default class Hero {
+class Hero {
 
 	constructor() {
 
 	}
 
 }
+
+export default Hero;

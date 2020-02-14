@@ -1,0 +1,54 @@
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-scale($properties, $min-vw, $max-vw, $min-value, $max-value) {
+	
+	@each $property in $properties {
+		#{$property}: $min-value;
+	}
+
+	@media screen and (min-width: $min-vw) {
+		@each $property in $properties {
+			#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+		}
+	}
+
+	@media screen and (min-width: $max-vw) {
+		@each $property in $properties {
+			#{$property}: $max-value;
+		}
+	}
+
+}
+
+// Usage:
+// ======
+
+// /* Single property */
+// html {
+// 	@include fluid-scale(font-size, 320px, 1366px, 14px, 18px);
+// 	// or
+// 	@include fluid-scale(font-size, map-get($breakpoints, 'tiny'), map-get($breakpoints, 'xxlarge'), 12px, 16px);
+// }
+
+// /* Multiple properties with same values - without quotes */
+// h1 {
+// 	@include fluid-scale(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+// }
+
+
+// Todos:
+	// consider reformating the min/max values to follow this syntax below:
+		// @fluid-scale('font-size', (480px: 24px, 1720px: 40px));
+		// benefits: its clearer when reading inline, like an associated array, and can have multiple breakpoints
+		// is that better than using mq mixin instead? typically will have mq on elems regardless for other properties..
+			// e.g.
+			// @include mq('480px') {
+			// 	font-size: 24px;
+			// 	opacity: .4;
+			// }
+			// @include mq('1720') {
+			// 	font-size: 40px;
+			// 	opacity: 1;
+			// }

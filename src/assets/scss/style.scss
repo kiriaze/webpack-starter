@@ -1,3 +1,19 @@
+// Base
+@import './configs/style';
 @import './mixins/style';
 @import './global/style';
 @import './patterns/style';
+
+// Node Plugins
+// @import '~magnific-popup/dist/magnific-popup.css';
+
+// UI
+@import 'ui/lazyload';
+@import 'ui/skrolly';
+@import 'ui/buttons';
+@import 'ui/animations';
+
+// Layout
+@import 'layout/general';
+@import 'layout/header';
+@import 'layout/footer';

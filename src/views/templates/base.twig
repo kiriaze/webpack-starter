@@ -2,18 +2,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>_</title>
+		<title>Webpack Starter / Twig + PHP</title>
 
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, user-scalable=no" />
-		{# <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> #}
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<meta name="description" content="">
 
 		<link rel="icon" href="{{ data.portPath }}/images/favicon.ico">
 
-		<meta name="robots" content="noindex, nofollow">
+		<meta name="theme-color" content="#fafafa">
 
 		<meta property="og:image" content="">
 		<meta property="og:site_name" content="">
@@ -30,7 +29,7 @@
 
 		{% block head %}
 			{% if data.env == 'production' %}
-				<link rel="stylesheet" href="/{{ data.portPath }}/css/main.bundle.css?{{ data.timestamp }}">
+				<link rel="stylesheet" href="/{{ data.portPath }}/css/app.bundle.css?{{ data.timestamp }}">
 			{% endif %}
 		{% endblock %}
 		
@@ -41,7 +40,7 @@
 
 		{% include 'views/globals/header/template.twig' %}
 
-		<main id="main">
+		<main role="main" class="main-content">
 
 			{% block content %}{% endblock %}
 
@@ -53,7 +52,7 @@
 
 			{% block beforeFoot %}{% endblock %}
 
-			<script src="{{ data.portPath }}/js/main.bundle.js?{{ data.timestamp }}"></script>
+			<script src="{{ data.portPath }}/js/app.bundle.js?{{ data.timestamp }}"></script>
 			
 			{% block afterFoot %}{% endblock %}
 

@@ -1,6 +1,3 @@
-// @import '../mixins/breakpoints';
-// @import '../global/vars';
-
 ////////////////////////////////////////////////////////
 // Spacing
 ////////////////////////////////////////////////////////
@@ -31,15 +28,15 @@
 	$newSize: $size * $spacing-scale;
 
 	// padding
-	// .pa-#{$size} {
-	// 	padding: $newSize !important;
-	// }
-	// .pl-#{$size} {
-	// 	padding-left: $newSize !important;
-	// }
-	// .pr-#{$size} {
-	// 	padding-right: $newSize !important;
-	// }
+	.pa-#{$size} {
+		padding: $newSize !important;
+	}
+	.pl-#{$size} {
+		padding-left: $newSize !important;
+	}
+	.pr-#{$size} {
+		padding-right: $newSize !important;
+	}
 	.pt-#{$size} {
 		padding-top: $newSize !important;
 	}
@@ -50,35 +47,35 @@
 		padding-top: $newSize !important;
 		padding-bottom: $newSize !important;
 	}
-	// .ph-#{$size} {
-	// 	padding-left: $newSize !important;
-	// 	padding-right: $newSize !important;
-	// }
+	.ph-#{$size} {
+		padding-left: $newSize !important;
+		padding-right: $newSize !important;
+	}
 
 	// margin
-	// .ma-#{$size} {
-	// 	margin: $newSize !important;
-	// }
-	// .ml-#{$size} {
-	// 	margin-left: $newSize !important;
-	// }
-	// .mr-#{$size} {
-	// 	margin-right: $newSize !important;
-	// }
-	// .mt-#{$size} {
-	// 	margin-top: $newSize !important;
-	// }
-	// .mb-#{$size} {
-	// 	margin-bottom: $newSize !important;
-	// }
-	// .mv-#{$size} {
-	// 	margin-top: $newSize !important;
-	// 	margin-bottom: $newSize !important;
-	// }
-	// .mh-#{$size} {
-	// 	margin-left: $newSize !important;
-	// 	margin-right: $newSize !important;
-	// }
+	.ma-#{$size} {
+		margin: $newSize !important;
+	}
+	.ml-#{$size} {
+		margin-left: $newSize !important;
+	}
+	.mr-#{$size} {
+		margin-right: $newSize !important;
+	}
+	.mt-#{$size} {
+		margin-top: $newSize !important;
+	}
+	.mb-#{$size} {
+		margin-bottom: $newSize !important;
+	}
+	.mv-#{$size} {
+		margin-top: $newSize !important;
+		margin-bottom: $newSize !important;
+	}
+	.mh-#{$size} {
+		margin-left: $newSize !important;
+		margin-right: $newSize !important;
+	}
 }
 
 // split in two so breakpoints get priority
@@ -101,15 +98,15 @@ $prefixes: (
 		@include mq($breakpoints) {
 
 			// padding
-			// .pa-#{$bp}-#{$size} {
-			// 	padding: $newSize !important;
-			// }
-			// .pl-#{$bp}-#{$size} {
-			// 	padding-left: $newSize !important;
-			// }
-			// .pr-#{$bp}-#{$size} {
-			// 	padding-right: $newSize !important;
-			// }
+			.pa-#{$bp}-#{$size} {
+				padding: $newSize !important;
+			}
+			.pl-#{$bp}-#{$size} {
+				padding-left: $newSize !important;
+			}
+			.pr-#{$bp}-#{$size} {
+				padding-right: $newSize !important;
+			}
 			.pt-#{$bp}-#{$size} {
 				padding-top: $newSize !important;
 			}
@@ -120,55 +117,39 @@ $prefixes: (
 				padding-top: $newSize !important;
 				padding-bottom: $newSize !important;
 			}
-			// .ph-#{$bp}-#{$size} {
-			// 	padding-left: $newSize !important;
-			// 	padding-right: $newSize !important;
-			// }
+			.ph-#{$bp}-#{$size} {
+				padding-left: $newSize !important;
+				padding-right: $newSize !important;
+			}
 
 			// margin
-			// .ma-#{$bp}-#{$size} {
-			// 	margin: $newSize !important;
-			// }
-			// .ml-#{$bp}-#{$size} {
-			// 	margin-left: $newSize !important;
-			// }
-			// .mr-#{$bp}-#{$size} {
-			// 	margin-right: $newSize !important;
-			// }
-			// .mt-#{$bp}-#{$size} {
-			// 	margin-top: $newSize !important;
-			// }
-			// .mb-#{$bp}-#{$size} {
-			// 	margin-bottom: $newSize !important;
-			// }
-			// .mv-#{$bp}-#{$size} {
-			// 	margin-top: $newSize !important;
-			// 	margin-bottom: $newSize !important;
-			// }
-			// .mh-#{$bp}-#{$size} {
-			// 	margin-left: $newSize !important;
-			// 	margin-right: $newSize !important;
-			// }
+			.ma-#{$bp}-#{$size} {
+				margin: $newSize !important;
+			}
+			.ml-#{$bp}-#{$size} {
+				margin-left: $newSize !important;
+			}
+			.mr-#{$bp}-#{$size} {
+				margin-right: $newSize !important;
+			}
+			.mt-#{$bp}-#{$size} {
+				margin-top: $newSize !important;
+			}
+			.mb-#{$bp}-#{$size} {
+				margin-bottom: $newSize !important;
+			}
+			.mv-#{$bp}-#{$size} {
+				margin-top: $newSize !important;
+				margin-bottom: $newSize !important;
+			}
+			.mh-#{$bp}-#{$size} {
+				margin-left: $newSize !important;
+				margin-right: $newSize !important;
+			}
 
 		}
 	}
 }
-
-// .pt-7 {
-// 	padding-top: 7rem;
-// }
-
-// .pt-8 {
-// 	padding-top: 8rem;
-// }
-
-// .pt-12 {
-// 	padding-top: 12rem;
-// }
-
-// .pt-14 {
-// 	padding-top: 14rem;
-// }
 
 // to be used as an empty div spacer; e.g. <div class="spacer mv-md-8 mv-lg-12"></div>
 .spacer {

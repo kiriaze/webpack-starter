@@ -1,0 +1,30 @@
+// obj helper classes
+// e.g. img, vid, etc.
+// used for wp mod settings
+.obj-top-left {
+	object-position: 0% 0%;
+}
+.obj-top-center {
+	object-position: 50% 0%;
+}
+.obj-top-right {
+	object-position: 100% 0%;
+}
+.obj-center-left {
+	object-position: 0% 50%;
+}
+.obj-center-center {
+	object-position: 50% 50%;
+}
+.obj-center-right {
+	object-position: 100% 50%;
+}
+.obj-bottom-left {
+	object-position: 0% 100%;
+}
+.obj-bottom-center {
+	object-position: 50% 100%;
+}
+.obj-bottom-right {
+	object-position: 100% 100%;
+}
