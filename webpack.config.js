@@ -74,33 +74,63 @@ const config = {
 					}
 				}]
 			},
+			// {
+			// 	test: /\.scss$/,
+			// 	include: path.resolve(__dirname, baseConfig.src),
+			// 	use: [
+			// 		{
+			// 			loader: 'style-loader',
+			// 			options: {
+			// 				// to allow css before js
+			// 				// this fixes things like lazyload, animations..
+			// 				singleton: true
+			// 			}
+			// 		},
+			// 		{
+			// 			loader: 'css-loader',
+			// 			options: {
+			// 				root: path.resolve(__dirname, baseConfig.src), // to work with url-loader images name option of 'assets/images/[name].[ext]' so all references in code can be /assets/images/file.ext regardless of where they reside
+			// 				sourceMap: true,
+			// 			}
+			// 		},
+			// 		'postcss-loader',
+			// 		{
+			// 			loader: 'sass-loader',
+			// 			options: {
+			// 				// sourceMap: true,
+			// 				includePaths: [
+			// 					'src/modules'
+			// 				]
+			// 			}
+			// 		}
+			// 	]
+			// },
 			{
 				test: /\.scss$/,
-				include: path.resolve(__dirname, baseConfig.src),
+				// to include other dir; e.g. ./modules/banners/banner-cta/style
+				// include: path.resolve(__dirname, config.src),
+				// include: path.resolve(__dirname, baseConfig.src),
+				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'style-loader',
 						options: {
 							// to allow css before js
 							// this fixes things like lazyload, animations..
-							singleton: true
+							// singleton: true
 						}
 					},
 					{
 						loader: 'css-loader',
 						options: {
-							root: path.resolve(__dirname, baseConfig.src), // to work with url-loader images name option of 'assets/images/[name].[ext]' so all references in code can be /assets/images/file.ext regardless of where they reside
-							sourceMap: true,
+							sourceMap: true, // if disabled, prevents FOUC/FOUT, sometimes works..
 						}
 					},
 					'postcss-loader',
 					{
 						loader: 'sass-loader',
 						options: {
-							// sourceMap: true,
-							includePaths: [
-								'src/modules'
-							]
+							sourceMap: true
 						}
 					}
 				]
