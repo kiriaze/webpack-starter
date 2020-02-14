@@ -21,7 +21,7 @@ import '../scss/style.scss';
 // requiring any other modules.
 require('intersection-observer');
 
-import 'jquery';
+// import 'jquery';
 
 // Plugins
 // import 'magnific-popup';
@@ -47,6 +47,8 @@ import 'jquery';
 
 // Modules
 // e.g. modals, carousel, menus, etc.
+// note: either load mod styles via their respective script.js, or within the main stylesheet
+// import heroes from '../../views/modules/heroes/hero/script.js';
 
 // app singleton
 class App {

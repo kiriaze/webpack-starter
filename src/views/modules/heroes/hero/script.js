@@ -1,3 +1,4 @@
+import './style.scss';
 class Hero {
 
 	constructor() {

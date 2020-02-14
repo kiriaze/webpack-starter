@@ -17,3 +17,7 @@
 @import 'layout/general';
 @import 'layout/header';
 @import 'layout/footer';
+
+// Modules
+// note: either load mod styles here or explicitly line by line or within app.js
+@import '../../views/modules/style';

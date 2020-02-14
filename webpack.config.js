@@ -9,7 +9,7 @@ const autoprefixer              = require('autoprefixer');
 const ip                        = require('ip').address();
 const CopyWebpackPlugin         = require('copy-webpack-plugin'); // copy other files to dist; e.g. php files, images, etc
 
-// recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
+// // recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience
 // const FriendlyErrorsWebpackPlugin	= require('friendly-errors-webpack-plugin');
 // const BundleAnalyzerPlugin 		    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -29,14 +29,6 @@ const config = {
 	// devtool: 'inline-module-source-map',
 	devtool: 'cheap-module-source-map',
 
-	optimization: {
-		minimize: true
-	},
-	
-	performance: {
-		hints: process.env.NODE_ENV === 'production' ? "warning" : false
-	},
-
 	context: path.resolve(__dirname, baseConfig.src),
 
 	entry: entry,
@@ -51,10 +43,6 @@ const config = {
 	devServer: {
 		// https: true,
 		disableHostCheck: true, // 3.1.14 hmr issues; quick fix
-		
-		// contentBase: path.join(__dirname, baseConfig.src),
-		// publicPath: `http://${baseConfig.localhost}:${baseConfig.port.webpack}/`,
-
 		host: baseConfig.localhost,
 		port: baseConfig.port.webpack,
 		historyApiFallback: true, // history api
@@ -66,11 +54,11 @@ const config = {
 
 	plugins: [
 
+		new webpack.NamedModulesPlugin(),
+		new webpack.ProvidePlugin(baseConfig.dependencies),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('development')
 		}),
-		new webpack.NamedModulesPlugin(),
-		new webpack.ProvidePlugin(baseConfig.dependencies),
 
 		new CopyWebpackPlugin([
 			// copying images so as to reference them in markup
@@ -94,28 +82,6 @@ const config = {
 	
 	module: {
 		rules: [
-			// {
-			// 	test: /\.(ttf|eot|woff)$/,
-			// 	include: path.resolve(__dirname, baseConfig.src),
-			// 	use: [{
-			// 		loader: 'url-loader',
-			// 		options: {
-			// 			name: 'assets/fonts/[name].[ext]'
-			// 		}
-			// 	}]
-			// },
-			// {
-			// 	test: /\.(png|jpg|svg)$/,
-			// 	include: path.resolve(__dirname, baseConfig.src),
-			// 	use: [{
-			// 		loader: 'url-loader',
-			// 		options: {
-			// 			// Convert images < 10k to base64 strings
-			// 			limit: 10000,
-			// 			name: 'assets/images/[name].[ext]'
-			// 		}
-			// 	}]
-			// },
 			{
 				test: /\.(jpg|png|gif|svg|mp4|mp3|ttf|eot|woff|woff2)$/,
 				loader: 'url-loader',
@@ -126,18 +92,12 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				// to include other dir; e.g. ./modules/banners/banner-cta/style
-				// include: path.resolve(__dirname, config.src),
+				// // to include other dir; e.g. ./modules/banners/banner-cta/style
 				// include: path.resolve(__dirname, baseConfig.src),
 				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'style-loader',
-						options: {
-							// to allow css before js
-							// this fixes things like lazyload, animations..
-							// singleton: true
-						}
 					},
 					{
 						loader: 'css-loader',
@@ -156,11 +116,12 @@ const config = {
 			},
 			{
 				test: /\.js$/,
+				// // to include other dir; e.g. ./modules/banners/banner-cta/style
 				// include: path.resolve(__dirname, baseConfig.src),
 				exclude: /node_modules/,
 				use: [
 					{
-						loader: 'babel-loader',
+						loader: 'babel-loader?cacheDirectory',
 						options: {
 							presets: ['@babel/preset-env']
 						}

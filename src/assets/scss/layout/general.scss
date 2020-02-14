@@ -22,7 +22,6 @@ html {
 }
 
 body {
-	background-color: yellow;
 	// // smoothScrolling
 	// overflow-x: hidden;
 	// overflow-y: scroll;
@@ -58,7 +57,7 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 2rem;
-	max-width: map-get($breakpoints, xlarge);
+	// max-width: map-get($breakpoints, xlarge);
 	position: relative;
 	&--small {
 
@@ -79,7 +78,7 @@ body {
 		height: 100%;
 		background-size: cover;
 		background-position: center;
-		background-color: map-get($colors, brand-tertiary);
+		// background-color: map-get($colors, brand-tertiary);
 	}
 }
 
@@ -88,7 +87,7 @@ body {
 ////////////////////////////////////////////
 
 a {
-	color: map-get($colors, brand-offwhite);
+	// color: map-get($colors, brand-offwhite);
 }
 
 // 
