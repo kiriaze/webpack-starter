@@ -1,0 +1,99 @@
+.page-loader {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 9;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	overflow: hidden;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	will-change: transform;
+	backface-visibility: hidden;
+	transform: translateY(0);
+	transition: opacity .35s ease .8s,
+				visibility .35s ease .8s;
+
+	&__bg {
+		display: none;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background: beige;
+		position: absolute;
+	}
+
+	.init-load & {
+		z-index: 99;
+		transition: transform 1s cubic-bezier(0.65,0,.07,1) 0.5s,
+		opacity .35s ease 0.5s,
+		visibility .35s ease 0.5s;
+		.page-loader__bg {
+			display: block;
+		}
+	}
+
+	.has-loaded & {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	// 
+	.percentage,
+	.loader {
+		display: none;
+	}
+
+	.loader {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		transition: opacity .35s cubic-bezier(0.96, 0.2, 0.15, 0.87);
+		.trackbar {
+			height: .5rem;
+			background-color: #eee;
+			.loadbar {
+				width: 100%;
+				height: 100%;
+				background-color: #000;
+				.init-load &,
+				.is-loading & {
+					animation: 3s cubic-bezier(0.96, 0.2, 0.15, 0.87) 1 width;
+				}
+			}
+		}
+		.has-loaded & {
+			opacity: 0;
+		}
+	}
+
+	.init-load & {
+
+		.percentage,
+		.loader {
+			display: block;
+		}
+
+		.percentage {
+			position: absolute;
+			width: 100%;
+			// z-index: -1;
+			// color: #eee;
+			font-size: 30vw;
+			font-weight: 800;
+			text-align: center;
+			// font-family: $header-font;
+
+			// display: none;
+		}
+
+	}
+
+}

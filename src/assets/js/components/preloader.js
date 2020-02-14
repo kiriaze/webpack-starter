@@ -1,14 +1,14 @@
+import '../../scss/ui/preloader.scss';
 const preloader = () => {
 
 	// for loading sequences
 	document.documentElement.classList.add('init-load'); 
-	// this.$html.classList.add('is-loading');
 	// 
-	
+
 	let $loadbar    = document.querySelector('.loadbar');
 	let $pageLoader = document.querySelector('.page-loader');
-	let $intro      = document.querySelectorAll('[data-loading-intro]');
-	let $meta       = document.querySelector('.page-loader__meta');
+
+	if ( !$pageLoader ) return;
 
 	// 
 	let width = 100,
@@ -17,9 +17,7 @@ const preloader = () => {
 		time = parseInt((EstimatedTime/1000)%60)*100;
 		time = time < 2500 ? 2500 : time; // defaults to 2.5s
 
-	[...$intro].map($i => $i.style.animationDuration = (time / 1000) + 's');
 	$loadbar.style.animationDuration = (time / 1000) + 's';
-	if ( $meta ) $meta.style.animationDuration = (time / 1000) + 's';
 
 	// Percentage Increment Animation
 	let PercentageID = document.querySelector('#percent'),
@@ -40,6 +38,9 @@ const preloader = () => {
 		let timer = setInterval(() => {
 			current             += increment;
 			obj.innerText       = current + '%';
+			
+			// $loadbar.style.width = current + '%';
+
 			if (current == end) {
 				clearInterval(timer);
 			}
@@ -63,11 +64,9 @@ const preloader = () => {
 	let blackFlag = false;
 	if ( $pageLoader )
 	$pageLoader.addEventListener('transitionend', (e) => {
-		// if ( e.target.matches('.page-loader') && e.propertyName == 'transform' ) {
 		if ( e.target.matches('.page-loader') && e.propertyName == 'opacity' ) {
 			if ( !blackFlag ) {
 				document.documentElement.classList.remove('init-load');
-				// $pageLoader.style.transform = 'translate3d(0, 100%, 0)';
 				blackFlag = true;
 				// dispatch initial-load event?
 			}

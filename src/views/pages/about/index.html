@@ -8,7 +8,7 @@
 
 	<h1>About page</h1>
 
-	{% include 'views/globals/header/template.twig' %}
+	{% include 'views/globals/header.twig' %}
 
 	<pre>{{data['a'] | json_encode}}</pre>
 
@@ -19,5 +19,5 @@
 {% endblock %}
 
 {% block afterFoot %}
-	<script src="http://localhost:3000/assets/js/about.bundle.js"></script>
+	<!-- <script src="http://localhost:3000/assets/js/about.bundle.js"></script> -->
 {% endblock %}

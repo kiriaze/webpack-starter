@@ -38,9 +38,11 @@
 
 		<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
 
-		{% include 'views/globals/header/template.twig' %}
+		{% include 'views/globals/preloader.twig' %}
 
-		<main role="main" class="main-content">
+		{% include 'views/globals/header.twig' %}
+
+		<main role="main" class="main-content" data-ajax-wrap>
 			{% block content %}{% endblock %}
 		</main>
 		
@@ -50,7 +52,7 @@
 			</div>
 		</main> #}
 
-		{% include 'views/globals/footer/template.twig' %}
+		{% include 'views/globals/footer.twig' %}
 
 		{% block foot %}
 

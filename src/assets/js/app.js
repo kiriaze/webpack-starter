@@ -25,15 +25,14 @@ require('intersection-observer');
 // import 'jquery';
 // import 'magnific-popup';
 
-// // 
-// import gsap from 'gsap';
-
 // Utilities
 import utility from './utils/utility.js';
 
 
 // 
 import ui from './components/ui.js';
+import preloader from './components/preloader.js';
+import pageNavigation from './components/pageNavigation.js';
 import smoothScrolling from './components/smoothScrolling.js';
 
 // Views
@@ -81,8 +80,9 @@ class App {
 		document.addEventListener('DOMContentLoaded', () => {
 			this.init();
 			this.mutationWatch();
-			// // handles .has-loaded/init-load classes
-			// preloader();
+			// handles .has-loaded/init-load classes
+			preloader();
+			new pageNavigation();
 		});
 
 	}
