@@ -21,26 +21,20 @@ import '../scss/style.scss';
 // requiring any other modules.
 require('intersection-observer');
 
-// import 'jquery';
-
 // Plugins
+// import 'jquery';
 // import 'magnific-popup';
 
 // // 
 // import gsap from 'gsap';
 
-// // Utilities
-// // import io from './io.js'; //
-// import skrolly from './skrolly.js';
-// import lazyload from './lazyload.js';
-// import debounce from './debounce.js';
-// import throttle from './throttle.js';
-// // import utility from './utility.js';
+// Utilities
+import utility from './utils/utility.js';
+
 
 // 
-// import ui from './ui.js';
-
-// import smoothScrolling from './smoothScrolling.js';
+import ui from './components/ui.js';
+import smoothScrolling from './components/smoothScrolling.js';
 
 // Views
 // e.g. about
@@ -68,26 +62,18 @@ class App {
 
 	init() {
 		// console.log('init...');
-		// debounce();
-		// throttle();
-
-		// // these need to be rerun/reindexed
-		// skrolly({
-		// 	// selector: '[data-src]'
-		// });
-		// // 
 	}
 
 	modules() {
+		ui();
 		// carousels();
-		// lazyload();
 	}
 
 	addEventListeners() {
 
 		// non critical scripts
 		window.addEventListener('load', () => {
-			// this.scroll = new smoothScrolling('[data-scroll-container]');
+			this.scroll = new smoothScrolling('[data-scroll-container]');
 			this.modules();
 		});
 
@@ -101,6 +87,7 @@ class App {
 
 	}
 
+	// ajax navigation - trigger js updates
 	mutationWatch() {
 
 		// console.log('mutationWatch init');
@@ -124,14 +111,8 @@ class App {
 			// console.log('mutationWatch cb');
 
 			// // rerun scripts..
-			// // is there a better more optimized solution, feels like this is causing major leakage..
+			// // research better solution, could cause major leakage..
 			this.modules();
-
-			// // these need to be rerun/reindexed
-			// skrolly({
-			// 	// selector: '[data-src]'
-			// });
-			// // 
 
 			// // 
 			// setTimeout(() => {

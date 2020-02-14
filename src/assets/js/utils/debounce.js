@@ -4,7 +4,7 @@
 // const myHandler = (event) => // do something with the event
 // const dHandler = debounce(myHandler, 200);
 // domNode.addEventListener("input", dHandler);
-const debounce = (fn, delay) => {
+const debounce = (fn, interval) => {
 	let timerId;
 	return function (...args) {
 		if (timerId) {
@@ -13,7 +13,7 @@ const debounce = (fn, delay) => {
 		timerId = setTimeout(() => {
 			fn(...args);
 			timerId = null;
-		}, delay);
+		}, interval);
 	}
 };
 

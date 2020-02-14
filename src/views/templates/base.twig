@@ -41,10 +41,14 @@
 		{% include 'views/globals/header/template.twig' %}
 
 		<main role="main" class="main-content">
-
 			{% block content %}{% endblock %}
-
 		</main>
+		
+		{# <main role="main" class="main-content" data-ajax-wrap>
+			<div data-scroll-container>
+				{% block content %}{% endblock %}
+			</div>
+		</main> #}
 
 		{% include 'views/globals/footer/template.twig' %}
 
