@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="142" height="158" viewBox="0 0 142 158">
+  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+    <ellipse cx="70.402" cy="78.804" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" rx="14.483" ry="14.474"/>
+    <line x1="127.849" x2="83.678" y1="45.031" y2="70.12" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608"/>
+    <line x1="57.044" x2="12.874" y1="45.031" y2="70.12" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" transform="matrix(-1 0 0 1 69.918 0)"/>
+    <polygon stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" points="69.846 4.825 133.255 41.412 133.255 114.588 69.846 151.175 6.437 114.588 6.437 41.412"/>
+    <g transform="translate(65.977 1.608)">
+      <ellipse cx="4.828" cy="4.825" fill="#C2C2C2" rx="4.828" ry="4.825"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="2.412" rx="3.621" ry="3.619"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="1.608" rx="4.828" ry="4.825"/>
+    </g>
+    <g transform="translate(65.977 144.742)">
+      <ellipse cx="4.828" cy="4.825" fill="#C2C2C2" rx="4.828" ry="4.825"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="2.412" rx="3.621" ry="3.619"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="1.608" rx="4.828" ry="4.825"/>
+    </g>
+    <g transform="translate(128.736 36.99)">
+      <ellipse cx="4.828" cy="4.825" fill="#C2C2C2" rx="4.828" ry="4.825"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="2.412" rx="3.621" ry="3.619"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="1.608" rx="4.828" ry="4.825"/>
+    </g>
+    <g transform="translate(1.61 36.99)">
+      <ellipse cx="4.828" cy="4.825" fill="#C2C2C2" rx="4.828" ry="4.825"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="2.412" rx="3.621" ry="3.619"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="1.608" rx="4.828" ry="4.825"/>
+    </g>
+    <g transform="translate(128.736 107.753)">
+      <ellipse cx="4.828" cy="4.825" fill="#C2C2C2" rx="4.828" ry="4.825"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="2.412" rx="3.621" ry="3.619"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="1.608" rx="4.828" ry="4.825"/>
+    </g>
+    <g transform="translate(1.61 107.753)">
+      <ellipse cx="4.828" cy="4.825" fill="#C2C2C2" rx="4.828" ry="4.825"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="2.412" rx="3.621" ry="3.619"/>
+      <ellipse cx="4.828" cy="4.825" stroke="#151515" stroke-width="1.608" rx="4.828" ry="4.825"/>
+    </g>
+    <ellipse cx="70.805" cy="6.433" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" rx="6.437" ry="6.433"/>
+    <ellipse cx="70.805" cy="149.567" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" rx="6.437" ry="6.433"/>
+    <ellipse cx="133.563" cy="41.814" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" rx="6.437" ry="6.433"/>
+    <ellipse cx="6.437" cy="41.814" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" rx="6.437" ry="6.433"/>
+    <ellipse cx="133.563" cy="112.577" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" rx="6.437" ry="6.433"/>
+    <ellipse cx="6.437" cy="112.577" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608" rx="6.437" ry="6.433"/>
+    <line x1="70.805" x2="70.805" y1="94.082" y2="142.357" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.608"/>
+  </g>
+</svg>

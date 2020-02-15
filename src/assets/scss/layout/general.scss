@@ -56,8 +56,8 @@ body {
 .container {
 	width: 100%;
 	margin: 0 auto;
-	padding: 0 2rem;
-	// max-width: map-get($breakpoints, xlarge);
+	padding: 0 4vw;
+	max-width: map-get($breakpoints, xlarge);
 	position: relative;
 	&--small {
 
@@ -87,11 +87,14 @@ body {
 ////////////////////////////////////////////
 
 a {
-	// color: map-get($colors, brand-offwhite);
+	transition: color .35s ease;
+	color: map-get($colors, brand-primary);
+	&:hover {
+		color: map-get($colors, brand-secondary);
+	}
 }
 
 // 
 .link {
 	
 }
-

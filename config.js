@@ -8,6 +8,7 @@ var src  	= './src/',
 
 var cdn;
 // var cdn  = '//cdn.com';
+// var repo    = 'reponame';
 
 const baseConfig = {
 
@@ -18,6 +19,8 @@ const baseConfig = {
 	dist,
 
 	assets,
+
+	// repo,
 
 	entry: [
 		'app',

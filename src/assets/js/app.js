@@ -7,9 +7,6 @@ if ( module.hot ) {
 // SCSS
 ////////////////////////////////////////////
 
-// Plugins
-// import 'magnific.popup/dist/assets/magnific.popup.css';
-
 // Core Styles
 import '../scss/style.scss';
 
@@ -31,7 +28,7 @@ import utility from './utils/utility.js';
 
 // 
 import ui from './components/ui.js';
-import preloader from './components/preloader.js';
+// import preloader from './components/preloader.js';
 import pageNavigation from './components/pageNavigation.js';
 import smoothScrolling from './components/smoothScrolling.js';
 
@@ -80,8 +77,8 @@ class App {
 		document.addEventListener('DOMContentLoaded', () => {
 			this.init();
 			this.mutationWatch();
-			// handles .has-loaded/init-load classes
-			preloader();
+			// // handles .has-loaded/init-load classes
+			// preloader();
 			new pageNavigation();
 		});
 
@@ -114,12 +111,12 @@ class App {
 			// // research better solution, could cause major leakage..
 			this.modules();
 
-			// // 
-			// setTimeout(() => {
-			// 	// destroy/re-instantiate for testing custom scroll for home only
-			// 	this.scroll.destroy();
-			// 	this.scroll = new smoothScrolling('[data-scroll-container]');
-			// }, 0);
+			// 
+			setTimeout(() => {
+				// destroy/re-instantiate for testing custom scroll for home only
+				this.scroll.destroy();
+				this.scroll = new smoothScrolling('[data-scroll-container]');
+			}, 0);
 
 			// // possibly match each mutations data-attr to match js callbacks
 			// // e.g. data-module-instantiated, then check if mod has attr

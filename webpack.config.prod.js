@@ -81,6 +81,11 @@ const config = {
 				from: '../.htpasswd',
 				to: '.htpasswd',
 				toType: 'file'
+			},
+			{
+				from: '../CNAME',
+				to: 'CNAME',
+				toType: 'file'
 			}
 		], {
 			// debug: true
@@ -101,7 +106,7 @@ const config = {
 			},
 			{
 				test: /\.(ttf|eot|woff|woff2)$/,
-				// exclude: /node_modules/,
+				exclude: /node_modules/,
 				loader: 'url-loader',
 				options: {
 					name: `${baseConfig.assets}/fonts/[name].[ext]`
@@ -111,11 +116,11 @@ const config = {
 				test: /\.scss$/,
 				exclude: /node_modules/,
 				use: [
-					// MiniCssExtractPlugin.loader,
 					{
 						loader: MiniCssExtractPlugin.loader,
 						options: {
-							publicPath: '../../', // so bg images that are referenced like ../images/name.png work in prod
+							// so bg images that are referenced like ../images/name.png work in prod
+							publicPath: '../../',
 						}
 					},
 					'css-loader',
@@ -135,52 +140,6 @@ const config = {
 					}
 				]
 			}
-
-			// {
-			// 	test: /\.(ttf|eot|woff)$/,
-			// 	include: path.resolve(__dirname, baseConfig.src),
-			// 	use: [{
-			// 		loader: 'url-loader',
-			// 		options: {
-			// 			name: 'assets/fonts/[name].[ext]'
-			// 		}
-			// 	}]
-			// },
-			// {
-			// 	test: /\.(png|jpg|svg)$/,
-			// 	include: path.resolve(__dirname, baseConfig.src),
-			// 	use: [{
-			// 		loader: 'url-loader',
-			// 		options: {
-			// 			// Convert images < 10k to base64 strings
-			// 			limit: 10000
-			// 		}
-			// 	}]
-			// },
-			// {
-			// 	test: /\.scss$/,
-			// 	include: path.resolve(__dirname, baseConfig.src),
-
-			// 	use: [
-			// 		MiniCssExtractPlugin.loader,
-			// 		'css-loader',
-			// 		'postcss-loader',
-			// 		'sass-loader'
-			// 	],
-			// },
-			// {
-			// 	test: /\.js$/,
-			// 	include: path.resolve(__dirname, baseConfig.src),
-			// 	use: [
-			// 		{
-			// 			loader: 'babel-loader',
-			// 			options: {
-			// 				// presets: ['es2015']
-			// 				presets: ['@babel/preset-env']
-			// 			}
-			// 		}
-			// 	]
-			// }
 		]
 	},
 	

@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+# Password Protected
+#AuthType Basic
+#AuthName "Password Protected Area"
+#AuthUserFile /srv/users/username/apps/projectname/public/.htpasswd
+#Require valid-user

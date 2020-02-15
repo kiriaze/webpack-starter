@@ -72,22 +72,22 @@ const scrollEvents = () => {
 		// // 
 
 		
-		// // direction detection
-		// if ( oldScroll < winScroll ) {
-		// 	if ( !scrollDirectionFlag ) {
-		// 		// console.log('down');
-		// 		document.body.dataset.scrollDirection = 'down';
-		// 		scrollDirectionFlag = true;
-		// 	}
-		// } else {
-		// 	if ( scrollDirectionFlag ) {
-		// 		// console.log('up');
-		// 		document.body.dataset.scrollDirection = 'up';
-		// 		scrollDirectionFlag = false;
-		// 	}
-		// }
-		// oldScroll = winScroll;
-		// //
+		// direction detection
+		if ( oldScroll < winScroll ) {
+			if ( !scrollDirectionFlag ) {
+				// console.log('down');
+				document.body.dataset.scrollDirection = 'down';
+				scrollDirectionFlag = true;
+			}
+		} else {
+			if ( scrollDirectionFlag ) {
+				// console.log('up');
+				document.body.dataset.scrollDirection = 'up';
+				scrollDirectionFlag = false;
+			}
+		}
+		oldScroll = winScroll;
+		//
 
 
 		// // header

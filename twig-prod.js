@@ -9,8 +9,8 @@ const minify = require('html-minifier').minify;
 // - data
 const data = {
 	env: process.env.NODE_ENV,
-	// assets: `/${config.assets}/`,
-	portPath: `${config.assets}`,
+	// repo: `/${config.repo}/`,
+	portPath: `${config.assets}`, // extend with reponame or within markup
 	timestamp: Date.now()
 };
 

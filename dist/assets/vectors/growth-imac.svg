@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="166" height="140" viewBox="0 0 166 140">
+  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+    <path stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M158,107.583222 C158,113.339 153.558957,118 148.086957,118 L15.9130435,118 C10.4410435,118 6,113.339 6,107.583222 L6,10.4167778 C6,4.661 10.4410435,0 15.9130435,0 L148.086957,0 C153.558957,0 158,4.661 158,10.4167778 L158,107.583222 Z"/>
+    <line x1="34" x2="126" y1="132" y2="132" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line x1="80" x2="80" y1="118" y2="132" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line x1="6" x2="158" y1="90" y2="90" stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <polyline stroke="#3F3F3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="28 72 74.868 28 107.472 58.609 136 31.826"/>
+    <g transform="rotate(-90 50 28)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+    <g transform="rotate(-90 52 -18)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+    <g transform="rotate(-90 83 -19)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+    <g transform="rotate(-90 84 -48)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+    <g transform="rotate(-90 124 -28)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+    <g transform="rotate(-90 48 48)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+    <g transform="rotate(-90 98 24)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+    <g transform="rotate(-90 82 56)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+    <g transform="rotate(-90 130 8)">
+      <circle cx="6" cy="6" r="6" fill="#C2C2C2"/>
+      <circle cx="6" cy="6" r="4.5" stroke="#151515" stroke-width="3"/>
+      <circle cx="6" cy="6" r="6" stroke="#151515" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

@@ -20,7 +20,7 @@ const preloader = () => {
 
 	$loadbar.style.animationDuration = (time / 1000) + 's';
 
-	console.log(time);
+	// console.log(time);
 
 	// Percentage Increment Animation
 	let PercentageID = document.querySelector('#percent'),

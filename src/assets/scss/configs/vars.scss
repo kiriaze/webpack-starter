@@ -62,7 +62,7 @@ $header-font:					'Lato', $body-font;
 
 $base-font-size:				10px;
 $base-line-height:				1.5;
-$body-font-size:                1.6rem;
+$body-font-size:                1.8rem;
 
 ////////////////////////////////////////////////////////
 // Colors
@@ -79,17 +79,16 @@ $colors: (
 	selection-text-color: rgba(255, 255, 255, .99),
 	
 	base-white: #fff,
-	base-light: #CEDDE2,
+	base-light: #dcdcdc,
 	base-medium: #8C9FA5,
 	base-dark: #131316,
 	base-black: #000000,
 
-	brand-offwhite: #f8f5f0,
-	brand-primary: #f06459,
-	brand-secondary: #d2b48c,
-	brand-charcoal: #1a2322,
+	brand-offwhite: #f0f2f1,
+	brand-primary: #0f1120,
+	brand-secondary: #1268fe,
 	
-	brand-text: #1f1f1f,
+	brand-text: #4c5068,
 	brand-divider: #1f1f1f,
 
 	state-success: #31aa51,

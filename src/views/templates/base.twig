@@ -29,7 +29,7 @@
 
 		{% block head %}
 			{% if data.env == 'production' %}
-				<link rel="stylesheet" href="/{{ data.portPath }}/css/app.bundle.css?{{ data.timestamp }}">
+				<link rel="stylesheet" href="{{ data.portPath }}/css/app.bundle.css?{{ data.timestamp }}">
 			{% endif %}
 		{% endblock %}
 		
@@ -37,17 +37,17 @@
 	<body class="" data-template="base.twig">
 
 		<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
-
+		{% include 'views/globals/svg.twig' %}
 		{% include 'views/globals/preloader.twig' %}
 
 		{% include 'views/globals/header.twig' %}
-
 		<main role="main" class="main-content" data-ajax-wrap>
 			{% block content %}{% endblock %}
 		</main>
 		
 		{# <main role="main" class="main-content" data-ajax-wrap>
 			<div data-scroll-container>
+				{% include 'views/globals/header.twig' %}
 				{% block content %}{% endblock %}
 			</div>
 		</main> #}

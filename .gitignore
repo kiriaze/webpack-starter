@@ -1,4 +1,4 @@
-dist
+#dist #not ignoring for gh-pages
 node_modules/
 npm-debug*
 .DS_STORE
