@@ -10,7 +10,8 @@
     "setup": "npm install && composer install && npm start",
     "server": "node server.js & webpack-dev-server --inline --hot --mode=development",
     "update": "npm-check --update",
-    "deploy": "npm run build && node deploy.js"
+    "deploy": "npm run build && node deploy.js",
+    "gh-pages": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
   "author": "",
